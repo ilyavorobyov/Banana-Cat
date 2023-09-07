@@ -22,7 +22,5 @@ public class WindowStateManager : MonoBehaviour
     private void OnApplicationFocus(bool focus)
     {
         _audioListener.enabled = true;
-        Debug.Log("test");
     }
-
 }

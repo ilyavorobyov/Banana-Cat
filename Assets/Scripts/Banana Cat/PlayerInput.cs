@@ -37,18 +37,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Cry"",
+                    ""name"": ""Jump"",
                     ""type"": ""Button"",
-                    ""id"": ""b2576a13-32fa-4377-9d69-1b2b45e52ed2"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Happy"",
-                    ""type"": ""Button"",
-                    ""id"": ""7ceaf615-1c5d-4502-b611-70f4414aeed6"",
+                    ""id"": ""d934c9b1-0ae7-4911-a08f-da7fad29ece9"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -124,23 +115,12 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""b5c310d5-a1b8-4ce8-8329-853b43405f4c"",
-                    ""path"": ""<Keyboard>/c"",
+                    ""id"": ""16cbf601-a43c-44ac-b8c6-988b9a24b1aa"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Cry"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9fb38a1c-3eb7-4c4a-ba30-ab606e5679b4"",
-                    ""path"": ""<Keyboard>/h"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Happy"",
+                    ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -164,8 +144,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-        m_Player_Cry = m_Player.FindAction("Cry", throwIfNotFound: true);
-        m_Player_Happy = m_Player.FindAction("Happy", throwIfNotFound: true);
+        m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -226,15 +205,13 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
-    private readonly InputAction m_Player_Cry;
-    private readonly InputAction m_Player_Happy;
+    private readonly InputAction m_Player_Jump;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
         public PlayerActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
-        public InputAction @Cry => m_Wrapper.m_Player_Cry;
-        public InputAction @Happy => m_Wrapper.m_Player_Happy;
+        public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -247,12 +224,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                @Cry.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCry;
-                @Cry.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCry;
-                @Cry.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCry;
-                @Happy.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHappy;
-                @Happy.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHappy;
-                @Happy.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHappy;
+                @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -260,12 +234,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @Cry.started += instance.OnCry;
-                @Cry.performed += instance.OnCry;
-                @Cry.canceled += instance.OnCry;
-                @Happy.started += instance.OnHappy;
-                @Happy.performed += instance.OnHappy;
-                @Happy.canceled += instance.OnHappy;
+                @Jump.started += instance.OnJump;
+                @Jump.performed += instance.OnJump;
+                @Jump.canceled += instance.OnJump;
             }
         }
     }
@@ -282,7 +253,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnCry(InputAction.CallbackContext context);
-        void OnHappy(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
     }
 }

@@ -1,18 +1,47 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(BananaCatMover))]
 public class BananaCatCollisionHandler : MonoBehaviour
 {
-    [SerializeField] private AudioSource _munchSound;
+    [SerializeField] private AudioSource _munchBadFoodSound;
+    [SerializeField] private AudioSource _munchFruitSound;
+    [SerializeField] private AudioSource _hitSound;
 
-    public event UnityAction FruitTaken;
+    private BananaCatMover _bananaCatMover;
+
+    public static Action FruitTakenEvent;
+    public static Action BadFoodTakenEvent;
+    public static Action GameOverEvent;
+
+    private void Start()
+    {
+        _bananaCatMover = GetComponent<BananaCatMover>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out Fruit fruit))
+        if (collision.TryGetComponent(out FallingObject fallingObject))
         {
-            _munchSound.PlayDelayed(0);
-            FruitTaken.Invoke();
+            if (fallingObject is FruitItem)
+            {
+                _bananaCatMover.BecomeHappy();
+                _munchFruitSound.PlayDelayed(0);
+                FruitTakenEvent.Invoke();
+            }
+            else if(fallingObject is DangerousItem)
+            {
+                _hitSound.PlayDelayed(0);
+                GameOverEvent?.Invoke();
+            }
+            else if(fallingObject is NerfItem)
+            {
+                _munchBadFoodSound.PlayDelayed(0);
+                BadFoodTakenEvent?.Invoke();
+            }
+
+            fallingObject.Hide();
         }
     }
 }

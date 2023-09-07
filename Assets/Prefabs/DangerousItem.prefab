@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8633313070466530031}
   - component: {fileID: 8633313070466530030}
   - component: {fileID: 8633313070466530029}
+  - component: {fileID: 8463449650266133679}
   m_Layer: 0
   m_Name: DangerousItem
   m_TagString: Untagged
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2e64e635213785f4ab8974d749990fb1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 40f727b036e0521478f06b654237688a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -103,7 +104,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.4923077, y: 0.4923077}
+    oldSize: {x: 0.65833336, y: 0.60833335}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -124,10 +125,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cf91958fe4b1ed458653383b2e69d31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1
   _sprites:
-  - {fileID: 21300000, guid: 2e64e635213785f4ab8974d749990fb1, type: 3}
-  - {fileID: 21300000, guid: c2484b3d3d17e814fb6a27d28924e019, type: 3}
-  - {fileID: 21300000, guid: 29a0e9d1ebbe64c4585c3bfe47f7cf63, type: 3}
-  - {fileID: 21300000, guid: 60fad8a11af3a2948976f1f11dcdbc52, type: 3}
-  - {fileID: 21300000, guid: 2d49a3d351a50c84ca7d2e51a8dbd94d, type: 3}
+  - {fileID: 21300000, guid: 40f727b036e0521478f06b654237688a, type: 3}
+  - {fileID: 21300000, guid: e6a132f4215476e4680bf9ed6d92e09e, type: 3}
+--- !u!95 &8463449650266133679
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8633313070466530016}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

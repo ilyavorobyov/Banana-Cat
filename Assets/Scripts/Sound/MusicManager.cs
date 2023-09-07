@@ -14,12 +14,12 @@ public class MusicManager : MonoBehaviour
 
     private void OnEnable()
     {
-        BananaCatMover.StateChangeEvent += OnMusicSwitch;
+     //   BananaCatMover.StateChangeEvent += OnMusicSwitch;
     }
 
     private void OnDisable()
     {
-        BananaCatMover.StateChangeEvent -= OnMusicSwitch;
+     //   BananaCatMover.StateChangeEvent -= OnMusicSwitch;
     }
 
     private void OnMusicSwitch(bool isCanPlay)

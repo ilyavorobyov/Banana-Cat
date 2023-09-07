@@ -10,17 +10,17 @@ public class ScoreManager : MonoBehaviour
 
     private void OnEnable()
     {
-        _bananaCat.FruitTaken += OnFruitTaken;
+        BananaCatCollisionHandler.FruitTakenEvent += OnFruitTaken;
     }
 
     private void OnDisable()
     {
-        _bananaCat.FruitTaken -= OnFruitTaken;
+        BananaCatCollisionHandler.FruitTakenEvent -= OnFruitTaken;
     }
 
     private void OnFruitTaken()
     {
         _score++;
-        Debug.Log(_score);
+      //  Debug.Log(_score);
     }
 }

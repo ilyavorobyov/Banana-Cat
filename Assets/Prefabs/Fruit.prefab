@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 903622586380915900}
   - component: {fileID: 903622586380915891}
   - component: {fileID: 903622586380915890}
-  - component: {fileID: 903622586380915901}
+  - component: {fileID: 370860883426643305}
   m_Layer: 0
   m_Name: Fruit
   m_TagString: Untagged
@@ -112,7 +112,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.53333336, y: 0.53333336}
   m_EdgeRadius: 0
---- !u!114 &903622586380915901
+--- !u!114 &370860883426643305
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 903622586380915889}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57deb1ab3a3a5f542948670c0a87c9d0, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e1069c5c72c8724cb9cb09abbe9bb8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 1

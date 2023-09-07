@@ -15,18 +15,9 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Cry",
+                    "name": "Jump",
                     "type": "Button",
-                    "id": "b2576a13-32fa-4377-9d69-1b2b45e52ed2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Happy",
-                    "type": "Button",
-                    "id": "7ceaf615-1c5d-4502-b611-70f4414aeed6",
+                    "id": "d934c9b1-0ae7-4911-a08f-da7fad29ece9",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -102,23 +93,12 @@
                 },
                 {
                     "name": "",
-                    "id": "b5c310d5-a1b8-4ce8-8329-853b43405f4c",
-                    "path": "<Keyboard>/c",
+                    "id": "16cbf601-a43c-44ac-b8c6-988b9a24b1aa",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Cry",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9fb38a1c-3eb7-4c4a-ba30-ab606e5679b4",
-                    "path": "<Keyboard>/h",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Happy",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
