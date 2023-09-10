@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -8,11 +9,15 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private TMP_Text _gameOverPanelText;
     [SerializeField] private Color _newRecordColor;
     [SerializeField] private Color _startingScoreTextColor;
+    [SerializeField] private int _scoreDivisor;
 
     private const string MaxScoreKey = "MaxScore";
 
     private int _maxScore;
     private int _score;
+    private int _minScoreDivisor = 5;
+
+    public static Action AddDifficultyEvent;
 
     private void Awake()
     {
@@ -21,7 +26,8 @@ public class ScoreManager : MonoBehaviour
         else
             _maxScore = 0;
 
-        _maxScoreText.text = _maxScore.ToString();
+        if(_maxScore != 0)
+            _maxScoreText.text = _maxScore.ToString();
     }
 
     private void OnEnable()
@@ -36,6 +42,12 @@ public class ScoreManager : MonoBehaviour
         BananaCatCollisionHandler.GameOverEvent -= OnGameOverScoreCompare;
     }
 
+    private void OnValidate()
+    {
+        if (_scoreDivisor < _minScoreDivisor)
+            _scoreDivisor = _minScoreDivisor;
+    }
+
     private void OnFruitTaken()
     {
         _score++;
@@ -43,6 +55,9 @@ public class ScoreManager : MonoBehaviour
 
         if (_score == _maxScore && _maxScore != 0)
             _scoreText.color = _newRecordColor;
+
+        if (_score % _scoreDivisor == 0)
+            AddDifficultyEvent?.Invoke();
     }
 
     private void OnGameOverScoreCompare()

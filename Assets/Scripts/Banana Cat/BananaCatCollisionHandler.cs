@@ -1,10 +1,10 @@
 using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 [RequireComponent(typeof(BananaCatMover))]
 public class BananaCatCollisionHandler : MonoBehaviour
 {
+    [SerializeField] private FruitSpawner _fruitSpawner;
     [SerializeField] private AudioSource _munchBadFoodSound;
     [SerializeField] private AudioSource _munchFruitSound;
     [SerializeField] private AudioSource _hitSound;

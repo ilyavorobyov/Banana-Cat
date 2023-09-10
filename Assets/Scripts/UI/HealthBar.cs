@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class HealthBar : MonoBehaviour
 {
@@ -46,19 +47,15 @@ public class HealthBar : MonoBehaviour
             healthBarPoint.transform.SetParent(transform, false);
             _healthBarPoints.Add(healthBarPoint);
         }
-
-        Debug.Log("start");
-
     }
 
     private void OnGameOver()
     {
         foreach (var healthBarPoint in _healthBarPoints)
         {
-            Destroy(healthBarPoint.gameObject);
+            healthBarPoint.HideObject();
         }
 
         _healthBarPoints.Clear();
-        Debug.Log("clear");
     }
 }

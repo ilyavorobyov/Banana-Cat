@@ -18,6 +18,7 @@ public class GameUI : MonoBehaviour
     [SerializeField] private GameObject _healthBar;
     [SerializeField] private TMP_Text _scoreText;
     [SerializeField] private TMP_Text _maxScoreText;
+    [SerializeField] private TMP_Text _fitText;
 
     public static Action<bool> ChangeGameStateEvent;
     public static Action<bool> ChangeMusicEvent;
@@ -68,15 +69,16 @@ public class GameUI : MonoBehaviour
         {
             Time.timeScale = 1.0f;
             ChangeGameStateEvent?.Invoke(true);
-            _pausePanel.gameObject.SetActive(false);
+            _pausePanel.SetActive(false);
             _pauseButton.gameObject.SetActive(true);
         }
         else
         {
             Time.timeScale = 0;
             ChangeGameStateEvent?.Invoke(false);
-            _pausePanel.gameObject.SetActive(true);
+            _pausePanel.SetActive(true);
             _pauseButton.gameObject.SetActive(false);
+            _fitText.gameObject.SetActive(false);
         }
     }
 
@@ -97,6 +99,7 @@ public class GameUI : MonoBehaviour
         _gameOverPanel.gameObject.SetActive(true);
         _pauseButton.gameObject.SetActive(false);
         _scoreText.gameObject.SetActive(false);
+        _fitText.gameObject.SetActive(false);
     }
 
     private void ShowRequiredButtons(bool onMenu)
@@ -112,7 +115,7 @@ public class GameUI : MonoBehaviour
             _scoreText.gameObject.SetActive(false);
             _maxScoreText.gameObject.SetActive(true);
             _healthBar.SetActive(false);
-
+            _fitText.gameObject.SetActive(false);
         }
         else
         {

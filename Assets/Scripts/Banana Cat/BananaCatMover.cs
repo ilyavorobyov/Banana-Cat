@@ -29,6 +29,7 @@ public class BananaCatMover : MonoBehaviour
     private float _moveDirection;
     private float _leftMoveDirection = 1;
     private float _stopMoveDirection = 0;
+    private float _tempSpeed;
 
     private void Awake()
     {
@@ -43,6 +44,7 @@ public class BananaCatMover : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        _tempSpeed = _speed;
         BecomeHappy();
     }
 
@@ -60,6 +62,7 @@ public class BananaCatMover : MonoBehaviour
         Ground.GroundCollisionEvent += OnGroundCollision;
         BananaCat.SpeedChangedEvent += OnChangeSpeed;
         GameUI.ChangeGameStateEvent += OnChangeGameState;
+        GameUI.StartGameEvent += SetStartSpeed;
     }
 
     private void OnDisable()
@@ -70,6 +73,7 @@ public class BananaCatMover : MonoBehaviour
         Ground.GroundCollisionEvent -= OnGroundCollision;
         BananaCat.SpeedChangedEvent -= OnChangeSpeed;
         GameUI.ChangeGameStateEvent -= OnChangeGameState;
+        GameUI.StartGameEvent += SetStartSpeed;
     }
 
     public void BecomeHappy()
@@ -87,6 +91,11 @@ public class BananaCatMover : MonoBehaviour
             _animator.SetTrigger(IdleAnimationName);
         else
             _animator.SetTrigger(HappyAnimationName);
+    }
+
+    private void SetStartSpeed()
+    {
+        _speed = _tempSpeed;
     }
 
     private void OnCry()

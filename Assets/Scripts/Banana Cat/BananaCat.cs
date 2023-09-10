@@ -1,8 +1,10 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 public class BananaCat : MonoBehaviour
 {
+    [SerializeField] private TMP_Text _fitText;
     [SerializeField] private AudioSource _fitSound;
     [SerializeField] private AudioSource _addScaleSound;
     [SerializeField] private AudioSource _startGameSound;
@@ -21,7 +23,6 @@ public class BananaCat : MonoBehaviour
         GameUI.ChangeGameStateEvent += OnChangeGameState;
         BananaCatCollisionHandler.BadFoodTakenEvent += OnBadFoodTaken;
         BananaCatCollisionHandler.FruitTakenEvent += OnFruitTaken;
-        BananaCatCollisionHandler.GameOverEvent += Die;
     }
 
     private void OnDisable()
@@ -29,12 +30,6 @@ public class BananaCat : MonoBehaviour
         GameUI.ChangeGameStateEvent += OnChangeGameState;
         BananaCatCollisionHandler.BadFoodTakenEvent -= OnBadFoodTaken;
         BananaCatCollisionHandler.FruitTakenEvent -= OnFruitTaken;
-        BananaCatCollisionHandler.GameOverEvent -= Die;
-    }
-
-    private void Die()
-    {
-        Debug.Log("die");
     }
 
     private void OnChangeGameState(bool isPlaying)
@@ -55,12 +50,17 @@ public class BananaCat : MonoBehaviour
         _addScaleSound.PlayDelayed(0);
         SpeedChangedEvent?.Invoke(false);
         _fruitEatenCounter = 0;
+        _fitText.gameObject.SetActive(true);
+        ShowFatInfo();
     }
 
     private void OnFruitTaken()
     {
         if (_fatLevel > 0)
+        {
             _fruitEatenCounter++;
+            ShowFatInfo();
+        }
 
         if (_fruitEatenCounter == _fruitsNumberForFatDecrease)
         {
@@ -69,6 +69,18 @@ public class BananaCat : MonoBehaviour
             transform.localScale -= _scaleChange;
             _fitSound.PlayDelayed(_delayFitSound);
             SpeedChangedEvent?.Invoke(true);
+
+            if (_fatLevel == 0)
+                _fitText.gameObject.SetActive(false);
+            else
+                ShowFatInfo();
         }
+    }
+
+    private void ShowFatInfo()
+    {
+        string fatInfoText = $"уровень жирности: {_fatLevel}\n" +
+            $"фруктов до похудения {_fruitsNumberForFatDecrease - _fruitEatenCounter}";
+        _fitText.text = fatInfoText;
     }
 }

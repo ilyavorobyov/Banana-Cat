@@ -1,7 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class NerfItemsSpawner : Spawner
 {
+    public override void AddDifficulty()
+    {
+        AddDropChance();
+    }
 }
