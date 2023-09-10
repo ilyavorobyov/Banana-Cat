@@ -9,16 +9,9 @@ public class BananaCatCollisionHandler : MonoBehaviour
     [SerializeField] private AudioSource _munchFruitSound;
     [SerializeField] private AudioSource _hitSound;
 
-    private BananaCatMover _bananaCatMover;
-
     public static Action FruitTakenEvent;
     public static Action BadFoodTakenEvent;
     public static Action GameOverEvent;
-
-    private void Start()
-    {
-        _bananaCatMover = GetComponent<BananaCatMover>();
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -26,7 +19,6 @@ public class BananaCatCollisionHandler : MonoBehaviour
         {
             if (fallingObject is FruitItem)
             {
-                _bananaCatMover.BecomeHappy();
                 _munchFruitSound.PlayDelayed(0);
                 FruitTakenEvent.Invoke();
             }
@@ -41,7 +33,7 @@ public class BananaCatCollisionHandler : MonoBehaviour
                 BadFoodTakenEvent?.Invoke();
             }
 
-            fallingObject.Hide();
+            fallingObject.OnHide();
         }
     }
 }

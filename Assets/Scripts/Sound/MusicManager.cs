@@ -9,28 +9,30 @@ public class MusicManager : MonoBehaviour
 
     private void Start()
     {
-        _gameMusic.PlayDelayed(0);
+        _menuMusic.PlayDelayed(0);
     }
 
     private void OnEnable()
     {
-     //   BananaCatMover.StateChangeEvent += OnMusicSwitch;
+        GameUI.ChangeMusicEvent += OnMusicSwitch;
     }
 
     private void OnDisable()
     {
-     //   BananaCatMover.StateChangeEvent -= OnMusicSwitch;
+        GameUI.ChangeMusicEvent -= OnMusicSwitch;
     }
 
-    private void OnMusicSwitch(bool isCanPlay)
+    private void OnMusicSwitch(bool onMenu)
     {
-        if(isCanPlay)
+        if(!onMenu)
         {
+            _menuMusic.Stop();
             _gameMusic.PlayDelayed(0);
         }
         else
         {
             _gameMusic.Stop();
+            _menuMusic.PlayDelayed(0);
         }
     }
 }

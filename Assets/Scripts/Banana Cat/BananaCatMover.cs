@@ -10,7 +10,7 @@ public class BananaCatMover : MonoBehaviour
     [SerializeField] private AudioSource _happySound;
     [SerializeField] private AudioSource _jumpSound;
     [SerializeField] private float _speed;
-    [SerializeField] private float _speed—hanger;
+    [SerializeField] private float _speedChanger;
     [SerializeField] private float _jumpForce;
 
     private const string RunAnimationName = "Run";
@@ -18,12 +18,13 @@ public class BananaCatMover : MonoBehaviour
     private const string CryAnimationName = "Cry";
     private const string HappyAnimationName = "Happy";
     private const string JumpAnimationName = "Jump";
+    private const string FruitTakeAnimationName = "FruitTake";
 
     private PlayerInput _playerInput;
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rigidbody;
     private Animator _animator;
-    private bool _isCanMove = true;
+    private bool _isCanMove = false;
     private bool _isCanJump = true;
     private float _moveDirection;
     private float _leftMoveDirection = 1;
@@ -42,6 +43,7 @@ public class BananaCatMover : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        BecomeHappy();
     }
 
     private void Update()
@@ -54,16 +56,20 @@ public class BananaCatMover : MonoBehaviour
     {
         _playerInput.Enable();
         BananaCatCollisionHandler.GameOverEvent += OnCry;
+        BananaCatCollisionHandler.FruitTakenEvent += OnFruitTake;
         Ground.GroundCollisionEvent += OnGroundCollision;
-        BananaCat.SpeedChangedEvent += ChangeSpeed;
+        BananaCat.SpeedChangedEvent += OnChangeSpeed;
+        GameUI.ChangeGameStateEvent += OnChangeGameState;
     }
 
     private void OnDisable()
     {
         _playerInput.Disable();
         BananaCatCollisionHandler.GameOverEvent -= OnCry;
+        BananaCatCollisionHandler.FruitTakenEvent -= OnFruitTake;
         Ground.GroundCollisionEvent -= OnGroundCollision;
-        BananaCat.SpeedChangedEvent -= ChangeSpeed;
+        BananaCat.SpeedChangedEvent -= OnChangeSpeed;
+        GameUI.ChangeGameStateEvent -= OnChangeGameState;
     }
 
     public void BecomeHappy()
@@ -71,21 +77,38 @@ public class BananaCatMover : MonoBehaviour
         _animator.SetTrigger(HappyAnimationName);
     }
 
-    private void OnCry()
+    private void OnChangeGameState(bool isPlaying)
     {
-        _isCanMove = false;
-        _animator.StopPlayback();
-        _animator.SetTrigger(CryAnimationName);
-        _crySound.PlayDelayed(0);
-        Time.timeScale = 0;
+        _isCanMove = isPlaying;
+        _crySound.Stop();
+        OnStopMovement();
+
+        if (isPlaying)
+            _animator.SetTrigger(IdleAnimationName);
+        else
+            _animator.SetTrigger(HappyAnimationName);
     }
 
-    private void ChangeSpeed(bool isIncreased)
+    private void OnCry()
+    {
+        _animator.StopPlayback();
+        _isCanMove = false;
+        _animator.SetTrigger(CryAnimationName);
+        _crySound.PlayDelayed(0);
+        _moveDirection = _stopMoveDirection;
+    }
+
+    private void OnFruitTake()
+    {
+        _animator.SetTrigger(FruitTakeAnimationName);
+    }
+
+    private void OnChangeSpeed(bool isIncreased)
     {
         if(!isIncreased)
-            _speed -= _speed—hanger;
+            _speed -= _speedChanger;
         else
-            _speed += _speed—hanger;
+            _speed += _speedChanger;
     }
 
     private void ChangeMoveDirection()

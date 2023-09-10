@@ -31,7 +31,7 @@ public abstract class Spawner : MonoBehaviour
         for (int i = 0; i < _numberOfObjects; i++)
         {
             var fallingObject = Instantiate(_fallingObject, transform.position, Quaternion.identity);
-            fallingObject.Hide();
+            fallingObject.OnHide();
             FallingObjects.Add(fallingObject);
         }
     }

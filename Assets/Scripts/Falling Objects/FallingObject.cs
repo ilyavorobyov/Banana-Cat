@@ -30,12 +30,14 @@ public abstract class FallingObject : MonoBehaviour
 
     private void OnEnable()
     {
-        BananaCatCollisionHandler.GameOverEvent += Hide;
+        BananaCatCollisionHandler.GameOverEvent += OnHide;
+        GameUI.HideFallingObjects += OnHide;
     }
 
     private void OnDisable()
     {
-        BananaCatCollisionHandler.GameOverEvent -= Hide;
+        BananaCatCollisionHandler.GameOverEvent -= OnHide;
+        GameUI.HideFallingObjects -= OnHide;
     }
 
     public void Init(float speed, Vector2 position)
@@ -48,7 +50,7 @@ public abstract class FallingObject : MonoBehaviour
         transform.position = position;
     }
 
-    public void Hide()
+    public void OnHide()
     {
         _boxCollider.enabled = false;
         transform.DOScale(Vector3.zero, _hideAnimationDuration).SetLoops(1, LoopType.Yoyo).
@@ -59,9 +61,4 @@ public abstract class FallingObject : MonoBehaviour
     {
         _spriteRenderer.sprite = _sprites[Random.Range(0, _sprites.Length)];
     }
-/*
-    private void OnStopRotation()
-    {
-        _rotationSpeed = 0;
-    }*/
 }

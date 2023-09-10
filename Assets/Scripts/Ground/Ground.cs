@@ -4,6 +4,7 @@ using UnityEngine;
 public class Ground : MonoBehaviour
 {
     public static Action GroundCollisionEvent;
+    public static Action<Vector3> FruitCollisionEvent;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -11,11 +12,12 @@ public class Ground : MonoBehaviour
         {
             if (fallingObject is FruitItem)
             {
-                fallingObject.Hide();
+                fallingObject.OnHide();
+                FruitCollisionEvent?.Invoke(fallingObject.transform.position);
             }
             else
             {
-                fallingObject.Hide();
+                fallingObject.OnHide();
             }
         }
 
