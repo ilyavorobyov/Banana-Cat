@@ -16,24 +16,20 @@ public abstract class Spawner : MonoBehaviour
     [SerializeField] private float _minTimeOfSpawn;
     [SerializeField] private float _maxTimeOfSpawn;
 
-    protected FallingObject NextSpawnObject;
-    protected Vector2 SpawnPosition;
-    protected float MinXPosition;
-    protected float MaxXPosition;
-    protected float XPosition;
-    protected float MaxXPositionValueChanger = 6;
-    protected float MinXPositionValueChanger = 1;
-    protected float ReductionMultiplier = 0.9f;
-    protected float YSpawnPosition;
-    protected float LastXPosition;
-
-    private List<FallingObject> FallingObjects = new List<FallingObject>();
+    private List<FallingObject> _fallingObjects = new List<FallingObject>();
     private List<FallingObject> _hiddenObjects = new List<FallingObject>();
+    private FallingObject _nextSpawnObject;
+    private Vector2 _spawnPosition;
+    private float _minXPosition;
+    private float _maxXPosition;
+    private float _xPosition;
+    private float _ySpawnPosition;
+    private float _lastXPosition;
     private float _minChanceIncreaseNumber = 1.05f;
     private float _minSpawnTimeReducer = 0.5f;
     private int _maxDropChance = 101;
     private int _minDropChance = 10;
-    private float _timeOfSpawn;
+    private float _timeOfNewSpawn;
     private float _tempMaxTimeOfSpawn;
     private float _tempDropÑhance;
 
@@ -45,7 +41,7 @@ public abstract class Spawner : MonoBehaviour
         {
             var fallingObject = Instantiate(_fallingObject, transform.position, Quaternion.identity);
             fallingObject.OnHide();
-            FallingObjects.Add(fallingObject);
+            _fallingObjects.Add(fallingObject);
         }
     }
 
@@ -110,7 +106,7 @@ public abstract class Spawner : MonoBehaviour
 
     private bool IsCanCollectHiddenObjects()
     {
-        foreach (var fallingObject in FallingObjects)
+        foreach (var fallingObject in _fallingObjects)
         {
             if (fallingObject.gameObject.activeSelf == false)
                 _hiddenObjects.Add(fallingObject);
@@ -118,7 +114,7 @@ public abstract class Spawner : MonoBehaviour
 
         if (_hiddenObjects.Count > 0)
         {
-            NextSpawnObject = _hiddenObjects[Random.Range(0, _hiddenObjects.Count)];
+            _nextSpawnObject = _hiddenObjects[Random.Range(0, _hiddenObjects.Count)];
             _hiddenObjects.Clear();
             return true;
         }
@@ -133,27 +129,28 @@ public abstract class Spawner : MonoBehaviour
 
     private void OnInit(float minXPosition, float maxXPosition, float ySpawnPosition)
     {
-        MinXPosition = minXPosition;
-        MaxXPosition = maxXPosition;
-        YSpawnPosition = ySpawnPosition;
+        _minXPosition = minXPosition;
+        _maxXPosition = maxXPosition;
+        _ySpawnPosition = ySpawnPosition;
     }
 
     private void TryDropObject()
     {
         if (IsCanDropObject() && IsCanCollectHiddenObjects())
         {
-            XPosition = CalculateNewXPosition(LastXPosition);
-            SpawnPosition = new Vector2(XPosition, YSpawnPosition);
-            NextSpawnObject.Init(CalculateFallingSpeed(), SpawnPosition);
+            _xPosition = CalculateNewXPosition(_lastXPosition);
+            _lastXPosition = _xPosition;
+            _spawnPosition = new Vector2(_xPosition, _ySpawnPosition);
+            _nextSpawnObject.Init(CalculateFallingSpeed(), _spawnPosition);
         }
     }
 
     private float CalculateNewXPosition(float xSpawnPosition)
     {
-        float newPositionX = Random.Range(MinXPosition, MaxXPosition);
+        float newPositionX = Random.Range(_minXPosition, _maxXPosition);
 
         while (Mathf.Floor(xSpawnPosition) == Mathf.Floor(newPositionX))
-            newPositionX = Random.Range(MinXPosition, MaxXPosition);
+            newPositionX = Random.Range(_minXPosition, _maxXPosition);
 
         return newPositionX;
     }
@@ -176,9 +173,9 @@ public abstract class Spawner : MonoBehaviour
 
     private IEnumerator CreateObjects2()
     {
-        _timeOfSpawn = Random.Range(_minTimeOfSpawn, _maxTimeOfSpawn);
+        _timeOfNewSpawn = Random.Range(_minTimeOfSpawn, _maxTimeOfSpawn);
 
-        var waitForSeconds = new WaitForSeconds(_timeOfSpawn);
+        var waitForSeconds = new WaitForSeconds(_timeOfNewSpawn);
 
         while (true)
         {
@@ -186,11 +183,11 @@ public abstract class Spawner : MonoBehaviour
 
             if (IsCanCollectHiddenObjects())
             {
-                SpawnPosition = new Vector2(Random.Range(MinXPosition, MaxXPosition), YSpawnPosition);
-                XPosition = SpawnPosition.x;
+                _spawnPosition = new Vector2(Random.Range(_minXPosition, _maxXPosition), _ySpawnPosition);
+                _xPosition = _spawnPosition.x;
                 TryDropObject();
-                _timeOfSpawn = Random.Range(_minTimeOfSpawn, _maxTimeOfSpawn);
-                CalculateNewXPosition(XPosition);
+                _timeOfNewSpawn = Random.Range(_minTimeOfSpawn, _maxTimeOfSpawn);
+                CalculateNewXPosition(_xPosition);
             }
         }
     }

@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(UIElementsAnimation))]
 public class GameUI : MonoBehaviour
 {
     [SerializeField] private Button _startButton;
@@ -19,6 +20,9 @@ public class GameUI : MonoBehaviour
     [SerializeField] private TMP_Text _scoreText;
     [SerializeField] private TMP_Text _maxScoreText;
     [SerializeField] private TMP_Text _fitText;
+    [SerializeField] private AudioSource _buttonClickSound;
+
+    private UIElementsAnimation _uIElementsAnimation;
 
     public static Action<bool> ChangeGameStateEvent;
     public static Action<bool> ChangeMusicEvent;
@@ -28,6 +32,7 @@ public class GameUI : MonoBehaviour
 
     private void Awake()
     {
+        _uIElementsAnimation = GetComponent<UIElementsAnimation>();
         ChangeGameStateEvent?.Invoke(false);
         ShowRequiredButtons(true);
     }
@@ -61,6 +66,7 @@ public class GameUI : MonoBehaviour
         ChangeMusicEvent?.Invoke(false);
         ShowRequiredButtons(false);
         StartGameEvent?.Invoke();
+        _buttonClickSound.PlayDelayed(0);
     }
 
     private void OnChangeStateButtonsClick(bool isPlayed)
@@ -69,17 +75,19 @@ public class GameUI : MonoBehaviour
         {
             Time.timeScale = 1.0f;
             ChangeGameStateEvent?.Invoke(true);
-            _pausePanel.SetActive(false);
-            _pauseButton.gameObject.SetActive(true);
+            _uIElementsAnimation.Appear(_pauseButton.gameObject);
+            _uIElementsAnimation.Disappear(_pausePanel.gameObject);
         }
         else
         {
             Time.timeScale = 0;
             ChangeGameStateEvent?.Invoke(false);
-            _pausePanel.SetActive(true);
-            _pauseButton.gameObject.SetActive(false);
-            _fitText.gameObject.SetActive(false);
+            _uIElementsAnimation.Appear(_pausePanel.gameObject);
+            _uIElementsAnimation.Disappear(_pauseButton.gameObject);
+            _uIElementsAnimation.Disappear(_fitText.gameObject);
         }
+
+        _buttonClickSound.PlayDelayed(0);
     }
 
     private void OnMenuButtonClick()
@@ -90,44 +98,45 @@ public class GameUI : MonoBehaviour
         ShowRequiredButtons(true);
         HideFallingObjects?.Invoke();
         Time.timeScale = 0;
+        _buttonClickSound.PlayDelayed(0);
     }
 
     private void OnGameOver()
     {
         Time.timeScale = 0;
         HideFallingObjects?.Invoke();
-        _gameOverPanel.gameObject.SetActive(true);
-        _pauseButton.gameObject.SetActive(false);
-        _scoreText.gameObject.SetActive(false);
-        _fitText.gameObject.SetActive(false);
+        _uIElementsAnimation.Appear(_gameOverPanel.gameObject);
+        _uIElementsAnimation.Disappear(_pauseButton.gameObject);
+        _uIElementsAnimation.Disappear(_scoreText.gameObject);
+        _uIElementsAnimation.Disappear(_fitText.gameObject);
     }
 
     private void ShowRequiredButtons(bool onMenu)
     {
         if(onMenu)
         {
-            _startButton.gameObject.SetActive(true);
-            _pauseButton.gameObject.SetActive(false);
-            _resumeButton.gameObject.SetActive(false);
-            _menuButton.gameObject.SetActive(false);
-            _pausePanel.SetActive(false);
-            _gameOverPanel.SetActive(false);
-            _scoreText.gameObject.SetActive(false);
-            _maxScoreText.gameObject.SetActive(true);
-            _healthBar.SetActive(false);
-            _fitText.gameObject.SetActive(false);
+            _uIElementsAnimation.Appear(_startButton.gameObject);
+            _uIElementsAnimation.Appear(_maxScoreText.gameObject);
+            _uIElementsAnimation.Disappear(_pauseButton.gameObject);
+            _uIElementsAnimation.Disappear(_resumeButton.gameObject);
+            _uIElementsAnimation.Disappear(_menuButton.gameObject);
+            _uIElementsAnimation.Disappear(_pausePanel.gameObject);
+            _uIElementsAnimation.Disappear(_gameOverPanel.gameObject);
+            _uIElementsAnimation.Disappear(_scoreText.gameObject);
+            _uIElementsAnimation.Disappear(_healthBar.gameObject);
+            _uIElementsAnimation.Disappear(_fitText.gameObject);
         }
         else
         {
-            _startButton.gameObject.SetActive(false);
-            _pauseButton.gameObject.SetActive(true);
-            _resumeButton.gameObject.SetActive(true);
-            _menuButton.gameObject.SetActive(true);
-            _pausePanel.SetActive(false);
-            _gameOverPanel.SetActive(false);
-            _scoreText.gameObject.SetActive(true);
-            _maxScoreText.gameObject.SetActive(true);
-            _healthBar.SetActive(true);
+            _uIElementsAnimation.Disappear(_startButton.gameObject);
+            _uIElementsAnimation.Appear(_pauseButton.gameObject);
+            _uIElementsAnimation.Appear(_resumeButton.gameObject);
+            _uIElementsAnimation.Appear(_menuButton.gameObject);
+            _uIElementsAnimation.Disappear(_pausePanel.gameObject);
+            _uIElementsAnimation.Disappear(_gameOverPanel.gameObject);
+            _uIElementsAnimation.Appear(_scoreText.gameObject);
+            _uIElementsAnimation.Appear(_maxScoreText.gameObject);
+            _uIElementsAnimation.Appear(_healthBar.gameObject);
         }
     }
 }

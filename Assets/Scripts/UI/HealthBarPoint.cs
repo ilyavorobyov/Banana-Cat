@@ -12,14 +12,14 @@ public class HealthBarPoint : MonoBehaviour
     [SerializeField] private float _inactiveColorDuration;
     [SerializeField] private float _hideAnimationDuration;
 
-    private Color _initial—olor;
+    private Color _initialColor;
 
     private UnityEngine.UI.Image _image;
 
     private void Awake()
     {
         _image = GetComponent<UnityEngine.UI.Image>();
-        _initial—olor = _image.color;
+        _initialColor = _image.color;
     }
 
     public void BecomeInactive()
@@ -37,6 +37,6 @@ public class HealthBarPoint : MonoBehaviour
 
     private void SetInitialColor()
     {
-        _image.color = _initial—olor;
+        _image.color = _initialColor;
     }
 }

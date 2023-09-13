@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class BananaCat : MonoBehaviour
 {
+    [SerializeField] private UIElementsAnimation _uIElementsAnimation;
     [SerializeField] private TMP_Text _fitText;
     [SerializeField] private AudioSource _fitSound;
     [SerializeField] private AudioSource _addScaleSound;
-    [SerializeField] private AudioSource _startGameSound;
 
     private Vector3 _scaleChange = new Vector3(0.25f, 0f, 0f);
     private Vector3 _startScale = Vector3.one;
@@ -39,7 +39,6 @@ public class BananaCat : MonoBehaviour
             _fatLevel = 0;
             _fruitEatenCounter = 0;
             transform.localScale = _startScale;
-            _startGameSound.PlayDelayed(0);
         }
     }
 
@@ -50,7 +49,7 @@ public class BananaCat : MonoBehaviour
         _addScaleSound.PlayDelayed(0);
         SpeedChangedEvent?.Invoke(false);
         _fruitEatenCounter = 0;
-        _fitText.gameObject.SetActive(true);
+        _uIElementsAnimation.Appear(_fitText.gameObject);
         ShowFatInfo();
     }
 
@@ -71,7 +70,7 @@ public class BananaCat : MonoBehaviour
             SpeedChangedEvent?.Invoke(true);
 
             if (_fatLevel == 0)
-                _fitText.gameObject.SetActive(false);
+                _uIElementsAnimation.Disappear(_fitText.gameObject);
             else
                 ShowFatInfo();
         }
