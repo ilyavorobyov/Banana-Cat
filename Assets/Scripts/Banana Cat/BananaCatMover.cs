@@ -58,6 +58,7 @@ public class BananaCatMover : MonoBehaviour
     {
         _playerInput.Enable();
         BananaCatCollisionHandler.GameOverEvent += OnCry;
+        MissedFruitsCounter.MaxFruitsNumberDroppedEvent += OnCry;
         BananaCatCollisionHandler.FruitTakenEvent += OnFruitTake;
         Ground.GroundCollisionEvent += OnGroundCollision;
         BananaCat.SpeedChangedEvent += OnChangeSpeed;
@@ -69,6 +70,7 @@ public class BananaCatMover : MonoBehaviour
     {
         _playerInput.Disable();
         BananaCatCollisionHandler.GameOverEvent -= OnCry;
+        MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= OnCry;
         BananaCatCollisionHandler.FruitTakenEvent -= OnFruitTake;
         Ground.GroundCollisionEvent -= OnGroundCollision;
         BananaCat.SpeedChangedEvent -= OnChangeSpeed;

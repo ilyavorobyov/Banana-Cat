@@ -5,19 +5,17 @@ using UnityEngine;
 public class WindowStateManager : MonoBehaviour
 {
     [SerializeField] private AudioListener _audioListener;
-   // [SerializeField] private GameUI _gameUi;
+    [SerializeField] private GameUI _gameUi;
 
-    private void OnApplicationPause(bool pause) // Отправляется всем GameObjects, когда приложение приостанавливается.
+    private void OnApplicationPause(bool pause)
     {
         _audioListener.enabled = false;
 
-/*        if (_gameUi.IsGameOn)
+        if (_gameUi.IsPlayed)
         {
-            _gameUi.PauseGame();
+            _gameUi.OnChangeStateButtonsClick(false);
         }
-
-        // сюда пропиши действия ui при сворачивании игры, то есть чтобы она ставилась на паузу
-*/    }
+    }
 
     private void OnApplicationFocus(bool focus)
     {

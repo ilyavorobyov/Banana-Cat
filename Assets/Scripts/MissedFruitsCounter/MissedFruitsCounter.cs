@@ -9,17 +9,17 @@ public class MissedFruitsCounter : MonoBehaviour
 
     private int _fallenFruitsNumber;
 
-    public static Action<bool> GameOverFallingFruit;
+    public static Action MaxFruitsNumberDroppedEvent;
 
     private void OnEnable()
     {
-        Ground.FruitCollisionEvent += OnFruitCollision;
+        Ground.FruitCollisionEvent += OnFruitDropped;
         GameUI.StartGameEvent += OnStartGame;
     }
 
     private void OnDisable()
     {
-        Ground.FruitCollisionEvent -= OnFruitCollision;
+        Ground.FruitCollisionEvent -= OnFruitDropped;
         GameUI.StartGameEvent -= OnStartGame;
     }
 
@@ -28,7 +28,7 @@ public class MissedFruitsCounter : MonoBehaviour
         _fallenFruitsNumber = 0;
     }
 
-    private void OnFruitCollision(Vector3 position)
+    private void OnFruitDropped(Vector3 position)
     {
         _missingSound.PlayDelayed(0);
         Instantiate(_missingFruitMark, position, Quaternion.identity);
@@ -36,6 +36,6 @@ public class MissedFruitsCounter : MonoBehaviour
         _healthBar.TakePoint();
 
         if(_fallenFruitsNumber >= _healthBar.HealthPoints)
-            BananaCatCollisionHandler.GameOverEvent.Invoke();
+            MaxFruitsNumberDroppedEvent?.Invoke();
     }
 }

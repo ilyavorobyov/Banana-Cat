@@ -8,12 +8,25 @@ public class BananaCatCollisionHandler : MonoBehaviour
     [SerializeField] private FruitSpawner _fruitSpawner;
     [SerializeField] private AudioSource _munchBadFoodSound;
     [SerializeField] private AudioSource _munchFruitSound;
-    [SerializeField] private AudioSource _hitSound;
+    [SerializeField] private AudioSource _dieSound;
+    [SerializeField] private AudioSource _helmetHitSound;
+    [SerializeField] private AudioSource _takingHelmetSound;
 
     private bool _isHelmetTurnOn = false;
+
     public static Action FruitTakenEvent;
     public static Action BadFoodTakenEvent;
     public static Action GameOverEvent;
+
+    private void OnEnable()
+    {
+        MissedFruitsCounter.MaxFruitsNumberDroppedEvent += OnTurnOffHelmet;
+    }
+
+    private void OnDisable()
+    {
+        MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= OnTurnOffHelmet;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -28,13 +41,14 @@ public class BananaCatCollisionHandler : MonoBehaviour
             {
                 if(!_isHelmetTurnOn)
                 {
-                    _hitSound.PlayDelayed(0);
+                    _dieSound.PlayDelayed(0);
                     GameOverEvent?.Invoke();
+                    OnTurnOffHelmet();
                 }
                 else
                 {
-                    _bananaCatHelmet.ChangeVisability(false);
-                    _isHelmetTurnOn = false;
+                    _helmetHitSound.PlayDelayed(0);
+                    OnTurnOffHelmet();
                 }
             }
             else if(fallingObject is NerfItem)
@@ -46,9 +60,16 @@ public class BananaCatCollisionHandler : MonoBehaviour
             {
                 _isHelmetTurnOn = true;
                 _bananaCatHelmet.ChangeVisability(true);
+                _takingHelmetSound.PlayDelayed(0);
             }
 
             fallingObject.OnHide();
         }
+    }
+
+    private void OnTurnOffHelmet()
+    {
+        _bananaCatHelmet.ChangeVisability(false);
+        _isHelmetTurnOn = false;
     }
 }

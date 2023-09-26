@@ -14,6 +14,8 @@ public class GameUI : MonoBehaviour
     [SerializeField] private Button _menuButton;
     [SerializeField] private Button _gameOverPanelMenuButton;
     [SerializeField] private Button _gameOverPanelRestartButton;
+    [SerializeField] private Button _soundSwitchMenuButton;
+    [SerializeField] private Button _changeBackgroundElementsButton;
     [SerializeField] private GameObject _pausePanel;
     [SerializeField] private GameObject _gameOverPanel;
     [SerializeField] private GameObject _healthBar;
@@ -23,12 +25,13 @@ public class GameUI : MonoBehaviour
     [SerializeField] private AudioSource _buttonClickSound;
 
     private UIElementsAnimation _uIElementsAnimation;
-
     public static Action<bool> ChangeGameStateEvent;
     public static Action<bool> ChangeMusicEvent;
     public static Action StartGameEvent;
     public static Action HideFallingObjects;
     public static Action TransitionToMenuEvent;
+
+    public bool IsPlayed { get; private set; } = false;
 
     private void Awake()
     {
@@ -46,6 +49,7 @@ public class GameUI : MonoBehaviour
         _pauseButton.onClick.AddListener(delegate { OnChangeStateButtonsClick(false); });
         _resumeButton.onClick.AddListener(delegate { OnChangeStateButtonsClick(true); });
         BananaCatCollisionHandler.GameOverEvent += OnGameOver;
+        MissedFruitsCounter.MaxFruitsNumberDroppedEvent += OnGameOver;
     }
 
     private void OnDisable()
@@ -57,21 +61,12 @@ public class GameUI : MonoBehaviour
         _pauseButton.onClick.RemoveListener(delegate { OnChangeStateButtonsClick(false); });
         _resumeButton.onClick.RemoveListener(delegate { OnChangeStateButtonsClick(true); });
         BananaCatCollisionHandler.GameOverEvent -= OnGameOver;
+        MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= OnGameOver;
     }
 
-    private void OnStartButtonClick()
+    public void OnChangeStateButtonsClick(bool isPlayed)
     {
-        Time.timeScale = 1.0f;
-        ChangeGameStateEvent?.Invoke(true);
-        ChangeMusicEvent?.Invoke(false);
-        ShowRequiredButtons(false);
-        StartGameEvent?.Invoke();
-        _buttonClickSound.PlayDelayed(0);
-    }
-
-    private void OnChangeStateButtonsClick(bool isPlayed)
-    {
-        if(isPlayed)
+        if (isPlayed)
         {
             Time.timeScale = 1.0f;
             ChangeGameStateEvent?.Invoke(true);
@@ -88,6 +83,18 @@ public class GameUI : MonoBehaviour
         }
 
         _buttonClickSound.PlayDelayed(0);
+        IsPlayed = isPlayed;
+    }
+
+    private void OnStartButtonClick()
+    {
+        Time.timeScale = 1.0f;
+        ChangeGameStateEvent?.Invoke(true);
+        ChangeMusicEvent?.Invoke(false);
+        ShowRequiredButtons(false);
+        StartGameEvent?.Invoke();
+        _buttonClickSound.PlayDelayed(0);
+        IsPlayed = true;
     }
 
     private void OnMenuButtonClick()
@@ -99,6 +106,7 @@ public class GameUI : MonoBehaviour
         HideFallingObjects?.Invoke();
         Time.timeScale = 0;
         _buttonClickSound.PlayDelayed(0);
+        IsPlayed = false;
     }
 
     private void OnGameOver()
@@ -109,6 +117,7 @@ public class GameUI : MonoBehaviour
         _uIElementsAnimation.Disappear(_pauseButton.gameObject);
         _uIElementsAnimation.Disappear(_scoreText.gameObject);
         _uIElementsAnimation.Disappear(_fitText.gameObject);
+        IsPlayed = false;
     }
 
     private void ShowRequiredButtons(bool onMenu)
@@ -117,6 +126,8 @@ public class GameUI : MonoBehaviour
         {
             _uIElementsAnimation.Appear(_startButton.gameObject);
             _uIElementsAnimation.Appear(_maxScoreText.gameObject);
+            _uIElementsAnimation.Appear(_soundSwitchMenuButton.gameObject);
+            _uIElementsAnimation.Appear(_changeBackgroundElementsButton.gameObject);
             _uIElementsAnimation.Disappear(_pauseButton.gameObject);
             _uIElementsAnimation.Disappear(_resumeButton.gameObject);
             _uIElementsAnimation.Disappear(_menuButton.gameObject);
@@ -129,11 +140,13 @@ public class GameUI : MonoBehaviour
         else
         {
             _uIElementsAnimation.Disappear(_startButton.gameObject);
+            _uIElementsAnimation.Disappear(_changeBackgroundElementsButton.gameObject);
             _uIElementsAnimation.Appear(_pauseButton.gameObject);
             _uIElementsAnimation.Appear(_resumeButton.gameObject);
             _uIElementsAnimation.Appear(_menuButton.gameObject);
             _uIElementsAnimation.Disappear(_pausePanel.gameObject);
             _uIElementsAnimation.Disappear(_gameOverPanel.gameObject);
+            _uIElementsAnimation.Disappear(_soundSwitchMenuButton.gameObject);
             _uIElementsAnimation.Appear(_scoreText.gameObject);
             _uIElementsAnimation.Appear(_maxScoreText.gameObject);
             _uIElementsAnimation.Appear(_healthBar.gameObject);

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
 public class HealthBar : MonoBehaviour
 {
@@ -20,6 +19,7 @@ public class HealthBar : MonoBehaviour
     private void OnEnable()
     {
         BananaCatCollisionHandler.GameOverEvent += OnGameOver;
+        MissedFruitsCounter.MaxFruitsNumberDroppedEvent += OnGameOver;
         GameUI.StartGameEvent += OnStartGame;
         GameUI.TransitionToMenuEvent += OnGameOver;
     }
@@ -27,6 +27,7 @@ public class HealthBar : MonoBehaviour
     private void OnDisable()
     {
         BananaCatCollisionHandler.GameOverEvent -= OnGameOver;
+        MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= OnGameOver;
         GameUI.StartGameEvent -= OnStartGame;
         GameUI.TransitionToMenuEvent -= OnGameOver;
     }

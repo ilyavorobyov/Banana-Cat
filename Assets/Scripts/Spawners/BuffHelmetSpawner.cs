@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BuffItemsSpawner : Spawner
+public class BuffHelmetSpawner : Spawner
 {
     public override void AddDifficulty()
     {

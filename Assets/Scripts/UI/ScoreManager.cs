@@ -12,6 +12,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private int _scoreDivisor;
 
     private const string MaxScoreKey = "MaxScore";
+    private const string MaxScoreDisplay = "max: ";
 
     private int _maxScore;
     private int _score;
@@ -27,7 +28,7 @@ public class ScoreManager : MonoBehaviour
             _maxScore = 0;
 
         if(_maxScore != 0)
-            _maxScoreText.text = _maxScore.ToString();
+            _maxScoreText.text = MaxScoreDisplay + _maxScore.ToString();
     }
 
     private void OnEnable()
@@ -67,7 +68,7 @@ public class ScoreManager : MonoBehaviour
             PlayerPrefs.SetInt(MaxScoreKey, _score);
             _gameOverPanelText.text = "Новый рекорд: " + _score;
             _maxScore = _score;
-            _maxScoreText.text = _maxScore.ToString();
+            _maxScoreText.text = MaxScoreDisplay + _maxScore.ToString();
         }
         else
             _gameOverPanelText.text = "Результат: " + _score;

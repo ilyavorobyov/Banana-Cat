@@ -9,6 +9,9 @@ public class BananaCat : MonoBehaviour
     [SerializeField] private AudioSource _fitSound;
     [SerializeField] private AudioSource _addScaleSound;
 
+    private const string FatLevelText = "уровень жирности: ";
+    private const string FruitsForFitText = "съесть фруктов для похудения: ";
+
     private Vector3 _scaleChange = new Vector3(0.25f, 0f, 0f);
     private Vector3 _startScale = Vector3.one;
     private int _fruitsNumberForFatDecrease = 3;
@@ -78,8 +81,9 @@ public class BananaCat : MonoBehaviour
 
     private void ShowFatInfo()
     {
-        string fatInfoText = $"уровень жирности: {_fatLevel}\n" +
-            $"фруктов до похудения {_fruitsNumberForFatDecrease - _fruitEatenCounter}";
+        string fatInfoText = $"{FatLevelText} {_fatLevel}" +
+            $"\n{FruitsForFitText} {_fruitsNumberForFatDecrease - _fruitEatenCounter}";
+
         _fitText.text = fatInfoText;
     }
 }
