@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(SpriteRenderer))]
@@ -9,6 +10,9 @@ public class BananaCatMover : MonoBehaviour
     [SerializeField] private AudioSource _crySound;
     [SerializeField] private AudioSource _happySound;
     [SerializeField] private AudioSource _jumpSound;
+    [SerializeField] private Button _jumpButton;
+    [SerializeField] private Button _rightButton;
+    [SerializeField] private Button _leftButton;
     [SerializeField] private float _speed;
     [SerializeField] private float _speedChanger;
     [SerializeField] private float _jumpForce;
@@ -30,11 +34,12 @@ public class BananaCatMover : MonoBehaviour
     private float _leftMoveDirection = 1;
     private float _stopMoveDirection = 0;
     private float _tempSpeed;
+    private bool _isMobile = false;
 
     private void Awake()
     {
         _playerInput = new PlayerInput();
-        _playerInput.Player.Move.performed += ctx => ChangeMoveDirection();
+        _playerInput.Player.Move.performed += ctx => OnChangeMoveDirection();
         _playerInput.Player.Jump.performed += ctx => OnJump();
         _playerInput.Player.Move.canceled += ctx => OnStopMovement();
     }
@@ -64,6 +69,10 @@ public class BananaCatMover : MonoBehaviour
         BananaCat.SpeedChangedEvent += OnChangeSpeed;
         GameUI.ChangeGameStateEvent += OnChangeGameState;
         GameUI.StartGameEvent += SetStartSpeed;
+        TouchControlButton.StopMoveEvent += OnStopMovement;
+        TouchControlButton.DirectionChangeEvent += Touch;
+        _jumpButton.onClick.AddListener(OnJump);
+        DeviceIdentifier.MobileDeviceDefineEvent += OnEnablingMobileControl;
     }
 
     private void OnDisable()
@@ -75,7 +84,11 @@ public class BananaCatMover : MonoBehaviour
         Ground.GroundCollisionEvent -= OnGroundCollision;
         BananaCat.SpeedChangedEvent -= OnChangeSpeed;
         GameUI.ChangeGameStateEvent -= OnChangeGameState;
-        GameUI.StartGameEvent += SetStartSpeed;
+        GameUI.StartGameEvent -= SetStartSpeed;
+        TouchControlButton.StopMoveEvent -= OnStopMovement;
+        TouchControlButton.DirectionChangeEvent -= Touch;
+        _jumpButton.onClick.RemoveListener(OnJump);
+        DeviceIdentifier.MobileDeviceDefineEvent -= OnEnablingMobileControl;
     }
 
     public void BecomeHappy()
@@ -93,6 +106,11 @@ public class BananaCatMover : MonoBehaviour
             _animator.SetTrigger(IdleAnimationName);
         else
             _animator.SetTrigger(HappyAnimationName);
+    }
+
+    private void OnEnablingMobileControl(bool isMobile)
+    {
+        _isMobile = isMobile;
     }
 
     private void SetStartSpeed()
@@ -122,12 +140,14 @@ public class BananaCatMover : MonoBehaviour
             _speed += _speedChanger;
     }
 
-    private void ChangeMoveDirection()
+    private void OnChangeMoveDirection()
     {
         if (_isCanMove)
         {
             _animator.SetTrigger(RunAnimationName);
-            _moveDirection = _playerInput.Player.Move.ReadValue<float>();
+
+            if(!_isMobile)
+                _moveDirection = _playerInput.Player.Move.ReadValue<float>();
 
             if (_moveDirection != _stopMoveDirection)
             {
@@ -137,6 +157,12 @@ public class BananaCatMover : MonoBehaviour
                     _spriteRenderer.flipX = true;
             }
         }
+    }
+
+    private void Touch(float Dir)
+    {
+        _moveDirection = Dir;
+        OnChangeMoveDirection();
     }
 
     private void OnJump()

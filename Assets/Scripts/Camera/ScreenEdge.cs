@@ -7,7 +7,7 @@ public class ScreenEdge : MonoBehaviour
     [SerializeField] private SideFrame _secondFrame;
 
     private int _numberDecimalPlaces = 2;
-    private float _edgeReducer = 0.5f;
+    private float _edgeReducer = 1f;
 
     public static Action<float, float, float> SetSpawnPositions;
 

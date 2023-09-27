@@ -127,7 +127,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sprites:
   - {fileID: 21300000, guid: 40f727b036e0521478f06b654237688a, type: 3}
-  - {fileID: 21300000, guid: e6a132f4215476e4680bf9ed6d92e09e, type: 3}
+  - {fileID: 21300000, guid: 401f0dedf294a7841af4a51426af50bb, type: 3}
+  - {fileID: 21300000, guid: d8a36e4cdea4da043bda7bddfb074305, type: 3}
+  - {fileID: 21300000, guid: 2eaabedf4add7324186f5b6a35108b3d, type: 3}
+  - {fileID: 21300000, guid: 17f6565785e540c49903c65a5679ee05, type: 3}
 --- !u!95 &8463449650266133679
 Animator:
   serializedVersion: 4

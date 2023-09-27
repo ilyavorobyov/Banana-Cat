@@ -1,9 +1,8 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR;
 
 [RequireComponent(typeof(UIElementsAnimation))]
 public class GameUI : MonoBehaviour
@@ -22,9 +21,14 @@ public class GameUI : MonoBehaviour
     [SerializeField] private TMP_Text _scoreText;
     [SerializeField] private TMP_Text _maxScoreText;
     [SerializeField] private TMP_Text _fitText;
+    [SerializeField] private TMP_Text _desktopControlInstructionsText;
+    [SerializeField] private TMP_Text _mobileControlInstructionsText;
     [SerializeField] private AudioSource _buttonClickSound;
+    [SerializeField] private TouchControl _touchControl;
 
     private UIElementsAnimation _uIElementsAnimation;
+    private bool _isMobile = false;
+
     public static Action<bool> ChangeGameStateEvent;
     public static Action<bool> ChangeMusicEvent;
     public static Action StartGameEvent;
@@ -37,6 +41,10 @@ public class GameUI : MonoBehaviour
     {
         _uIElementsAnimation = GetComponent<UIElementsAnimation>();
         ChangeGameStateEvent?.Invoke(false);
+    }
+
+    private void Start()
+    {
         ShowRequiredButtons(true);
     }
 
@@ -50,6 +58,7 @@ public class GameUI : MonoBehaviour
         _resumeButton.onClick.AddListener(delegate { OnChangeStateButtonsClick(true); });
         BananaCatCollisionHandler.GameOverEvent += OnGameOver;
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent += OnGameOver;
+        DeviceIdentifier.MobileDeviceDefineEvent += OnEnablingMobileControl;
     }
 
     private void OnDisable()
@@ -62,6 +71,13 @@ public class GameUI : MonoBehaviour
         _resumeButton.onClick.RemoveListener(delegate { OnChangeStateButtonsClick(true); });
         BananaCatCollisionHandler.GameOverEvent -= OnGameOver;
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= OnGameOver;
+        DeviceIdentifier.MobileDeviceDefineEvent -= OnEnablingMobileControl;
+    }
+
+    private void OnEnablingMobileControl(bool isMobile)
+    {
+        _isMobile = isMobile;
+        ToggleControlInformation();
     }
 
     public void OnChangeStateButtonsClick(bool isPlayed)
@@ -72,6 +88,9 @@ public class GameUI : MonoBehaviour
             ChangeGameStateEvent?.Invoke(true);
             _uIElementsAnimation.Appear(_pauseButton.gameObject);
             _uIElementsAnimation.Disappear(_pausePanel.gameObject);
+
+            if (_isMobile)
+                _uIElementsAnimation.Appear(_touchControl.gameObject);
         }
         else
         {
@@ -80,6 +99,9 @@ public class GameUI : MonoBehaviour
             _uIElementsAnimation.Appear(_pausePanel.gameObject);
             _uIElementsAnimation.Disappear(_pauseButton.gameObject);
             _uIElementsAnimation.Disappear(_fitText.gameObject);
+
+            if (_isMobile)
+                _uIElementsAnimation.Disappear(_touchControl.gameObject);
         }
 
         _buttonClickSound.PlayDelayed(0);
@@ -95,6 +117,11 @@ public class GameUI : MonoBehaviour
         StartGameEvent?.Invoke();
         _buttonClickSound.PlayDelayed(0);
         IsPlayed = true;
+
+        if (_isMobile && _mobileControlInstructionsText.gameObject.activeSelf)
+            _uIElementsAnimation.Disappear(_mobileControlInstructionsText.gameObject);
+        else if (_desktopControlInstructionsText.gameObject.activeSelf)
+            _uIElementsAnimation.Disappear(_desktopControlInstructionsText.gameObject);
     }
 
     private void OnMenuButtonClick()
@@ -118,11 +145,14 @@ public class GameUI : MonoBehaviour
         _uIElementsAnimation.Disappear(_scoreText.gameObject);
         _uIElementsAnimation.Disappear(_fitText.gameObject);
         IsPlayed = false;
+
+        if (_isMobile)
+            _uIElementsAnimation.Disappear(_touchControl.gameObject);
     }
 
     private void ShowRequiredButtons(bool onMenu)
     {
-        if(onMenu)
+        if (onMenu)
         {
             _uIElementsAnimation.Appear(_startButton.gameObject);
             _uIElementsAnimation.Appear(_maxScoreText.gameObject);
@@ -136,6 +166,9 @@ public class GameUI : MonoBehaviour
             _uIElementsAnimation.Disappear(_scoreText.gameObject);
             _uIElementsAnimation.Disappear(_healthBar.gameObject);
             _uIElementsAnimation.Disappear(_fitText.gameObject);
+
+            if (_isMobile)
+                _uIElementsAnimation.Disappear(_touchControl.gameObject);
         }
         else
         {
@@ -150,6 +183,17 @@ public class GameUI : MonoBehaviour
             _uIElementsAnimation.Appear(_scoreText.gameObject);
             _uIElementsAnimation.Appear(_maxScoreText.gameObject);
             _uIElementsAnimation.Appear(_healthBar.gameObject);
+
+            if (_isMobile)
+                _uIElementsAnimation.Appear(_touchControl.gameObject);
         }
+    }
+
+    private void ToggleControlInformation()
+    {
+        if (_isMobile)
+            _uIElementsAnimation.Appear(_mobileControlInstructionsText.gameObject);
+        else
+            _uIElementsAnimation.Appear(_desktopControlInstructionsText.gameObject);
     }
 }

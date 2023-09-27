@@ -31,12 +31,14 @@ public abstract class FallingObject : MonoBehaviour
     private void OnEnable()
     {
         BananaCatCollisionHandler.GameOverEvent += OnHide;
+        BananaCatCollisionHandler.GameOverEvent += ChooseSprite;
         GameUI.HideFallingObjects += OnHide;
     }
 
     private void OnDisable()
     {
         BananaCatCollisionHandler.GameOverEvent -= OnHide;
+        BananaCatCollisionHandler.GameOverEvent -= ChooseSprite;
         GameUI.HideFallingObjects -= OnHide;
     }
 

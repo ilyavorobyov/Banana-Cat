@@ -21,11 +21,13 @@ public class BananaCatCollisionHandler : MonoBehaviour
     private void OnEnable()
     {
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent += OnTurnOffHelmet;
+        GameUI.TransitionToMenuEvent += OnTurnOffHelmet;
     }
 
     private void OnDisable()
     {
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= OnTurnOffHelmet;
+        GameUI.TransitionToMenuEvent -= OnTurnOffHelmet;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
