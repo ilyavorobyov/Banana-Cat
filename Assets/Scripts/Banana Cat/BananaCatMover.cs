@@ -122,9 +122,8 @@ public class BananaCatMover : MonoBehaviour
     {
         _animator.StopPlayback();
         _isCanMove = false;
-        _animator.SetTrigger(CryAnimationName);
         _crySound.PlayDelayed(0);
-        _moveDirection = _stopMoveDirection;
+        _animator.SetTrigger(CryAnimationName);
     }
 
     private void OnFruitTake()

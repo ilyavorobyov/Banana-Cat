@@ -65,7 +65,7 @@ public class BananaCatCollisionHandler : MonoBehaviour
                 _takingHelmetSound.PlayDelayed(0);
             }
 
-            fallingObject.OnHide();
+            fallingObject.OnHideObject();
         }
     }
 

@@ -9,7 +9,7 @@ public abstract class FallingObject : MonoBehaviour
 
     private SpriteRenderer _spriteRenderer;
     private BoxCollider2D _boxCollider;
-    private float _hideAnimationDuration = 0.25f;
+    private float _hideAnimationDuration = 0.5f;
     private float _minRotationSpeed = 1;
     private float _maxRotationSpeed = 3;
     private float _rotationSpeed;
@@ -30,16 +30,16 @@ public abstract class FallingObject : MonoBehaviour
 
     private void OnEnable()
     {
-        BananaCatCollisionHandler.GameOverEvent += OnHide;
-        BananaCatCollisionHandler.GameOverEvent += ChooseSprite;
-        GameUI.HideFallingObjects += OnHide;
+        BananaCatCollisionHandler.GameOverEvent += OnHideObject;
+        MissedFruitsCounter.MaxFruitsNumberDroppedEvent += ChooseSprite;
+        GameUI.HideFallingObjects += OnHideObject;
     }
 
     private void OnDisable()
     {
-        BananaCatCollisionHandler.GameOverEvent -= OnHide;
-        BananaCatCollisionHandler.GameOverEvent -= ChooseSprite;
-        GameUI.HideFallingObjects -= OnHide;
+        BananaCatCollisionHandler.GameOverEvent -= OnHideObject;
+        MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= ChooseSprite;
+        GameUI.HideFallingObjects -= OnHideObject;
     }
 
     public void Init(float speed, Vector2 position)
@@ -52,15 +52,16 @@ public abstract class FallingObject : MonoBehaviour
         transform.position = position;
     }
 
-    public void OnHide()
+    public void OnHideObject()
     {
         _boxCollider.enabled = false;
         transform.DOScale(Vector3.zero, _hideAnimationDuration).SetLoops(1, LoopType.Yoyo).
-            SetUpdate(true).OnComplete(() => gameObject.SetActive(false));
+            SetUpdate(true).OnComplete(() => ChooseSprite());
     }
 
     private void ChooseSprite()
     {
+        gameObject.SetActive(false);
         _spriteRenderer.sprite = _sprites[Random.Range(0, _sprites.Length)];
     }
 }

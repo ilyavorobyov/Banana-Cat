@@ -40,7 +40,6 @@ public abstract class Spawner : MonoBehaviour
         for (int i = 0; i < _createdObjectsNumber; i++)
         {
             var fallingObject = Instantiate(_fallingObject, transform.position, Quaternion.identity);
-            fallingObject.OnHide();
             _fallingObjects.Add(fallingObject);
         }
     }
@@ -160,7 +159,7 @@ public abstract class Spawner : MonoBehaviour
         _dropChance = _tempDropÑhance;
         _maxTimeOfSpawn = _tempMaxTimeOfSpawn;
         StopCreateObjects();
-        _createObject = StartCoroutine(CreateObjects2());
+        _createObject = StartCoroutine(CreateObjects());
     }
 
     private void StopCreateObjects()
@@ -171,7 +170,7 @@ public abstract class Spawner : MonoBehaviour
         }
     }
 
-    private IEnumerator CreateObjects2()
+    private IEnumerator CreateObjects()
     {
         _timeOfNewSpawn = Random.Range(_minTimeOfSpawn, _maxTimeOfSpawn);
 

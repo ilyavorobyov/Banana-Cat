@@ -12,12 +12,12 @@ public class Ground : MonoBehaviour
         {
             if (fallingObject is FruitItem)
             {
-                fallingObject.OnHide();
+                fallingObject.OnHideObject();
                 FruitCollisionEvent?.Invoke(fallingObject.transform.position);
             }
             else
             {
-                fallingObject.OnHide();
+                fallingObject.OnHideObject();
             }
         }
 

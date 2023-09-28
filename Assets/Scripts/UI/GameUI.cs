@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Device;
 using UnityEngine.UI;
 using UnityEngine.XR;
 
@@ -15,8 +16,10 @@ public class GameUI : MonoBehaviour
     [SerializeField] private Button _gameOverPanelRestartButton;
     [SerializeField] private Button _soundSwitchMenuButton;
     [SerializeField] private Button _changeBackgroundElementsButton;
+    [SerializeField] private Button _infoPanelButton;
     [SerializeField] private GameObject _pausePanel;
     [SerializeField] private GameObject _gameOverPanel;
+    [SerializeField] private GameObject _infoPanel;
     [SerializeField] private GameObject _healthBar;
     [SerializeField] private TMP_Text _scoreText;
     [SerializeField] private TMP_Text _maxScoreText;
@@ -25,6 +28,9 @@ public class GameUI : MonoBehaviour
     [SerializeField] private TMP_Text _mobileControlInstructionsText;
     [SerializeField] private AudioSource _buttonClickSound;
     [SerializeField] private TouchControl _touchControl;
+    [SerializeField] private float _gameOverScreenDelay;
+
+    private const string FirstRunKey = "FirstRun";
 
     private UIElementsAnimation _uIElementsAnimation;
     private bool _isMobile = false;
@@ -40,12 +46,18 @@ public class GameUI : MonoBehaviour
     private void Awake()
     {
         _uIElementsAnimation = GetComponent<UIElementsAnimation>();
-        ChangeGameStateEvent?.Invoke(false);
-    }
 
-    private void Start()
-    {
-        ShowRequiredButtons(true);
+        if (PlayerPrefs.HasKey(FirstRunKey))
+        {
+            ChangeGameStateEvent?.Invoke(false);
+            ShowRequiredButtons(true);
+            _infoPanel.SetActive(false);
+        }
+        else
+        {
+            _infoPanel.SetActive(true);
+            PlayerPrefs.SetInt(FirstRunKey, 0);
+        }
     }
 
     private void OnEnable()
@@ -54,6 +66,7 @@ public class GameUI : MonoBehaviour
         _gameOverPanelRestartButton.onClick.AddListener(OnStartButtonClick);
         _menuButton.onClick.AddListener(OnMenuButtonClick);
         _gameOverPanelMenuButton.onClick.AddListener(OnMenuButtonClick);
+        _infoPanelButton.onClick.AddListener(OnStartButtonClick);
         _pauseButton.onClick.AddListener(delegate { OnChangeStateButtonsClick(false); });
         _resumeButton.onClick.AddListener(delegate { OnChangeStateButtonsClick(true); });
         BananaCatCollisionHandler.GameOverEvent += OnGameOver;
@@ -67,6 +80,7 @@ public class GameUI : MonoBehaviour
         _gameOverPanelRestartButton.onClick.RemoveListener(OnStartButtonClick);
         _menuButton.onClick.RemoveListener(OnMenuButtonClick);
         _gameOverPanelMenuButton.onClick.RemoveListener(OnMenuButtonClick);
+        _infoPanelButton.onClick.RemoveListener(OnStartButtonClick);
         _pauseButton.onClick.RemoveListener(delegate { OnChangeStateButtonsClick(false); });
         _resumeButton.onClick.RemoveListener(delegate { OnChangeStateButtonsClick(true); });
         BananaCatCollisionHandler.GameOverEvent -= OnGameOver;
@@ -118,6 +132,9 @@ public class GameUI : MonoBehaviour
         _buttonClickSound.PlayDelayed(0);
         IsPlayed = true;
 
+        if (_infoPanel.gameObject.activeSelf)
+            _uIElementsAnimation.Disappear(_infoPanel.gameObject);
+
         if (_isMobile && _mobileControlInstructionsText.gameObject.activeSelf)
             _uIElementsAnimation.Disappear(_mobileControlInstructionsText.gameObject);
         else if (_desktopControlInstructionsText.gameObject.activeSelf)
@@ -137,6 +154,11 @@ public class GameUI : MonoBehaviour
     }
 
     private void OnGameOver()
+    {
+        Invoke(nameof(ShowGameOverScreen), _gameOverScreenDelay);
+    }
+
+    private void ShowGameOverScreen()
     {
         Time.timeScale = 0;
         HideFallingObjects?.Invoke();

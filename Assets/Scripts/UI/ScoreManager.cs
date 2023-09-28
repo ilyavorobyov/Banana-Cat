@@ -35,12 +35,14 @@ public class ScoreManager : MonoBehaviour
     {
         BananaCatCollisionHandler.FruitTakenEvent += OnFruitTaken;
         BananaCatCollisionHandler.GameOverEvent += OnGameOverScoreCompare;
+        MissedFruitsCounter.MaxFruitsNumberDroppedEvent += OnGameOverScoreCompare;
     }
 
     private void OnDisable()
     {
         BananaCatCollisionHandler.FruitTakenEvent -= OnFruitTaken;
         BananaCatCollisionHandler.GameOverEvent -= OnGameOverScoreCompare;
+        MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= OnGameOverScoreCompare;
     }
 
     private void OnValidate()
