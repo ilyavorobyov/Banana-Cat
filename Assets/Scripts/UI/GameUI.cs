@@ -40,6 +40,7 @@ public class GameUI : MonoBehaviour
     public static Action StartGameEvent;
     public static Action HideFallingObjects;
     public static Action TransitionToMenuEvent;
+    public static Action ShowFullScreenAd;
 
     public bool IsPlayed { get; private set; } = false;
 
@@ -160,6 +161,7 @@ public class GameUI : MonoBehaviour
 
     private void ShowGameOverScreen()
     {
+        ShowFullScreenAd?.Invoke();
         Time.timeScale = 0;
         HideFallingObjects?.Invoke();
         _uIElementsAnimation.Appear(_gameOverPanel.gameObject);
