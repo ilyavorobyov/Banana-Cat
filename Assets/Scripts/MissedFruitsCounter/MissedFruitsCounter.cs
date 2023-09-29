@@ -15,12 +15,14 @@ public class MissedFruitsCounter : MonoBehaviour
     {
         Ground.FruitCollisionEvent += OnFruitDropped;
         GameUI.StartGameEvent += OnStartGame;
+        GameUI.ReviveEvent += OnStartGame;
     }
 
     private void OnDisable()
     {
         Ground.FruitCollisionEvent -= OnFruitDropped;
         GameUI.StartGameEvent -= OnStartGame;
+        GameUI.ReviveEvent -= OnStartGame;
     }
 
     private void OnStartGame()

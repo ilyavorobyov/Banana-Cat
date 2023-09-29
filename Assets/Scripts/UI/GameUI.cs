@@ -1,9 +1,8 @@
 using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Device;
 using UnityEngine.UI;
-using UnityEngine.XR;
+using static YG.LangYGAdditionalText;
 
 [RequireComponent(typeof(UIElementsAnimation))]
 public class GameUI : MonoBehaviour
@@ -14,6 +13,7 @@ public class GameUI : MonoBehaviour
     [SerializeField] private Button _menuButton;
     [SerializeField] private Button _gameOverPanelMenuButton;
     [SerializeField] private Button _gameOverPanelRestartButton;
+    [SerializeField] private Button _gameOverRewardedVideoButton;
     [SerializeField] private Button _soundSwitchMenuButton;
     [SerializeField] private Button _changeBackgroundElementsButton;
     [SerializeField] private Button _infoPanelButton;
@@ -22,7 +22,6 @@ public class GameUI : MonoBehaviour
     [SerializeField] private GameObject _infoPanel;
     [SerializeField] private GameObject _healthBar;
     [SerializeField] private TMP_Text _scoreText;
-    [SerializeField] private TMP_Text _maxScoreText;
     [SerializeField] private TMP_Text _fitText;
     [SerializeField] private TMP_Text _desktopControlInstructionsText;
     [SerializeField] private TMP_Text _mobileControlInstructionsText;
@@ -34,13 +33,16 @@ public class GameUI : MonoBehaviour
 
     private UIElementsAnimation _uIElementsAnimation;
     private bool _isMobile = false;
+    private bool _isAdVideoWatched = false;
 
     public static Action<bool> ChangeGameStateEvent;
     public static Action<bool> ChangeMusicEvent;
     public static Action StartGameEvent;
     public static Action HideFallingObjects;
-    public static Action TransitionToMenuEvent;
+    public static Action GoToMenuEvent;
     public static Action ShowFullScreenAd;
+    public static Action ReviveEvent;
+    public static Action GameOverEvent;
 
     public bool IsPlayed { get; private set; } = false;
 
@@ -63,30 +65,32 @@ public class GameUI : MonoBehaviour
 
     private void OnEnable()
     {
-        _startButton.onClick.AddListener(OnStartButtonClick);
-        _gameOverPanelRestartButton.onClick.AddListener(OnStartButtonClick);
+        _startButton.onClick.AddListener(delegate { OnStartButtonClick(false); });
+        _gameOverPanelRestartButton.onClick.AddListener(delegate { OnStartButtonClick(false); });
         _menuButton.onClick.AddListener(OnMenuButtonClick);
         _gameOverPanelMenuButton.onClick.AddListener(OnMenuButtonClick);
-        _infoPanelButton.onClick.AddListener(OnStartButtonClick);
+        _infoPanelButton.onClick.AddListener(delegate { OnStartButtonClick(false); });
         _pauseButton.onClick.AddListener(delegate { OnChangeStateButtonsClick(false); });
         _resumeButton.onClick.AddListener(delegate { OnChangeStateButtonsClick(true); });
-        BananaCatCollisionHandler.GameOverEvent += OnGameOver;
-        MissedFruitsCounter.MaxFruitsNumberDroppedEvent += OnGameOver;
+        BananaCatCollisionHandler.OpenGameOverPanelEvent += OnLose;
+        MissedFruitsCounter.MaxFruitsNumberDroppedEvent += OnLose;
         DeviceIdentifier.MobileDeviceDefineEvent += OnEnablingMobileControl;
+        AdvController.ReviveVideoWatchedCompleteEvent += OnReviveAdVideoWatched;
     }
 
     private void OnDisable()
     {
-        _startButton.onClick.RemoveListener(OnStartButtonClick);
-        _gameOverPanelRestartButton.onClick.RemoveListener(OnStartButtonClick);
+        _startButton.onClick.RemoveListener(delegate { OnStartButtonClick(false); });
+        _gameOverPanelRestartButton.onClick.RemoveListener(delegate { OnStartButtonClick(false); });
         _menuButton.onClick.RemoveListener(OnMenuButtonClick);
         _gameOverPanelMenuButton.onClick.RemoveListener(OnMenuButtonClick);
-        _infoPanelButton.onClick.RemoveListener(OnStartButtonClick);
+        _infoPanelButton.onClick.RemoveListener(delegate { OnStartButtonClick(false); });
         _pauseButton.onClick.RemoveListener(delegate { OnChangeStateButtonsClick(false); });
         _resumeButton.onClick.RemoveListener(delegate { OnChangeStateButtonsClick(true); });
-        BananaCatCollisionHandler.GameOverEvent -= OnGameOver;
-        MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= OnGameOver;
+        BananaCatCollisionHandler.OpenGameOverPanelEvent -= OnLose;
+        MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= OnLose;
         DeviceIdentifier.MobileDeviceDefineEvent -= OnEnablingMobileControl;
+        AdvController.ReviveVideoWatchedCompleteEvent -= OnReviveAdVideoWatched;
     }
 
     private void OnEnablingMobileControl(bool isMobile)
@@ -123,13 +127,22 @@ public class GameUI : MonoBehaviour
         IsPlayed = isPlayed;
     }
 
-    private void OnStartButtonClick()
+    private void OnStartButtonClick(bool isRevive)
     {
         Time.timeScale = 1.0f;
         ChangeGameStateEvent?.Invoke(true);
         ChangeMusicEvent?.Invoke(false);
         ShowRequiredButtons(false);
-        StartGameEvent?.Invoke();
+
+        if (!isRevive)
+        {
+            StartGameEvent?.Invoke();
+            _isAdVideoWatched = false;
+            GameOverEvent?.Invoke();
+        }
+        else
+            ReviveEvent?.Invoke();
+
         _buttonClickSound.PlayDelayed(0);
         IsPlayed = true;
 
@@ -144,9 +157,10 @@ public class GameUI : MonoBehaviour
 
     private void OnMenuButtonClick()
     {
-        TransitionToMenuEvent?.Invoke();
+        GoToMenuEvent?.Invoke();
         ChangeMusicEvent?.Invoke(true);
         ChangeGameStateEvent?.Invoke(false);
+        GameOverEvent?.Invoke();
         ShowRequiredButtons(true);
         HideFallingObjects?.Invoke();
         Time.timeScale = 0;
@@ -154,16 +168,16 @@ public class GameUI : MonoBehaviour
         IsPlayed = false;
     }
 
-    private void OnGameOver()
+    private void OnLose()
     {
         Invoke(nameof(ShowGameOverScreen), _gameOverScreenDelay);
+        HideFallingObjects?.Invoke();
     }
 
     private void ShowGameOverScreen()
     {
         ShowFullScreenAd?.Invoke();
         Time.timeScale = 0;
-        HideFallingObjects?.Invoke();
         _uIElementsAnimation.Appear(_gameOverPanel.gameObject);
         _uIElementsAnimation.Disappear(_pauseButton.gameObject);
         _uIElementsAnimation.Disappear(_scoreText.gameObject);
@@ -172,6 +186,17 @@ public class GameUI : MonoBehaviour
 
         if (_isMobile)
             _uIElementsAnimation.Disappear(_touchControl.gameObject);
+
+        if(_isAdVideoWatched)
+            _gameOverRewardedVideoButton.interactable = false;
+        else
+            _gameOverRewardedVideoButton.interactable = true;
+    }
+
+    private void OnReviveAdVideoWatched()
+    {
+        _isAdVideoWatched = true;
+        OnStartButtonClick(true);
     }
 
     private void ShowRequiredButtons(bool onMenu)
@@ -179,7 +204,6 @@ public class GameUI : MonoBehaviour
         if (onMenu)
         {
             _uIElementsAnimation.Appear(_startButton.gameObject);
-            _uIElementsAnimation.Appear(_maxScoreText.gameObject);
             _uIElementsAnimation.Appear(_soundSwitchMenuButton.gameObject);
             _uIElementsAnimation.Appear(_changeBackgroundElementsButton.gameObject);
             _uIElementsAnimation.Disappear(_pauseButton.gameObject);
@@ -205,7 +229,6 @@ public class GameUI : MonoBehaviour
             _uIElementsAnimation.Disappear(_gameOverPanel.gameObject);
             _uIElementsAnimation.Disappear(_soundSwitchMenuButton.gameObject);
             _uIElementsAnimation.Appear(_scoreText.gameObject);
-            _uIElementsAnimation.Appear(_maxScoreText.gameObject);
             _uIElementsAnimation.Appear(_healthBar.gameObject);
 
             if (_isMobile)

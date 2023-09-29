@@ -62,7 +62,7 @@ public class BananaCatMover : MonoBehaviour
     private void OnEnable()
     {
         _playerInput.Enable();
-        BananaCatCollisionHandler.GameOverEvent += OnCry;
+        BananaCatCollisionHandler.OpenGameOverPanelEvent += OnCry;
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent += OnCry;
         BananaCatCollisionHandler.FruitTakenEvent += OnFruitTake;
         Ground.GroundCollisionEvent += OnGroundCollision;
@@ -78,7 +78,7 @@ public class BananaCatMover : MonoBehaviour
     private void OnDisable()
     {
         _playerInput.Disable();
-        BananaCatCollisionHandler.GameOverEvent -= OnCry;
+        BananaCatCollisionHandler.OpenGameOverPanelEvent -= OnCry;
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= OnCry;
         BananaCatCollisionHandler.FruitTakenEvent -= OnFruitTake;
         Ground.GroundCollisionEvent -= OnGroundCollision;
@@ -120,10 +120,9 @@ public class BananaCatMover : MonoBehaviour
 
     private void OnCry()
     {
-        _animator.StopPlayback();
+        _animator.SetTrigger(CryAnimationName);
         _isCanMove = false;
         _crySound.PlayDelayed(0);
-        _animator.SetTrigger(CryAnimationName);
     }
 
     private void OnFruitTake()

@@ -53,18 +53,22 @@ public abstract class Spawner : MonoBehaviour
     private void OnEnable()
     {
         ScreenEdge.SetSpawnPositions += OnInit;
-        BananaCatCollisionHandler.GameOverEvent += StopCreateObjects;
+        BananaCatCollisionHandler.OpenGameOverPanelEvent += StopCreateObjects;
+        MissedFruitsCounter.MaxFruitsNumberDroppedEvent += StopCreateObjects;
         GameUI.StartGameEvent += BeginCreateObjects;
-        GameUI.TransitionToMenuEvent += StopCreateObjects;
+        GameUI.ReviveEvent += BeginCreateObjects;
+        GameUI.GoToMenuEvent += StopCreateObjects;
         ScoreManager.AddDifficultyEvent += AddDifficulty;
     }
 
     private void OnDisable()
     {
         ScreenEdge.SetSpawnPositions -= OnInit;
-        BananaCatCollisionHandler.GameOverEvent -= StopCreateObjects;
+        BananaCatCollisionHandler.OpenGameOverPanelEvent -= StopCreateObjects;
+        MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= StopCreateObjects;
         GameUI.StartGameEvent -= BeginCreateObjects;
-        GameUI.TransitionToMenuEvent -= StopCreateObjects;
+        GameUI.ReviveEvent -= BeginCreateObjects;
+        GameUI.GoToMenuEvent -= StopCreateObjects;
         ScoreManager.AddDifficultyEvent -= AddDifficulty;
     }
 

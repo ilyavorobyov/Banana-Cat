@@ -16,18 +16,18 @@ public class BananaCatCollisionHandler : MonoBehaviour
 
     public static Action FruitTakenEvent;
     public static Action BadFoodTakenEvent;
-    public static Action GameOverEvent;
+    public static Action OpenGameOverPanelEvent;
 
     private void OnEnable()
     {
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent += OnTurnOffHelmet;
-        GameUI.TransitionToMenuEvent += OnTurnOffHelmet;
+        GameUI.GoToMenuEvent += OnTurnOffHelmet;
     }
 
     private void OnDisable()
     {
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= OnTurnOffHelmet;
-        GameUI.TransitionToMenuEvent -= OnTurnOffHelmet;
+        GameUI.GoToMenuEvent -= OnTurnOffHelmet;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -44,7 +44,7 @@ public class BananaCatCollisionHandler : MonoBehaviour
                 if(!_isHelmetTurnOn)
                 {
                     _dieSound.PlayDelayed(0);
-                    GameOverEvent?.Invoke();
+                    OpenGameOverPanelEvent?.Invoke();
                     OnTurnOffHelmet();
                 }
                 else

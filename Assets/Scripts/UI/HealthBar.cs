@@ -18,18 +18,20 @@ public class HealthBar : MonoBehaviour
 
     private void OnEnable()
     {
-        BananaCatCollisionHandler.GameOverEvent += OnGameOver;
+        BananaCatCollisionHandler.OpenGameOverPanelEvent += OnGameOver;
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent += OnGameOver;
+        GameUI.ReviveEvent += OnStartGame;
         GameUI.StartGameEvent += OnStartGame;
-        GameUI.TransitionToMenuEvent += OnGameOver;
+        GameUI.GoToMenuEvent += OnGameOver;
     }
 
     private void OnDisable()
     {
-        BananaCatCollisionHandler.GameOverEvent -= OnGameOver;
+        BananaCatCollisionHandler.OpenGameOverPanelEvent -= OnGameOver;
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= OnGameOver;
         GameUI.StartGameEvent -= OnStartGame;
-        GameUI.TransitionToMenuEvent -= OnGameOver;
+        GameUI.GoToMenuEvent -= OnGameOver;
+        GameUI.StartGameEvent -= OnStartGame;
     }
 
     public void TakePoint()
@@ -40,6 +42,7 @@ public class HealthBar : MonoBehaviour
 
     private void OnStartGame()
     {
+        OnGameOver();
         _missingPointsNumber = 0;
 
         for (int i = 0; i < HealthPoints; i++)
@@ -54,7 +57,7 @@ public class HealthBar : MonoBehaviour
     {
         foreach (var healthBarPoint in _healthBarPoints)
         {
-            healthBarPoint.HideObject();
+            Destroy(healthBarPoint.gameObject);
         }
 
         _healthBarPoints.Clear();
