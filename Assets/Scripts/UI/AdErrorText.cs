@@ -1,9 +1,9 @@
 using DG.Tweening;
 using UnityEngine;
 
-public class RewardAdInfoText : MonoBehaviour
+public class AdErrorText : MonoBehaviour
 {
-    private float _hideAnimationDuration = 2f;
+    private float _hideAnimationDuration = 5f;
 
     private void OnEnable()
     {

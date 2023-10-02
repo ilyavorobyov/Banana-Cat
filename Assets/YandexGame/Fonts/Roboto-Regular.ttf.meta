@@ -20,3 +20,10 @@ TrueTypeFontImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 235877
+  packageName: PluginYG - Yandex Game integration
+  packageVersion: 1.4
+  assetPath: Assets/YandexGame/Fonts/Roboto-Regular.ttf
+  uploadId: 611441

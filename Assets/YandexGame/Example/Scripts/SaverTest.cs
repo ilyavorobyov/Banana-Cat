@@ -5,7 +5,7 @@ namespace YG.Example
 {
     public class SaverTest : MonoBehaviour
     {
-        [SerializeField] InputField integerText;
+/*        [SerializeField] InputField integerText;
         [SerializeField] InputField stringifyText;
         [SerializeField] Text systemSavesText;
         [SerializeField] Toggle[] booleanArrayToggle;
@@ -21,13 +21,13 @@ namespace YG.Example
 
         public void Save()
         {
-            YandexGame.savesData.money = int.Parse(integerText.text);
+*//*            YandexGame.savesData.money = int.Parse(integerText.text);
             YandexGame.savesData.newPlayerName = stringifyText.text.ToString();
 
             for (int i = 0; i < booleanArrayToggle.Length; i++)
                 YandexGame.savesData.openLevels[i] = booleanArrayToggle[i].isOn;
 
-            YandexGame.SaveProgress();
+            YandexGame.SaveProgress();*//*
         }
 
         public void Load() => YandexGame.LoadProgress();
@@ -46,6 +46,6 @@ namespace YG.Example
             systemSavesText.text = $"Language - {YandexGame.savesData.language}\n" +
             $"First Session - {YandexGame.savesData.isFirstSession}\n" +
             $"Prompt Done - {YandexGame.savesData.promptDone}\n";
-        }
+        }*/
     }
 }

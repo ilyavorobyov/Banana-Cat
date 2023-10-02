@@ -2,12 +2,15 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 public class ScoreManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text _maxScoreText;
     [SerializeField] private TMP_Text _scoreText;
-    [SerializeField] private TMP_Text _gameOverPanelText;
+    [SerializeField] private TMP_Text _newRecordPanelText;
+    [SerializeField] private TMP_Text _resultPanelText;
+    [SerializeField] private TMP_Text _scorePanelText;
     [SerializeField] private Image _maxScoreImage;
     [SerializeField] private Color _newRecordColor;
     [SerializeField] private Color _startingScoreTextColor;
@@ -21,28 +24,13 @@ public class ScoreManager : MonoBehaviour
 
     public static Action AddDifficultyEvent;
 
-    private void Awake()
-    {
-        if (PlayerPrefs.HasKey(MaxScoreKey))
-        {
-            _maxScore = PlayerPrefs.GetInt(MaxScoreKey);
-            _maxScoreImage.gameObject.SetActive(true);
-            _maxScoreText.gameObject.SetActive(true);
-        }
-
-        else
-            _maxScore = 0;
-
-        if(_maxScore > 0)
-            _maxScoreText.text = _maxScore.ToString();
-    }
-
     private void OnEnable()
     {
         BananaCatCollisionHandler.FruitTakenEvent += OnFruitTaken;
         BananaCatCollisionHandler.OpenGameOverPanelEvent += OnGameOverScoreCompare;
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent += OnGameOverScoreCompare;
         GameUI.GameOverEvent += ResetScoreValues;
+        YandexGame.GetDataEvent += OnLoadScore;
     }
 
     private void OnDisable()
@@ -51,12 +39,25 @@ public class ScoreManager : MonoBehaviour
         BananaCatCollisionHandler.OpenGameOverPanelEvent -= OnGameOverScoreCompare;
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= OnGameOverScoreCompare;
         GameUI.GameOverEvent -= ResetScoreValues;
+        YandexGame.GetDataEvent -= OnLoadScore;
     }
 
     private void OnValidate()
     {
         if (_scoreDivisor < _minScoreDivisor)
             _scoreDivisor = _minScoreDivisor;
+    }
+
+    private void OnLoadScore()
+    {
+        _maxScore = YandexGame.savesData.MaxScore;
+
+        if(_maxScore > 0)
+        {
+            _maxScoreImage.gameObject.SetActive(true);
+            _maxScoreText.gameObject.SetActive(true);
+            _maxScoreText.text = _maxScore.ToString();
+        }
     }
 
     private void OnFruitTaken()
@@ -75,15 +76,23 @@ public class ScoreManager : MonoBehaviour
     {
         if(_score > _maxScore)
         {
-            PlayerPrefs.SetInt(MaxScoreKey, _score);
-            _gameOverPanelText.text = "Новый рекорд: " + _score.ToString();
+            _scorePanelText.text = _score.ToString();
+            _newRecordPanelText.gameObject.SetActive(true);
+            _resultPanelText.gameObject.SetActive(false);
             _maxScore = _score;
             _maxScoreText.text = _maxScore.ToString();
             _maxScoreImage.gameObject.SetActive(true);
             _maxScoreText.gameObject.SetActive(true);
+            YandexGame.savesData.MaxScore = _score;
+            YandexGame.SaveProgress();
+
         }
         else
-            _gameOverPanelText.text = "Результат: " + _score.ToString();
+        {
+            _scorePanelText.text = _score.ToString();
+            _newRecordPanelText.gameObject.SetActive(false);
+            _resultPanelText.gameObject.SetActive(true);
+        }
     }
 
     private void ResetScoreValues()

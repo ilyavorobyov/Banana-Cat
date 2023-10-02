@@ -5,12 +5,9 @@ using UnityEngine;
 public class BananaCat : MonoBehaviour
 {
     [SerializeField] private UIElementsAnimation _uIElementsAnimation;
-    [SerializeField] private TMP_Text _fitText;
     [SerializeField] private AudioSource _fitSound;
     [SerializeField] private AudioSource _addScaleSound;
-
-    private const string FatLevelText = "уровень жирности: ";
-    private const string FruitsForFitText = "съесть фруктов для похудения: ";
+    [SerializeField] private TMP_Text _helpFitText;
 
     private Vector3 _scaleChange = new Vector3(0.25f, 0f, 0f);
     private Vector3 _startScale = Vector3.one;
@@ -47,13 +44,14 @@ public class BananaCat : MonoBehaviour
 
     private void OnBadFoodTaken()
     {
+        if (_fatLevel == 0)
+            _uIElementsAnimation.Appear(_helpFitText.gameObject);
+
         _fatLevel++;
         transform.localScale += _scaleChange;
         _addScaleSound.PlayDelayed(0);
         SpeedChangedEvent?.Invoke(false);
         _fruitEatenCounter = 0;
-        _uIElementsAnimation.Appear(_fitText.gameObject);
-        ShowFatInfo();
     }
 
     private void OnFruitTaken()
@@ -61,7 +59,6 @@ public class BananaCat : MonoBehaviour
         if (_fatLevel > 0)
         {
             _fruitEatenCounter++;
-            ShowFatInfo();
         }
 
         if (_fruitEatenCounter == _fruitsNumberForFatDecrease)
@@ -73,17 +70,9 @@ public class BananaCat : MonoBehaviour
             SpeedChangedEvent?.Invoke(true);
 
             if (_fatLevel == 0)
-                _uIElementsAnimation.Disappear(_fitText.gameObject);
-            else
-                ShowFatInfo();
+            {
+                _uIElementsAnimation.Disappear(_helpFitText.gameObject);
+            }
         }
-    }
-
-    private void ShowFatInfo()
-    {
-        string fatInfoText = $"{FatLevelText} {_fatLevel}" +
-            $"\n{FruitsForFitText} {_fruitsNumberForFatDecrease - _fruitEatenCounter}";
-
-        _fitText.text = fatInfoText;
     }
 }

@@ -1,8 +1,9 @@
 using System;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
-using static YG.LangYGAdditionalText;
+using YG;
 
 [RequireComponent(typeof(UIElementsAnimation))]
 public class GameUI : MonoBehaviour
@@ -22,16 +23,16 @@ public class GameUI : MonoBehaviour
     [SerializeField] private GameObject _infoPanel;
     [SerializeField] private GameObject _healthBar;
     [SerializeField] private TMP_Text _scoreText;
-    [SerializeField] private TMP_Text _fitText;
+    [SerializeField] private TMP_Text _helpFitText;
     [SerializeField] private TMP_Text _desktopControlInstructionsText;
     [SerializeField] private TMP_Text _mobileControlInstructionsText;
+    [SerializeField] private UIElementsAnimation _uIElementsAnimation;
     [SerializeField] private AudioSource _buttonClickSound;
     [SerializeField] private TouchControl _touchControl;
     [SerializeField] private float _gameOverScreenDelay;
 
     private const string FirstRunKey = "FirstRun";
 
-    private UIElementsAnimation _uIElementsAnimation;
     private bool _isMobile = false;
     private bool _isAdVideoWatched = false;
 
@@ -46,12 +47,11 @@ public class GameUI : MonoBehaviour
 
     public bool IsPlayed { get; private set; } = false;
 
-    private void Awake()
+    private void OnAfterPluginLoad()
     {
-        _uIElementsAnimation = GetComponent<UIElementsAnimation>();
-
-        if (PlayerPrefs.HasKey(FirstRunKey))
+        if(YandexGame.savesData.IsAlreadyOpened)
         {
+            _infoPanel.SetActive(false);
             ChangeGameStateEvent?.Invoke(false);
             ShowRequiredButtons(true);
             _infoPanel.SetActive(false);
@@ -59,7 +59,8 @@ public class GameUI : MonoBehaviour
         else
         {
             _infoPanel.SetActive(true);
-            PlayerPrefs.SetInt(FirstRunKey, 0);
+            YandexGame.savesData.IsAlreadyOpened = true;
+            YandexGame.SaveProgress();
         }
     }
 
@@ -69,13 +70,14 @@ public class GameUI : MonoBehaviour
         _gameOverPanelRestartButton.onClick.AddListener(delegate { OnStartButtonClick(false); });
         _menuButton.onClick.AddListener(OnMenuButtonClick);
         _gameOverPanelMenuButton.onClick.AddListener(OnMenuButtonClick);
-        _infoPanelButton.onClick.AddListener(delegate { OnStartButtonClick(false); });
+        _infoPanelButton.onClick.AddListener(OnInfoPanelButtonClick);
         _pauseButton.onClick.AddListener(delegate { OnChangeStateButtonsClick(false); });
         _resumeButton.onClick.AddListener(delegate { OnChangeStateButtonsClick(true); });
         BananaCatCollisionHandler.OpenGameOverPanelEvent += OnLose;
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent += OnLose;
         DeviceIdentifier.MobileDeviceDefineEvent += OnEnablingMobileControl;
-        AdvController.ReviveVideoWatchedCompleteEvent += OnReviveAdVideoWatched;
+        AdController.ReviveVideoWatchedCompleteEvent += OnReviveAdVideoWatched;
+        YandexGame.GetDataEvent += OnAfterPluginLoad;
     }
 
     private void OnDisable()
@@ -84,13 +86,20 @@ public class GameUI : MonoBehaviour
         _gameOverPanelRestartButton.onClick.RemoveListener(delegate { OnStartButtonClick(false); });
         _menuButton.onClick.RemoveListener(OnMenuButtonClick);
         _gameOverPanelMenuButton.onClick.RemoveListener(OnMenuButtonClick);
-        _infoPanelButton.onClick.RemoveListener(delegate { OnStartButtonClick(false); });
+        _infoPanelButton.onClick.RemoveListener(OnInfoPanelButtonClick);
         _pauseButton.onClick.RemoveListener(delegate { OnChangeStateButtonsClick(false); });
         _resumeButton.onClick.RemoveListener(delegate { OnChangeStateButtonsClick(true); });
         BananaCatCollisionHandler.OpenGameOverPanelEvent -= OnLose;
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= OnLose;
         DeviceIdentifier.MobileDeviceDefineEvent -= OnEnablingMobileControl;
-        AdvController.ReviveVideoWatchedCompleteEvent -= OnReviveAdVideoWatched;
+        AdController.ReviveVideoWatchedCompleteEvent -= OnReviveAdVideoWatched;
+        YandexGame.GetDataEvent -= OnAfterPluginLoad;
+    }
+
+    private void OnInfoPanelButtonClick()
+    {
+        _uIElementsAnimation.Disappear(_infoPanel.gameObject);
+        ShowRequiredButtons(true);
     }
 
     private void OnEnablingMobileControl(bool isMobile)
@@ -117,7 +126,7 @@ public class GameUI : MonoBehaviour
             ChangeGameStateEvent?.Invoke(false);
             _uIElementsAnimation.Appear(_pausePanel.gameObject);
             _uIElementsAnimation.Disappear(_pauseButton.gameObject);
-            _uIElementsAnimation.Disappear(_fitText.gameObject);
+            _uIElementsAnimation.Disappear(_helpFitText.gameObject);
 
             if (_isMobile)
                 _uIElementsAnimation.Disappear(_touchControl.gameObject);
@@ -181,7 +190,7 @@ public class GameUI : MonoBehaviour
         _uIElementsAnimation.Appear(_gameOverPanel.gameObject);
         _uIElementsAnimation.Disappear(_pauseButton.gameObject);
         _uIElementsAnimation.Disappear(_scoreText.gameObject);
-        _uIElementsAnimation.Disappear(_fitText.gameObject);
+        _uIElementsAnimation.Disappear(_helpFitText.gameObject);
         IsPlayed = false;
 
         if (_isMobile)
@@ -213,7 +222,7 @@ public class GameUI : MonoBehaviour
             _uIElementsAnimation.Disappear(_gameOverPanel.gameObject);
             _uIElementsAnimation.Disappear(_scoreText.gameObject);
             _uIElementsAnimation.Disappear(_healthBar.gameObject);
-            _uIElementsAnimation.Disappear(_fitText.gameObject);
+            _uIElementsAnimation.Disappear(_helpFitText.gameObject);
 
             if (_isMobile)
                 _uIElementsAnimation.Disappear(_touchControl.gameObject);

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(SpriteRenderer))]
@@ -68,7 +69,8 @@ public class BananaCatMover : MonoBehaviour
         Ground.GroundCollisionEvent += OnGroundCollision;
         BananaCat.SpeedChangedEvent += OnChangeSpeed;
         GameUI.ChangeGameStateEvent += OnChangeGameState;
-        GameUI.StartGameEvent += SetStartSpeed;
+        GameUI.StartGameEvent += OnSetStartSpeed;
+        GameUI.GoToMenuEvent += BecomeHappy;
         TouchControlButton.StopMoveEvent += OnStopMovement;
         TouchControlButton.DirectionChangeEvent += Touch;
         _jumpButton.onClick.AddListener(OnJump);
@@ -84,7 +86,8 @@ public class BananaCatMover : MonoBehaviour
         Ground.GroundCollisionEvent -= OnGroundCollision;
         BananaCat.SpeedChangedEvent -= OnChangeSpeed;
         GameUI.ChangeGameStateEvent -= OnChangeGameState;
-        GameUI.StartGameEvent -= SetStartSpeed;
+        GameUI.StartGameEvent -= OnSetStartSpeed;
+        GameUI.GoToMenuEvent -= BecomeHappy;
         TouchControlButton.StopMoveEvent -= OnStopMovement;
         TouchControlButton.DirectionChangeEvent -= Touch;
         _jumpButton.onClick.RemoveListener(OnJump);
@@ -113,15 +116,15 @@ public class BananaCatMover : MonoBehaviour
         _isMobile = isMobile;
     }
 
-    private void SetStartSpeed()
+    private void OnSetStartSpeed()
     {
         _speed = _tempSpeed;
     }
 
     private void OnCry()
     {
-        _animator.SetTrigger(CryAnimationName);
         _isCanMove = false;
+        _animator.SetTrigger(CryAnimationName);
         _crySound.PlayDelayed(0);
     }
 
