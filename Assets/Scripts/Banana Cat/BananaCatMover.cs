@@ -130,7 +130,8 @@ public class BananaCatMover : MonoBehaviour
 
     private void OnFruitTake()
     {
-        _animator.SetTrigger(FruitTakeAnimationName);
+        if(_isCanMove)
+            _animator.SetTrigger(FruitTakeAnimationName);
     }
 
     private void OnChangeSpeed(bool isIncreased)
