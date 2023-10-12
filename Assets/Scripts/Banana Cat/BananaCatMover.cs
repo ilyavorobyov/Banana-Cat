@@ -74,7 +74,7 @@ public class BananaCatMover : MonoBehaviour
         TouchControlButton.StopMoveEvent += OnStopMovement;
         TouchControlButton.DirectionChangeEvent += Touch;
         _jumpButton.onClick.AddListener(OnJump);
-        DeviceIdentifier.MobileDeviceDefineEvent += OnEnablingMobileControl;
+        UserDataReader.MobileDeviceDefineEvent += OnEnablingMobileControl;
     }
 
     private void OnDisable()
@@ -91,7 +91,7 @@ public class BananaCatMover : MonoBehaviour
         TouchControlButton.StopMoveEvent -= OnStopMovement;
         TouchControlButton.DirectionChangeEvent -= Touch;
         _jumpButton.onClick.RemoveListener(OnJump);
-        DeviceIdentifier.MobileDeviceDefineEvent -= OnEnablingMobileControl;
+        UserDataReader.MobileDeviceDefineEvent -= OnEnablingMobileControl;
     }
 
     public void BecomeHappy()

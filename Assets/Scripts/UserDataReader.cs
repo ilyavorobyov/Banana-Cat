@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using YG;
 
-public class DeviceIdentifier : MonoBehaviour
+public class UserDataReader : MonoBehaviour
 {
     public static Action<bool> MobileDeviceDefineEvent;
 
@@ -18,8 +18,9 @@ public class DeviceIdentifier : MonoBehaviour
         }
     }
 
-    public void GetData()
+    private void GetData()
     {
-            MobileDeviceDefineEvent?.Invoke(YandexGame.EnvironmentData.isMobile);
+        MobileDeviceDefineEvent?.Invoke(YandexGame.EnvironmentData.isMobile);
+        Debug.Log("mob eebee");
     }
 }

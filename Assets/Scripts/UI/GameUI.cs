@@ -12,16 +12,20 @@ public class GameUI : MonoBehaviour
     [SerializeField] private Button _pauseButton;
     [SerializeField] private Button _resumeButton;
     [SerializeField] private Button _menuButton;
+    [SerializeField] private Button _loginButton;
     [SerializeField] private Button _gameOverPanelMenuButton;
     [SerializeField] private Button _gameOverPanelRestartButton;
     [SerializeField] private Button _gameOverRewardedVideoButton;
     [SerializeField] private Button _soundSwitchMenuButton;
     [SerializeField] private Button _changeBackgroundElementsButton;
     [SerializeField] private Button _infoPanelButton;
+    [SerializeField] private Button _leaderboardButton;
+    [SerializeField] private Button _closeLeaderboardButton;
     [SerializeField] private GameObject _pausePanel;
     [SerializeField] private GameObject _gameOverPanel;
     [SerializeField] private GameObject _infoPanel;
     [SerializeField] private GameObject _healthBar;
+    [SerializeField] private GameObject _leaderboard;
     [SerializeField] private TMP_Text _scoreText;
     [SerializeField] private TMP_Text _helpFitText;
     [SerializeField] private TMP_Text _desktopControlInstructionsText;
@@ -30,8 +34,6 @@ public class GameUI : MonoBehaviour
     [SerializeField] private AudioSource _buttonClickSound;
     [SerializeField] private TouchControl _touchControl;
     [SerializeField] private float _gameOverScreenDelay;
-
-    private const string FirstRunKey = "FirstRun";
 
     private bool _isMobile = false;
     private bool _isAdVideoWatched = false;
@@ -73,9 +75,11 @@ public class GameUI : MonoBehaviour
         _infoPanelButton.onClick.AddListener(OnInfoPanelButtonClick);
         _pauseButton.onClick.AddListener(delegate { OnChangeStateButtonsClick(false); });
         _resumeButton.onClick.AddListener(delegate { OnChangeStateButtonsClick(true); });
+        _leaderboardButton.onClick.AddListener(OnShowLeaderboard);
+        _closeLeaderboardButton.onClick.AddListener(OnCloseLeaderboard);
         BananaCatCollisionHandler.OpenGameOverPanelEvent += OnLose;
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent += OnLose;
-        DeviceIdentifier.MobileDeviceDefineEvent += OnEnablingMobileControl;
+        UserDataReader.MobileDeviceDefineEvent += OnEnablingMobileControl;
         AdController.ReviveVideoWatchedCompleteEvent += OnReviveAdVideoWatched;
         YandexGame.GetDataEvent += OnAfterPluginLoad;
     }
@@ -87,13 +91,33 @@ public class GameUI : MonoBehaviour
         _menuButton.onClick.RemoveListener(OnMenuButtonClick);
         _gameOverPanelMenuButton.onClick.RemoveListener(OnMenuButtonClick);
         _infoPanelButton.onClick.RemoveListener(OnInfoPanelButtonClick);
+        _leaderboardButton.onClick.RemoveListener(OnShowLeaderboard);
         _pauseButton.onClick.RemoveListener(delegate { OnChangeStateButtonsClick(false); });
         _resumeButton.onClick.RemoveListener(delegate { OnChangeStateButtonsClick(true); });
+        _closeLeaderboardButton.onClick.RemoveListener(OnCloseLeaderboard);
         BananaCatCollisionHandler.OpenGameOverPanelEvent -= OnLose;
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= OnLose;
-        DeviceIdentifier.MobileDeviceDefineEvent -= OnEnablingMobileControl;
+        UserDataReader.MobileDeviceDefineEvent -= OnEnablingMobileControl;
         AdController.ReviveVideoWatchedCompleteEvent -= OnReviveAdVideoWatched;
         YandexGame.GetDataEvent -= OnAfterPluginLoad;
+    }
+
+    private bool CheckAuthorization()
+    {
+        if (YandexGame.auth)
+            return true;
+        else
+            return false;
+    }
+
+    private void OnShowLeaderboard()
+    {
+        _uIElementsAnimation.Appear(_leaderboard);
+    }
+
+    private void OnCloseLeaderboard()
+    {
+        _uIElementsAnimation.Disappear(_leaderboard);
     }
 
     private void OnInfoPanelButtonClick()
@@ -215,6 +239,7 @@ public class GameUI : MonoBehaviour
             _uIElementsAnimation.Appear(_startButton.gameObject);
             _uIElementsAnimation.Appear(_soundSwitchMenuButton.gameObject);
             _uIElementsAnimation.Appear(_changeBackgroundElementsButton.gameObject);
+            _uIElementsAnimation.Appear(_leaderboardButton.gameObject);
             _uIElementsAnimation.Disappear(_pauseButton.gameObject);
             _uIElementsAnimation.Disappear(_resumeButton.gameObject);
             _uIElementsAnimation.Disappear(_menuButton.gameObject);
@@ -226,6 +251,9 @@ public class GameUI : MonoBehaviour
 
             if (_isMobile)
                 _uIElementsAnimation.Disappear(_touchControl.gameObject);
+
+            if(!CheckAuthorization())
+                _uIElementsAnimation.Appear(_loginButton.gameObject);
         }
         else
         {
@@ -237,11 +265,15 @@ public class GameUI : MonoBehaviour
             _uIElementsAnimation.Disappear(_pausePanel.gameObject);
             _uIElementsAnimation.Disappear(_gameOverPanel.gameObject);
             _uIElementsAnimation.Disappear(_soundSwitchMenuButton.gameObject);
+            _uIElementsAnimation.Disappear(_leaderboardButton.gameObject);
             _uIElementsAnimation.Appear(_scoreText.gameObject);
             _uIElementsAnimation.Appear(_healthBar.gameObject);
 
             if (_isMobile)
                 _uIElementsAnimation.Appear(_touchControl.gameObject);
+
+            if (!CheckAuthorization())
+                _uIElementsAnimation.Disappear(_loginButton.gameObject);
         }
     }
 
