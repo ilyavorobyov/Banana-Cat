@@ -16,8 +16,8 @@ MonoBehaviour:
   playerPhotoSize: 0
   playerInfoSimulation:
     authorized: 0
-    isMobile: 0
-    language: tr
+    isMobile: 1
+    language: ru
     name: ???
     uniqueID: 000
     photo: https://justplaygames.ru/public/icon_player.png
@@ -34,18 +34,9 @@ MonoBehaviour:
   saveOnQuitGame: 0
   leaderboardEnable: 1
   leaderboardSimulation:
-  - technoName: Leaderboard
-    entries: 'Test LeaderBoard
-
-      Name: advanced
-
-      1. gizli: 10
-
-      2.
-      Ivan: 15
-
-      3. Tanya: 23'
-    isDefault: 1
+  - technoName: Leaderboard2
+    entries: 
+    isDefault: 0
     isInvertSortOrder: 0
     decimalOffset: 0
     type: numeric
@@ -83,17 +74,16 @@ MonoBehaviour:
     thisPlayer:
       rank: 2
       score: 10
-  - technoName: simple
-    entries: "Test LeaderBoard\nName: simple\n1. \u0441\u043A\u0440\u044B\u0442:
-      10\n2. Max: 15\n3. Maria: 23"
-    isDefault: 0
+  - technoName: Leaderboard2
+    entries: 
+    isDefault: 1
     isInvertSortOrder: 0
     decimalOffset: 0
     type: numeric
     players:
     - rank: 1
       name: anonymous
-      score: 10
+      score: 123
       photo: https://justplaygames.ru/public/icon_player.png
       uniqueID: 123
     - rank: 2
@@ -107,410 +97,18 @@ MonoBehaviour:
       photo: https://justplaygames.ru/public/icon_player.png
       uniqueID: 456
     - rank: 4
-      name: player4
+      name: Player4
       score: 30
       photo: https://justplaygames.ru/public/icon_player.png
       uniqueID: 321
     - rank: 5
-      name: playerThis
+      name: Player this
       score: 40
       photo: https://justplaygames.ru/public/icon_player.png
       uniqueID: 000
     - rank: 6
-      name: player6
+      name: Player6
       score: 50
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 321
-    thisPlayer:
-      rank: 0
-      score: 0
-  - technoName: time
-    entries: 'Test LeaderBoard
-
-      Name: time
-
-      1. anonymous: 10
-
-      2.
-      Max: 15
-
-      3. Maria: 23'
-    isDefault: 0
-    isInvertSortOrder: 0
-    decimalOffset: 0
-    type: numeric
-    players:
-    - rank: 1
-      name: anonymous
-      score: 7123
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 789
-    - rank: 2
-      name: Max
-      score: 15321
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 987
-    - rank: 3
-      name: Maria
-      score: 62000
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 891
-    - rank: 4
-      name: Player4
-      score: 122000
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 321
-    - rank: 5
-      name: Player this
-      score: 127000
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 000
-    - rank: 6
-      name: Player6
-      score: 340000
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 321
-    thisPlayer:
-      rank: 2
-      score: 10
-  - technoName: time
-    entries: 'Test LeaderBoard
-
-      Name: time
-
-      1. anonymous: 10
-
-      2.
-      Max: 15
-
-      3. Maria: 23'
-    isDefault: 0
-    isInvertSortOrder: 0
-    decimalOffset: 0
-    type: numeric
-    players:
-    - rank: 1
-      name: anonymous
-      score: 7123
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 789
-    - rank: 2
-      name: Max
-      score: 15321
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 987
-    - rank: 3
-      name: Maria
-      score: 62000
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 891
-    - rank: 4
-      name: Player4
-      score: 122000
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 321
-    - rank: 5
-      name: Player this
-      score: 127000
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 000
-    - rank: 6
-      name: Player6
-      score: 340000
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 321
-    thisPlayer:
-      rank: 2
-      score: 10
-  - technoName: time
-    entries: 'Test LeaderBoard
-
-      Name: time
-
-      1. anonymous: 10
-
-      2.
-      Max: 15
-
-      3. Maria: 23'
-    isDefault: 0
-    isInvertSortOrder: 0
-    decimalOffset: 0
-    type: numeric
-    players:
-    - rank: 1
-      name: anonymous
-      score: 7123
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 789
-    - rank: 2
-      name: Max
-      score: 15321
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 987
-    - rank: 3
-      name: Maria
-      score: 62000
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 891
-    - rank: 4
-      name: Player4
-      score: 122000
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 321
-    - rank: 5
-      name: Player this
-      score: 127000
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 000
-    - rank: 6
-      name: Player6
-      score: 340000
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 321
-    thisPlayer:
-      rank: 2
-      score: 10
-  - technoName: time
-    entries: 'Test LeaderBoard
-
-      Name: time
-
-      1. anonymous: 10
-
-      2.
-      Max: 15
-
-      3. Maria: 23'
-    isDefault: 0
-    isInvertSortOrder: 0
-    decimalOffset: 0
-    type: numeric
-    players:
-    - rank: 1
-      name: anonymous
-      score: 7123
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 789
-    - rank: 2
-      name: Max
-      score: 15321
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 987
-    - rank: 3
-      name: Maria
-      score: 62000
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 891
-    - rank: 4
-      name: Player4
-      score: 122000
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 321
-    - rank: 5
-      name: Player this
-      score: 127000
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 000
-    - rank: 6
-      name: Player6
-      score: 340000
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 321
-    thisPlayer:
-      rank: 2
-      score: 10
-  - technoName: time
-    entries: 'Test LeaderBoard
-
-      Name: time
-
-      1. anonymous: 10
-
-      2.
-      Max: 15
-
-      3. Maria: 23'
-    isDefault: 0
-    isInvertSortOrder: 0
-    decimalOffset: 0
-    type: numeric
-    players:
-    - rank: 1
-      name: anonymous
-      score: 7123
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 789
-    - rank: 2
-      name: Max
-      score: 15321
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 987
-    - rank: 3
-      name: Maria
-      score: 62000
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 891
-    - rank: 4
-      name: Player4
-      score: 122000
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 321
-    - rank: 5
-      name: Player this
-      score: 127000
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 000
-    - rank: 6
-      name: Player6
-      score: 340000
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 321
-    thisPlayer:
-      rank: 2
-      score: 10
-  - technoName: time
-    entries: 'Test LeaderBoard
-
-      Name: time
-
-      1. anonymous: 10
-
-      2.
-      Max: 15
-
-      3. Maria: 23'
-    isDefault: 0
-    isInvertSortOrder: 0
-    decimalOffset: 0
-    type: numeric
-    players:
-    - rank: 1
-      name: anonymous
-      score: 7123
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 789
-    - rank: 2
-      name: Max
-      score: 15321
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 987
-    - rank: 3
-      name: Maria
-      score: 62000
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 891
-    - rank: 4
-      name: Player4
-      score: 122000
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 321
-    - rank: 5
-      name: Player this
-      score: 127000
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 000
-    - rank: 6
-      name: Player6
-      score: 340000
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 321
-    thisPlayer:
-      rank: 2
-      score: 10
-  - technoName: time
-    entries: 'Test LeaderBoard
-
-      Name: time
-
-      1. anonymous: 10
-
-      2.
-      Max: 15
-
-      3. Maria: 23'
-    isDefault: 0
-    isInvertSortOrder: 0
-    decimalOffset: 0
-    type: numeric
-    players:
-    - rank: 1
-      name: anonymous
-      score: 7123
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 789
-    - rank: 2
-      name: Max
-      score: 15321
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 987
-    - rank: 3
-      name: Maria
-      score: 62000
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 891
-    - rank: 4
-      name: Player4
-      score: 122000
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 321
-    - rank: 5
-      name: Player this
-      score: 127000
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 000
-    - rank: 6
-      name: Player6
-      score: 340000
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 321
-    thisPlayer:
-      rank: 2
-      score: 10
-  - technoName: time
-    entries: 'Test LeaderBoard
-
-      Name: time
-
-      1. anonymous: 10
-
-      2.
-      Max: 15
-
-      3. Maria: 23'
-    isDefault: 0
-    isInvertSortOrder: 0
-    decimalOffset: 0
-    type: numeric
-    players:
-    - rank: 1
-      name: anonymous
-      score: 7123
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 789
-    - rank: 2
-      name: Max
-      score: 15321
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 987
-    - rank: 3
-      name: Maria
-      score: 62000
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 891
-    - rank: 4
-      name: Player4
-      score: 122000
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 321
-    - rank: 5
-      name: Player this
-      score: 127000
-      photo: https://justplaygames.ru/public/icon_player.png
-      uniqueID: 000
-    - rank: 6
-      name: Player6
-      score: 340000
       photo: https://justplaygames.ru/public/icon_player.png
       uniqueID: 321
     thisPlayer:

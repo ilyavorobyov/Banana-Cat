@@ -39,9 +39,9 @@ public class BananaCatCollisionHandler : MonoBehaviour
                 _munchFruitSound.PlayDelayed(0);
                 FruitTakenEvent.Invoke();
             }
-            else if(fallingObject is DangerousItem)
+            else if (fallingObject is DangerousItem)
             {
-                if(!_isHelmetTurnOn)
+                if (!_isHelmetTurnOn)
                 {
                     _dieSound.PlayDelayed(0);
                     OpenGameOverPanelEvent?.Invoke();
@@ -53,7 +53,7 @@ public class BananaCatCollisionHandler : MonoBehaviour
                     OnTurnOffHelmet();
                 }
             }
-            else if(fallingObject is NerfItem)
+            else if (fallingObject is NerfItem)
             {
                 _munchBadFoodSound.PlayDelayed(0);
                 BadFoodTakenEvent?.Invoke();

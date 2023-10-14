@@ -19,7 +19,7 @@ public abstract class FallingObject : MonoBehaviour
     {
         _boxCollider = GetComponent<BoxCollider2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        ChooseSprite();
+        OnChooseSprite();
     }
 
     private void Update()
@@ -31,14 +31,14 @@ public abstract class FallingObject : MonoBehaviour
     private void OnEnable()
     {
         BananaCatCollisionHandler.OpenGameOverPanelEvent += OnHideObject;
-        MissedFruitsCounter.MaxFruitsNumberDroppedEvent += ChooseSprite;
+        MissedFruitsCounter.MaxFruitsNumberDroppedEvent += OnChooseSprite;
         GameUI.HideFallingObjects += OnHideObject;
     }
 
     private void OnDisable()
     {
         BananaCatCollisionHandler.OpenGameOverPanelEvent -= OnHideObject;
-        MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= ChooseSprite;
+        MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= OnChooseSprite;
         GameUI.HideFallingObjects -= OnHideObject;
     }
 
@@ -56,10 +56,10 @@ public abstract class FallingObject : MonoBehaviour
     {
         _boxCollider.enabled = false;
         transform.DOScale(Vector3.zero, _hideAnimationDuration).SetLoops(1, LoopType.Yoyo).
-            SetUpdate(true).OnComplete(() => ChooseSprite());
+            SetUpdate(true).OnComplete(() => OnChooseSprite());
     }
 
-    private void ChooseSprite()
+    private void OnChooseSprite()
     {
         gameObject.SetActive(false);
         _spriteRenderer.sprite = _sprites[Random.Range(0, _sprites.Length)];

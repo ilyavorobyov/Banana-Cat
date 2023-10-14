@@ -53,23 +53,23 @@ public abstract class Spawner : MonoBehaviour
     private void OnEnable()
     {
         ScreenEdge.SetSpawnPositions += OnInit;
-        BananaCatCollisionHandler.OpenGameOverPanelEvent += StopCreateObjects;
-        MissedFruitsCounter.MaxFruitsNumberDroppedEvent += StopCreateObjects;
-        GameUI.StartGameEvent += BeginCreateObjects;
-        GameUI.ReviveEvent += BeginCreateObjects;
-        GameUI.GoToMenuEvent += StopCreateObjects;
-        ScoreManager.AddDifficultyEvent += AddDifficulty;
+        BananaCatCollisionHandler.OpenGameOverPanelEvent += OnStopCreateObjects;
+        MissedFruitsCounter.MaxFruitsNumberDroppedEvent += OnStopCreateObjects;
+        GameUI.StartGameEvent += OnBeginCreateObjects;
+        GameUI.ReviveEvent += OnBeginCreateObjects;
+        GameUI.GoToMenuEvent += OnStopCreateObjects;
+        ScoreManager.AddDifficultyEvent += OnAddDifficulty;
     }
 
     private void OnDisable()
     {
         ScreenEdge.SetSpawnPositions -= OnInit;
-        BananaCatCollisionHandler.OpenGameOverPanelEvent -= StopCreateObjects;
-        MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= StopCreateObjects;
-        GameUI.StartGameEvent -= BeginCreateObjects;
-        GameUI.ReviveEvent -= BeginCreateObjects;
-        GameUI.GoToMenuEvent -= StopCreateObjects;
-        ScoreManager.AddDifficultyEvent -= AddDifficulty;
+        BananaCatCollisionHandler.OpenGameOverPanelEvent -= OnStopCreateObjects;
+        MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= OnStopCreateObjects;
+        GameUI.StartGameEvent -= OnBeginCreateObjects;
+        GameUI.ReviveEvent -= OnBeginCreateObjects;
+        GameUI.GoToMenuEvent -= OnStopCreateObjects;
+        ScoreManager.AddDifficultyEvent -= OnAddDifficulty;
     }
 
     private void OnValidate()
@@ -158,15 +158,15 @@ public abstract class Spawner : MonoBehaviour
         return newPositionX;
     }
 
-    private void BeginCreateObjects()
+    private void OnBeginCreateObjects()
     {
         _dropChance = _tempDrop—hance;
         _maxTimeOfSpawn = _tempMaxTimeOfSpawn;
-        StopCreateObjects();
+        OnStopCreateObjects();
         _createObject = StartCoroutine(CreateObjects());
     }
 
-    private void StopCreateObjects()
+    private void OnStopCreateObjects()
     {
         if (_createObject != null)
         {
@@ -195,5 +195,5 @@ public abstract class Spawner : MonoBehaviour
         }
     }
 
-    public abstract void AddDifficulty();
+    public abstract void OnAddDifficulty();
 }

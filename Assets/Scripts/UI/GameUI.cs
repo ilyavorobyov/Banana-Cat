@@ -1,6 +1,5 @@
 using System;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using YG;
@@ -26,6 +25,7 @@ public class GameUI : MonoBehaviour
     [SerializeField] private GameObject _infoPanel;
     [SerializeField] private GameObject _healthBar;
     [SerializeField] private GameObject _leaderboard;
+    [SerializeField] private LeaderboardYG _leaderboardYG;
     [SerializeField] private TMP_Text _scoreText;
     [SerializeField] private TMP_Text _helpFitText;
     [SerializeField] private TMP_Text _desktopControlInstructionsText;
@@ -46,25 +46,6 @@ public class GameUI : MonoBehaviour
     public static Action ShowFullScreenAd;
     public static Action ReviveEvent;
     public static Action GameOverEvent;
-
-    public bool IsPlayed { get; private set; } = false;
-
-    private void OnAfterPluginLoad()
-    {
-        if(YandexGame.savesData.IsAlreadyOpened)
-        {
-            _infoPanel.SetActive(false);
-            ChangeGameStateEvent?.Invoke(false);
-            ShowRequiredButtons(true);
-            _infoPanel.SetActive(false);
-        }
-        else
-        {
-            _infoPanel.SetActive(true);
-            YandexGame.savesData.IsAlreadyOpened = true;
-            YandexGame.SaveProgress();
-        }
-    }
 
     private void OnEnable()
     {
@@ -102,6 +83,23 @@ public class GameUI : MonoBehaviour
         YandexGame.GetDataEvent -= OnAfterPluginLoad;
     }
 
+    private void OnAfterPluginLoad()
+    {
+        if (YandexGame.savesData.IsAlreadyOpened)
+        {
+            _infoPanel.SetActive(false);
+            ChangeGameStateEvent?.Invoke(false);
+            ShowRequiredButtons(true);
+            _infoPanel.SetActive(false);
+        }
+        else
+        {
+            _infoPanel.SetActive(true);
+            YandexGame.savesData.IsAlreadyOpened = true;
+            YandexGame.SaveProgress();
+        }
+    }
+
     private bool CheckAuthorization()
     {
         if (YandexGame.auth)
@@ -112,6 +110,7 @@ public class GameUI : MonoBehaviour
 
     private void OnShowLeaderboard()
     {
+        _leaderboardYG.UpdateLB();
         _uIElementsAnimation.Appear(_leaderboard);
     }
 
@@ -142,7 +141,7 @@ public class GameUI : MonoBehaviour
             _uIElementsAnimation.Disappear(_pausePanel.gameObject);
 
             if (_isMobile)
-                _uIElementsAnimation.Appear(_touchControl.gameObject);
+                _touchControl.gameObject.SetActive(true);
         }
         else
         {
@@ -153,11 +152,10 @@ public class GameUI : MonoBehaviour
             _uIElementsAnimation.Disappear(_helpFitText.gameObject);
 
             if (_isMobile)
-                _uIElementsAnimation.Disappear(_touchControl.gameObject);
+                _touchControl.gameObject.SetActive(false);
         }
 
         _buttonClickSound.PlayDelayed(0);
-        IsPlayed = isPlayed;
     }
 
     private void OnStartButtonClick(bool isRevive)
@@ -177,7 +175,6 @@ public class GameUI : MonoBehaviour
             ReviveEvent?.Invoke();
 
         _buttonClickSound.PlayDelayed(0);
-        IsPlayed = true;
 
         if (_infoPanel.gameObject.activeSelf)
             _uIElementsAnimation.Disappear(_infoPanel.gameObject);
@@ -198,7 +195,6 @@ public class GameUI : MonoBehaviour
         HideFallingObjects?.Invoke();
         Time.timeScale = 0;
         _buttonClickSound.PlayDelayed(0);
-        IsPlayed = false;
     }
 
     private void OnLose()
@@ -215,12 +211,11 @@ public class GameUI : MonoBehaviour
         _uIElementsAnimation.Disappear(_pauseButton.gameObject);
         _uIElementsAnimation.Disappear(_scoreText.gameObject);
         _uIElementsAnimation.Disappear(_helpFitText.gameObject);
-        IsPlayed = false;
 
         if (_isMobile)
-            _uIElementsAnimation.Disappear(_touchControl.gameObject);
+            _touchControl.gameObject.SetActive(false);
 
-        if(_isAdVideoWatched)
+        if (_isAdVideoWatched)
             _gameOverRewardedVideoButton.interactable = false;
         else
             _gameOverRewardedVideoButton.interactable = true;
@@ -250,9 +245,9 @@ public class GameUI : MonoBehaviour
             _uIElementsAnimation.Disappear(_helpFitText.gameObject);
 
             if (_isMobile)
-                _uIElementsAnimation.Disappear(_touchControl.gameObject);
+                _touchControl.gameObject.SetActive(false);
 
-            if(!CheckAuthorization())
+            if (!CheckAuthorization())
                 _uIElementsAnimation.Appear(_loginButton.gameObject);
         }
         else
@@ -270,7 +265,7 @@ public class GameUI : MonoBehaviour
             _uIElementsAnimation.Appear(_healthBar.gameObject);
 
             if (_isMobile)
-                _uIElementsAnimation.Appear(_touchControl.gameObject);
+                _touchControl.gameObject.SetActive(true);
 
             if (!CheckAuthorization())
                 _uIElementsAnimation.Disappear(_loginButton.gameObject);

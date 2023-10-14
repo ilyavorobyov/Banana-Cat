@@ -16,7 +16,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private Color _startingScoreTextColor;
     [SerializeField] private int _scoreDivisor;
 
-    private const string LeaderboardName = "Leaderboard";
+    private const string LeaderboardName = "Leaderboard2";
 
     private int _maxScore;
     private int _score;
@@ -83,10 +83,12 @@ public class ScoreManager : MonoBehaviour
             _maxScoreText.text = _maxScore.ToString();
             _maxScoreImage.gameObject.SetActive(true);
             _maxScoreText.gameObject.SetActive(true);
-            YandexGame.NewLeaderboardScores(LeaderboardName, _score);
             YandexGame.savesData.MaxScore = _score;
             YandexGame.SaveProgress();
+            YandexGame.NewLeaderboardScores(LeaderboardName, _score);
 
+            if (!YandexGame.auth)
+                YandexGame.NewLeaderboardScores(LeaderboardName, _score);
         }
         else
         {

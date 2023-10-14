@@ -21,6 +21,5 @@ public class UserDataReader : MonoBehaviour
     private void GetData()
     {
         MobileDeviceDefineEvent?.Invoke(YandexGame.EnvironmentData.isMobile);
-        Debug.Log("mob eebee");
     }
 }

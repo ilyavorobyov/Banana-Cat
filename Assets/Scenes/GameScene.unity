@@ -1557,7 +1557,7 @@ GameObject:
   - component: {fileID: 275649853}
   - component: {fileID: 275649854}
   m_Layer: 0
-  m_Name: DeviceIdentifier
+  m_Name: UserDataReader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3142,8 +3142,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 73}
-  m_SizeDelta: {x: 290.5308, y: 116.57648}
+  m_AnchoredPosition: {x: 0, y: 97}
+  m_SizeDelta: {x: 363.573, y: 173.07}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &729001602
 MonoBehaviour:
@@ -3930,10 +3930,10 @@ RectTransform:
   m_Father: {fileID: 1845626551}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -116, y: -115}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.50200003, y: 0.41222224}
+  m_AnchoredPosition: {x: 0.005004883, y: 2.2815552}
+  m_SizeDelta: {x: -0.0099487, y: -5.4369}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &828933242
 MonoBehaviour:
@@ -3954,7 +3954,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -3992,14 +3992,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.43137255}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.50980395}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 279d9bac4356ad04ab919eae13bab766, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8215b94ccbe44794e813b293022bb626, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4039,9 +4039,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 828933240}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b24815672fe2f94880044bd1a02aa7f, type: 3}
+  m_Script: {fileID: 11500000, guid: 95ed4b2e6fe8f2142bd589b6867ec940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameUI: {fileID: 1185064124}
+  _startAnimationDuration: 1
 --- !u!1 &845541985
 GameObject:
   m_ObjectHideFlags: 0
@@ -4242,7 +4244,7 @@ GameObject:
   - component: {fileID: 872943501}
   - component: {fileID: 872943500}
   - component: {fileID: 872943499}
-  - component: {fileID: 872943502}
+  - component: {fileID: 872943503}
   m_Layer: 5
   m_Name: JumpButton
   m_TagString: Untagged
@@ -4265,10 +4267,10 @@ RectTransform:
   m_Father: {fileID: 1845626551}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 107}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchorMin: {x: 0, y: 0.41222224}
+  m_AnchorMax: {x: 1, y: 0.74240744}
+  m_AnchoredPosition: {x: 0, y: -1.3891907}
+  m_SizeDelta: {x: 0, y: -2.7112007}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &872943499
 MonoBehaviour:
@@ -4289,7 +4291,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -4327,14 +4329,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.43137255}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.50980395}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 01253afa158d22d4395426b87fce52aa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7b5037af01ff11846bf998cab1b29279, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4352,7 +4354,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 872943496}
   m_CullTransparentMesh: 1
---- !u!114 &872943502
+--- !u!114 &872943503
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4361,9 +4363,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 872943496}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b24815672fe2f94880044bd1a02aa7f, type: 3}
+  m_Script: {fileID: 11500000, guid: 95ed4b2e6fe8f2142bd589b6867ec940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameUI: {fileID: 1185064124}
+  _startAnimationDuration: 1
 --- !u!1 &880589861
 GameObject:
   m_ObjectHideFlags: 0
@@ -4502,8 +4506,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
-  m_fontSizeBase: 45
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4838,10 +4842,10 @@ RectTransform:
   m_Father: {fileID: 1845626551}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 116, y: -115}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 1, y: 0.41222224}
+  m_AnchoredPosition: {x: -0.010009766, y: 2.382019}
+  m_SizeDelta: {x: -0.02, y: -5.239998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1031218502
 MonoBehaviour:
@@ -4862,7 +4866,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -4912,14 +4916,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.43137255}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.50980395}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 42c5f0b6ece06c94c9b420f9a92144b1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4fe210c9ae146fb44a64d53ce10d8637, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4959,9 +4963,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1031218500}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b24815672fe2f94880044bd1a02aa7f, type: 3}
+  m_Script: {fileID: 11500000, guid: 95ed4b2e6fe8f2142bd589b6867ec940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameUI: {fileID: 1185064124}
+  _startAnimationDuration: 1
 --- !u!1 &1081995111
 GameObject:
   m_ObjectHideFlags: 0
@@ -5153,13 +5159,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0423\u043F\u0440\u0430\u0432\u043B\u044F\u0439 \u043A\u043D\u043E\u043F\u043A\u0430\u043C\u0438
-    \u0432 \u043F\u0440\u0430\u0432\u043E\u043C \u043D\u0438\u0436\u043D\u0435\u043C
-    \u0443\u0433\u043B\u0443 \u044D\u043A\u0440\u0430\u043D\u0430!<br>\u0412\u041F\u0420\u0410\u0412\u041E/\u0412\u041B\u0415\u0412\u041E
-    - \u0431\u0435\u0433\u0430\u0442\u044C \u0432 \u0440\u0430\u0437\u043D\u044B\u0435
-    \u0441\u0442\u043E\u0440\u043E\u043D\u044B,<br>\u041A\u043D\u043E\u043F\u043A\u0430
-    \u0441\u043E \u0441\u0442\u0440\u0435\u043B\u043A\u043E\u0439 \u0432\u0432\u0435\u0440\u0445
-    - \u043F\u0440\u044B\u0436\u043E\u043A!"
+  m_text: "\u0423\u043F\u0440\u0430\u0432\u043B\u044F\u0439 \u043D\u0430\u0436\u0430\u0442\u0438\u044F\u043C\u0438
+    \u043D\u0430 \u043E\u0431\u043B\u0430\u0441\u0442\u0438 \u044D\u043A\u0440\u0430\u043D\u0430!<br>\u041F\u0440\u0430\u0432\u044B\u0439
+    \u043D\u0438\u0436\u043D\u0438\u0439 \u0443\u0433\u043E\u043B - \u0431\u0435\u0436\u0430\u0442\u044C
+    \u0432\u043F\u0440\u0430\u0432\u043E<br>\u041B\u0435\u0432\u044B\u0439 \u043D\u0438\u0436\u043D\u0438\u0439
+    \u0443\u0433\u043E\u043B - \u0431\u0435\u0436\u0430\u0442\u044C \u0432\u043B\u0435\u0432\u043E<br>\u0412\u0435\u0440\u0445\u043D\u044F\u044F
+    \u0447\u0430\u0441\u0442\u044C \u044D\u043A\u0440\u0430\u043D\u0430 - \u043F\u0440\u044B\u0436\u043E\u043A!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 09a8257377b26844b924e92f575040e8, type: 2}
   m_sharedMaterial: {fileID: 5673496718320263992, guid: 09a8257377b26844b924e92f575040e8, type: 2}
@@ -5253,25 +5258,25 @@ MonoBehaviour:
   textLComponent: {fileID: 0}
   infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
   text: 
-  ru: "\u0423\u043F\u0440\u0430\u0432\u043B\u044F\u0439 \u043A\u043D\u043E\u043F\u043A\u0430\u043C\u0438
-    \u0432 \u043F\u0440\u0430\u0432\u043E\u043C \u043D\u0438\u0436\u043D\u0435\u043C
-    \u0443\u0433\u043B\u0443 \u044D\u043A\u0440\u0430\u043D\u0430!<br>\u0412\u041F\u0420\u0410\u0412\u041E/\u0412\u041B\u0415\u0412\u041E
-    - \u0431\u0435\u0433\u0430\u0442\u044C \u0432 \u0440\u0430\u0437\u043D\u044B\u0435
-    \u0441\u0442\u043E\u0440\u043E\u043D\u044B,<br>\u041A\u043D\u043E\u043F\u043A\u0430
-    \u0441\u043E \u0441\u0442\u0440\u0435\u043B\u043A\u043E\u0439 \u0432\u0432\u0435\u0440\u0445
-    - \u043F\u0440\u044B\u0436\u043E\u043A!"
-  en: Control the buttons in the lower right corner of the screen!<br>RIGHT/LEFT
-    - run in different directions,<br>Up arrow button - jump!
-  tr: "Ekran\u0131n sa\u011F alt k\xF6\u015Fesindeki d\xFC\u011Fmeleri kontrol edin!<br>SA\u011E/SOL
-    - farkl\u0131 y\xF6nlerde ko\u015Fun,<br>Yukar\u0131 ok d\xFC\u011Fmesi - z\u0131play\u0131n!"
+  ru: "\u0423\u043F\u0440\u0430\u0432\u043B\u044F\u0439 \u043D\u0430\u0436\u0430\u0442\u0438\u044F\u043C\u0438
+    \u043D\u0430 \u043E\u0431\u043B\u0430\u0441\u0442\u0438 \u044D\u043A\u0440\u0430\u043D\u0430!<br>\u041F\u0440\u0430\u0432\u044B\u0439
+    \u043D\u0438\u0436\u043D\u0438\u0439 \u0443\u0433\u043E\u043B - \u0431\u0435\u0436\u0430\u0442\u044C
+    \u0432\u043F\u0440\u0430\u0432\u043E<br>\u041B\u0435\u0432\u044B\u0439 \u043D\u0438\u0436\u043D\u0438\u0439
+    \u0443\u0433\u043E\u043B - \u0431\u0435\u0436\u0430\u0442\u044C \u0432\u043B\u0435\u0432\u043E<br>\u0412\u0435\u0440\u0445\u043D\u044F\u044F
+    \u0447\u0430\u0441\u0442\u044C \u044D\u043A\u0440\u0430\u043D\u0430 - \u043F\u0440\u044B\u0436\u043E\u043A!"
+  en: Control by pressing areas of the screen!<br>Bottom right corner - run right<br>Bottom
+    left corner - run left<br>Top part of the screen - jump!
+  tr: "Ekran\u0131n baz\u0131 b\xF6lgelerine basarak kontrol edin!<br>Sa\u011F alt
+    k\xF6\u015Fe - sa\u011Fa ko\u015Fun<br>Sol alt k\xF6\u015Fe - sola ko\u015Fun<br>Ekran\u0131n
+    \xFCst k\u0131sm\u0131 - z\u0131play\u0131n!"
   az: 
-  be: "\u041A\u0456\u0440\u0443\u0439 \u043A\u043D\u043E\u043F\u043A\u0430\u043C\u0456
-    \u045E \u043F\u0440\u0430\u0432\u044B\u043C \u043D\u0456\u0436\u043D\u0456\u043C
-    \u043A\u0443\u0446\u0435 \u044D\u043A\u0440\u0430\u043D\u0430! \u0423\u043F\u0440\u0430\u0432\u0430
-    / \u043D\u0430\u043B\u0435\u0432\u0430 - \u0431\u0435\u0433\u0430\u0446\u044C
-    \u0443 \u0440\u043E\u0437\u043D\u044B\u044F \u0431\u0430\u043A\u0456, \u041A\u043D\u043E\u043F\u043A\u0430
-    \u0441\u0430 \u0441\u0442\u0440\u044D\u043B\u043A\u0430\u0439 \u0443\u0432\u0435\u0440\u0445
-    - \u0441\u043A\u0430\u0447\u043E\u043A!"
+  be: "\u041A\u0456\u0440\u0443\u0439 \u043D\u0430\u0446\u0456\u0441\u043A\u0430\u043C\u0456
+    \u043D\u0430 \u0432\u043E\u0431\u043B\u0430\u0441\u0446\u0456 \u044D\u043A\u0440\u0430\u043D\u0430!
+    \u041F\u0440\u0430\u0432\u044B \u043D\u0456\u0436\u043D\u0456 \u043A\u0443\u0442
+    - \u0431\u0435\u0433\u0447\u044B \u043D\u0430\u043F\u0440\u0430\u0432\u0430<br>\u041B\u0435\u0432\u044B
+    \u043D\u0456\u0436\u043D\u0456 \u043A\u0443\u0442 - \u0431\u0435\u0433\u0447\u044B
+    \u043D\u0430\u043B\u0435\u0432\u0430<br>\u0412\u0435\u0440\u0445\u043D\u044F\u044F
+    \u0447\u0430\u0441\u0442\u043A\u0430 \u044D\u043A\u0440\u0430\u043D\u0430 - \u0441\u043A\u0430\u0447\u043E\u043A!"
   he: 
   hy: 
   ka: 
@@ -5319,7 +5324,6 @@ GameObject:
   - component: {fileID: 1185064126}
   - component: {fileID: 1185064127}
   - component: {fileID: 1185064128}
-  - component: {fileID: 1185064129}
   m_Layer: 5
   m_Name: CanvasGameUI
   m_TagString: Untagged
@@ -5459,6 +5463,7 @@ MonoBehaviour:
   _infoPanel: {fileID: 1743087171}
   _healthBar: {fileID: 269015855}
   _leaderboard: {fileID: 1189638897}
+  _leaderboardYG: {fileID: 1189638900}
   _scoreText: {fileID: 2025508403}
   _helpFitText: {fileID: 234131292}
   _desktopControlInstructionsText: {fileID: 2053083963}
@@ -5600,34 +5605,6 @@ MonoBehaviour:
   _loginPanel: {fileID: 2068850352}
   _loginButton: {fileID: 80978749}
   _uIElementsAnimation: {fileID: 1185064125}
---- !u!114 &1185064129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1185064119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 423e13a42d313f948a13bcedae13febe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameLB: Leaderboard
-  maxQuantityPlayers: 20
-  quantityTop: 5
-  quantityAround: 6
-  updateLBMethod: 1
-  entriesText: {fileID: 2138231443}
-  advanced: 0
-  rootSpawnPlayersData: {fileID: 0}
-  playerDataPrefab: {fileID: 0}
-  playerPhoto: 1
-  isHiddenPlayerPhoto: {fileID: 0}
-  timeTypeConvert: 0
-  decimalSize: 1
-  onUpdateData:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1189638897 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8721880304222059147, guid: 7e8446452335d9046a7294bf503167e3, type: 3}
@@ -5638,6 +5615,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8721880304222059144, guid: 7e8446452335d9046a7294bf503167e3, type: 3}
   m_PrefabInstance: {fileID: 1753725288}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1189638900 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 564301098111576683, guid: 7e8446452335d9046a7294bf503167e3, type: 3}
+  m_PrefabInstance: {fileID: 1753725288}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189638897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 423e13a42d313f948a13bcedae13febe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1248415014
 GameObject:
   m_ObjectHideFlags: 0
@@ -8937,6 +8925,50 @@ MonoBehaviour:
   processTranslateLabel: 4/4 completed
   componentTextField: 1
   countLang: 4
+--- !u!1 &1625456078
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1625456080}
+  - component: {fileID: 1625456079}
+  m_Layer: 0
+  m_Name: LeaderBoard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1625456079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625456078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 987cf19cecbaec84480edd3b79fac2a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1625456080
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625456078}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -5, z: -1.1647153}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1647367764
 GameObject:
   m_ObjectHideFlags: 0
@@ -9127,20 +9159,32 @@ PrefabInstance:
     m_TransformParent: {fileID: 1185064123}
     m_Modifications:
     - target: {fileID: 564301098111576683, guid: 7e8446452335d9046a7294bf503167e3, type: 3}
-      propertyPath: updateLBMethod
+      propertyPath: nameLB
+      value: Leaderboard2
+      objectReference: {fileID: 0}
+    - target: {fileID: 564301098111576683, guid: 7e8446452335d9046a7294bf503167e3, type: 3}
+      propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 564301098111576683, guid: 7e8446452335d9046a7294bf503167e3, type: 3}
+      propertyPath: updateLBMethod
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8721880304138771489, guid: 7e8446452335d9046a7294bf503167e3, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.12970372
+      value: 0.17511114
+      objectReference: {fileID: 0}
+    - target: {fileID: 8721880304138771489, guid: 7e8446452335d9046a7294bf503167e3, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -6.9048
       objectReference: {fileID: 0}
     - target: {fileID: 8721880304138771489, guid: 7e8446452335d9046a7294bf503167e3, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -10.8688965
+      value: -8.6628
       objectReference: {fileID: 0}
     - target: {fileID: 8721880304138771489, guid: 7e8446452335d9046a7294bf503167e3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -4.5655212
+      value: -5.6686096
       objectReference: {fileID: 0}
     - target: {fileID: 8721880304138771502, guid: 7e8446452335d9046a7294bf503167e3, type: 3}
       propertyPath: m_FontData.m_Font
@@ -9715,10 +9759,10 @@ RectTransform:
   m_Father: {fileID: 1185064123}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -267.5, y: 319.3512}
-  m_SizeDelta: {x: 433.84, y: 430.559}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0.00024414062, y: 0.000061035156}
+  m_SizeDelta: {x: -0.00048828, y: -0.00012207}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1845626552
 MonoBehaviour:
@@ -10123,10 +10167,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041F\u043E\u0441\u043B\u0435 \u0430\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0438\u0438
-    \u0442\u0432\u043E\u0451 \u0438\u043C\u044F \u0438<br> \u0430\u0432\u0430\u0442\u0430\u0440
-    \u0431\u0443\u0434\u0435\u0442 \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0430\u0442\u044C\u0441\u044F
-    \u0432<br>\u043B\u0438\u0434\u0435\u0440\u0431\u043E\u0440\u0434\u0435"
+  m_text: "\u0410\u0432\u0442\u043E\u0440\u0438\u0437\u0443\u0439\u0441\u044F \u0447\u0442\u043E\u0431\u044B<br>\u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442
+    \u0441\u043E\u0445\u0440\u0430\u043D\u0438\u043B\u0441\u044F <br>\u0432 \u043B\u0438\u0434\u0435\u0440\u0431\u043E\u0440\u0434\u0435"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 09a8257377b26844b924e92f575040e8, type: 2}
   m_sharedMaterial: {fileID: 5673496718320263992, guid: 09a8257377b26844b924e92f575040e8, type: 2}
@@ -10220,17 +10262,14 @@ MonoBehaviour:
   textLComponent: {fileID: 0}
   infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
   text: 
-  ru: "\u041F\u043E\u0441\u043B\u0435 \u0430\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0438\u0438
-    \u0442\u0432\u043E\u0451 \u0438\u043C\u044F \u0438<br> \u0430\u0432\u0430\u0442\u0430\u0440
-    \u0431\u0443\u0434\u0435\u0442 \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0430\u0442\u044C\u0441\u044F
-    \u0432<br>\u043B\u0438\u0434\u0435\u0440\u0431\u043E\u0440\u0434\u0435"
-  en: After authorization, your name and<br>avatar will be displayed in<br>the leaderboard
-  tr: "Yetkilendirmeden sonra, ad\u0131n\u0131z ve<br>avatar\u0131n\u0131z skor tablosunda<br>g\xF6r\xFCnt\xFClenecek"
+  ru: "\u0410\u0432\u0442\u043E\u0440\u0438\u0437\u0443\u0439\u0441\u044F \u0447\u0442\u043E\u0431\u044B<br>\u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442
+    \u0441\u043E\u0445\u0440\u0430\u043D\u0438\u043B\u0441\u044F <br>\u0432 \u043B\u0438\u0434\u0435\u0440\u0431\u043E\u0440\u0434\u0435"
+  en: Log in so that<br>the result is saved in the leaderboard
+  tr: "Sonucun skor tablosuna<br> kaydedilmesi i\xE7in giri\u015F yap\u0131n"
   az: 
-  be: "\u041F\u0430\u0441\u043B\u044F \u0430\u045E\u0442\u0430\u0440\u044B\u0437\u0430\u0446\u044B\u0456
-    \u0442\u0432\u0430\u0451 \u0456\u043C\u044F \u0456 \u0430\u0432\u0430\u0442\u0430\u0440
-    \u0431\u0443\u0434\u0437\u0435 \u0430\u0434\u043B\u044E\u0441\u0442\u0440\u043E\u045E\u0432\u0430\u0446\u0446\u0430
-    \u045E \u043B\u0456\u0434\u0430\u0440\u0431\u043E\u0440\u0434\u0437\u0435"
+  be: "\u0410\u045E\u0442\u0430\u0440\u044B\u0437\u0443\u0439\u0441\u044F, \u043A\u0430\u0431
+    \u0432\u044B\u043D\u0456\u043A \u0437\u0430\u0445\u0430\u0432\u0430\u045E\u0441\u044F
+    \u045E \u043B\u0456\u0434\u044D\u0440\u0431\u043E\u0440\u0434\u0437\u0435."
   he: 
   hy: 
   ka: 
@@ -10873,7 +10912,7 @@ MonoBehaviour:
   text: 
   ru: "\u041B\u0438\u0434\u0435\u0440\u0431\u043E\u0440\u0434"
   en: Leaderboard
-  tr: "Liderler S\u0131ralamas\u0131"
+  tr: Liderler
   az: 
   be: "\u041B\u0456\u0434\u044D\u0440\u0431\u043E\u0440\u0434"
   he: 
@@ -11253,7 +11292,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000061035156, y: -0.00048828125}
+  m_AnchoredPosition: {x: 0, y: -0.00048828125}
   m_SizeDelta: {x: 0, y: -0.00097656}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2068850354
@@ -11720,17 +11759,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2137679546}
   m_CullTransparentMesh: 1
---- !u!114 &2138231443 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8721880304138771502, guid: 7e8446452335d9046a7294bf503167e3, type: 3}
-  m_PrefabInstance: {fileID: 1753725288}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2138459466
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public class MissingFruitMark : MonoBehaviour
     {
         _timeFromAppearance += Time.unscaledDeltaTime;
 
-        if(_timeFromAppearance > _lifetime)
+        if (_timeFromAppearance > _lifetime)
             Destroy(gameObject);
     }
 }

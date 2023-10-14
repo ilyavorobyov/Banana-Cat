@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BuffHelmetSpawner : Spawner
 {
-    public override void AddDifficulty()
+    public override void OnAddDifficulty()
     {
         AddDropChance();
     }

@@ -1,7 +1,5 @@
 using DG.Tweening;
-using System.Drawing;
 using UnityEngine;
-using UnityEngine.XR;
 using Color = UnityEngine.Color;
 
 [RequireComponent(typeof(UnityEngine.UI.Image))]

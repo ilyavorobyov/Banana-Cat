@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class FruitSpawner : Spawner
 {
-    public override void AddDifficulty()
+    public override void OnAddDifficulty()
     {
         ReduceMaxSpawnTime();
     }

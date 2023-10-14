@@ -14,15 +14,15 @@ public class ScreenEdge : MonoBehaviour
 
     private void OnEnable()
     {
-        GameUI.StartGameEvent += GetScreenInfo;
+        GameUI.StartGameEvent += OnGetScreenInfo;
     }
 
     private void OnDisable()
     {
-        GameUI.StartGameEvent -= GetScreenInfo;
+        GameUI.StartGameEvent -= OnGetScreenInfo;
     }
 
-    private void GetScreenInfo()
+    private void OnGetScreenInfo()
     {
         float cameraWidth = Camera.main.pixelWidth;
         float cameraHeight = Camera.main.pixelHeight;

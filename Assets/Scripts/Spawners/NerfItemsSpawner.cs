@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class NerfItemsSpawner : Spawner
 {
-    public override void AddDifficulty()
+    public override void OnAddDifficulty()
     {
         AddDropChance();
     }

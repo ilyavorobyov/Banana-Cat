@@ -8,6 +8,6 @@ public class AdErrorText : MonoBehaviour
     private void OnEnable()
     {
         transform.DOScale(Vector3.zero, _hideAnimationDuration).SetLoops(1, LoopType.Yoyo).
-        SetUpdate(true).OnComplete(() => gameObject.SetActive(false)); 
+        SetUpdate(true).OnComplete(() => gameObject.SetActive(false));
     }
 }

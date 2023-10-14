@@ -12,7 +12,7 @@ public class UIElementsAnimation : MonoBehaviour
         float minDuration = 0.2f;
         float maxDuration = 1f;
 
-        if(_appearanceDuration > maxDuration)
+        if (_appearanceDuration > maxDuration)
             _appearanceDuration = maxDuration;
 
         if (_appearanceDuration < minDuration)

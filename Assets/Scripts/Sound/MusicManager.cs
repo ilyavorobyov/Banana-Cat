@@ -24,7 +24,7 @@ public class MusicManager : MonoBehaviour
 
     private void OnMusicSwitch(bool onMenu)
     {
-        if(!onMenu)
+        if (!onMenu)
         {
             _menuMusic.Stop();
             _gameMusic.PlayDelayed(0);

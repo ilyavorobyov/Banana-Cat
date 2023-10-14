@@ -34,7 +34,7 @@ public class HealthBar : MonoBehaviour
         GameUI.StartGameEvent -= OnStartGame;
     }
 
-    public void TakePoint()
+    public void TakeLifePoint()
     {
         _healthBarPoints[_missingPointsNumber].BecomeInactive();
         _missingPointsNumber++;

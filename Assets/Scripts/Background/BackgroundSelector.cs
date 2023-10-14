@@ -14,19 +14,19 @@ public class BackgroundSelector : MonoBehaviour
         ChangeBackground();
     }
 
-    public void ChangeBackground()
+    private void ChangeBackground()
     {
         TurnOffBackgroundElement(_backgrounds, _clouds);
         int backgroundNumber = Random.Range(0, _backgrounds.Length);
         int cloudsNumber = Random.Range(0, _clouds.Length);
 
-        if(!_isBackgroundElementsSelected )
+        if (!_isBackgroundElementsSelected)
         {
             SetBackgroundElements(backgroundNumber, cloudsNumber);
         }
         else
         {
-            while(backgroundNumber == _currentBackgroundNumber)
+            while (backgroundNumber == _currentBackgroundNumber)
             {
                 backgroundNumber = Random.Range(0, _backgrounds.Length);
             }

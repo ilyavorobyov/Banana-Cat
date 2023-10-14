@@ -94,6 +94,8 @@ namespace YG
 
         void OnUpdateLB(LBData lb)
         {
+            Debug.Log("update leaderboard");
+
             if (lb.entries == "initialized")
             {
                 UpdateLB();

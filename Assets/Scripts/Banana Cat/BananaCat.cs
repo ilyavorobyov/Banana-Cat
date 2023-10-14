@@ -27,7 +27,7 @@ public class BananaCat : MonoBehaviour
 
     private void OnDisable()
     {
-        GameUI.ChangeGameStateEvent += OnChangeGameState;
+        GameUI.ChangeGameStateEvent -= OnChangeGameState;
         BananaCatCollisionHandler.BadFoodTakenEvent -= OnBadFoodTaken;
         BananaCatCollisionHandler.FruitTakenEvent -= OnFruitTaken;
     }

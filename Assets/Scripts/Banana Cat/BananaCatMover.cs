@@ -51,7 +51,7 @@ public class BananaCatMover : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _tempSpeed = _speed;
-        BecomeHappy();
+        OnBecomeHappy();
     }
 
     private void Update()
@@ -70,7 +70,7 @@ public class BananaCatMover : MonoBehaviour
         BananaCat.SpeedChangedEvent += OnChangeSpeed;
         GameUI.ChangeGameStateEvent += OnChangeGameState;
         GameUI.StartGameEvent += OnSetStartSpeed;
-        GameUI.GoToMenuEvent += BecomeHappy;
+        GameUI.GoToMenuEvent += OnBecomeHappy;
         TouchControlButton.StopMoveEvent += OnStopMovement;
         TouchControlButton.DirectionChangeEvent += Touch;
         _jumpButton.onClick.AddListener(OnJump);
@@ -87,14 +87,14 @@ public class BananaCatMover : MonoBehaviour
         BananaCat.SpeedChangedEvent -= OnChangeSpeed;
         GameUI.ChangeGameStateEvent -= OnChangeGameState;
         GameUI.StartGameEvent -= OnSetStartSpeed;
-        GameUI.GoToMenuEvent -= BecomeHappy;
+        GameUI.GoToMenuEvent -= OnBecomeHappy;
         TouchControlButton.StopMoveEvent -= OnStopMovement;
         TouchControlButton.DirectionChangeEvent -= Touch;
         _jumpButton.onClick.RemoveListener(OnJump);
         UserDataReader.MobileDeviceDefineEvent -= OnEnablingMobileControl;
     }
 
-    public void BecomeHappy()
+    public void OnBecomeHappy()
     {
         _animator.SetTrigger(HappyAnimationName);
     }
@@ -130,13 +130,13 @@ public class BananaCatMover : MonoBehaviour
 
     private void OnFruitTake()
     {
-        if(_isCanMove)
+        if (_isCanMove)
             _animator.SetTrigger(FruitTakeAnimationName);
     }
 
     private void OnChangeSpeed(bool isIncreased)
     {
-        if(!isIncreased)
+        if (!isIncreased)
             _speed -= _speedChanger;
         else
             _speed += _speedChanger;
@@ -148,7 +148,7 @@ public class BananaCatMover : MonoBehaviour
         {
             _animator.SetTrigger(RunAnimationName);
 
-            if(!_isMobile)
+            if (!_isMobile)
                 _moveDirection = _playerInput.Player.Move.ReadValue<float>();
 
             if (_moveDirection != _stopMoveDirection)

@@ -14,7 +14,7 @@ public class AdController : MonoBehaviour
 
     private void OnEnable()
     {
-        YandexGame.ErrorVideoEvent += OnErrorShowAd; 
+        YandexGame.ErrorVideoEvent += OnErrorShowAd;
         YandexGame.CloseVideoEvent += OnCloseAd;
         GameUI.ShowFullScreenAd += delegate { ShowAd(false); };
         _rewardedVideoButton.onClick.AddListener(delegate { ShowAd(true); });

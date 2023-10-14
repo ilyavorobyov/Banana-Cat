@@ -35,9 +35,9 @@ public class MissedFruitsCounter : MonoBehaviour
         _missingSound.PlayDelayed(0);
         Instantiate(_missingFruitMark, position, Quaternion.identity);
         _fallenFruitsNumber++;
-        _healthBar.TakePoint();
+        _healthBar.TakeLifePoint();
 
-        if(_fallenFruitsNumber >= _healthBar.HealthPoints)
+        if (_fallenFruitsNumber >= _healthBar.HealthPoints)
             MaxFruitsNumberDroppedEvent?.Invoke();
     }
 }
