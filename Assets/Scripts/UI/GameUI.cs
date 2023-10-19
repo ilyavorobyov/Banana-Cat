@@ -30,11 +30,11 @@ public class GameUI : MonoBehaviour
     [SerializeField] private TMP_Text _helpFitText;
     [SerializeField] private TMP_Text _desktopControlInstructionsText;
     [SerializeField] private TMP_Text _mobileControlInstructionsText;
-    [SerializeField] private UIElementsAnimation _uIElementsAnimation;
     [SerializeField] private AudioSource _buttonClickSound;
     [SerializeField] private TouchControl _touchControl;
     [SerializeField] private float _gameOverScreenDelay;
 
+    private UIElementsAnimation _uIElementsAnimation;
     private bool _isMobile = false;
     private bool _isAdVideoWatched = false;
 
@@ -46,6 +46,13 @@ public class GameUI : MonoBehaviour
     public static Action ShowFullScreenAd;
     public static Action ReviveEvent;
     public static Action GameOverEvent;
+
+    public bool IsPaused { get; private set; }
+
+    private void Awake()
+    {
+        _uIElementsAnimation = GetComponent<UIElementsAnimation>();
+    }
 
     private void OnEnable()
     {
@@ -139,6 +146,7 @@ public class GameUI : MonoBehaviour
             ChangeGameStateEvent?.Invoke(true);
             _uIElementsAnimation.Appear(_pauseButton.gameObject);
             _uIElementsAnimation.Disappear(_pausePanel.gameObject);
+            IsPaused = false;
 
             if (_isMobile)
                 _touchControl.gameObject.SetActive(true);
@@ -150,6 +158,7 @@ public class GameUI : MonoBehaviour
             _uIElementsAnimation.Appear(_pausePanel.gameObject);
             _uIElementsAnimation.Disappear(_pauseButton.gameObject);
             _uIElementsAnimation.Disappear(_helpFitText.gameObject);
+            IsPaused = true;
 
             if (_isMobile)
                 _touchControl.gameObject.SetActive(false);
@@ -195,22 +204,27 @@ public class GameUI : MonoBehaviour
         HideFallingObjects?.Invoke();
         Time.timeScale = 0;
         _buttonClickSound.PlayDelayed(0);
+        IsPaused = false;
     }
 
     private void OnLose()
     {
-        Invoke(nameof(ShowGameOverScreen), _gameOverScreenDelay);
+        Invoke(nameof(ShowGameOverPanelButtons), _gameOverScreenDelay);
+        _uIElementsAnimation.Appear(_gameOverPanel.gameObject);
+        _uIElementsAnimation.Disappear(_scoreText.gameObject);
+        _uIElementsAnimation.Disappear(_helpFitText.gameObject);
+        _uIElementsAnimation.Disappear(_pauseButton.gameObject);
         HideFallingObjects?.Invoke();
+        IsPaused = false;
     }
 
-    private void ShowGameOverScreen()
+    private void ShowGameOverPanelButtons()
     {
         ShowFullScreenAd?.Invoke();
         Time.timeScale = 0;
-        _uIElementsAnimation.Appear(_gameOverPanel.gameObject);
-        _uIElementsAnimation.Disappear(_pauseButton.gameObject);
-        _uIElementsAnimation.Disappear(_scoreText.gameObject);
-        _uIElementsAnimation.Disappear(_helpFitText.gameObject);
+        _uIElementsAnimation.Appear(_gameOverPanelRestartButton.gameObject);
+        _uIElementsAnimation.Appear(_gameOverPanelMenuButton.gameObject);
+        _uIElementsAnimation.Appear(_gameOverRewardedVideoButton.gameObject);
 
         if (_isMobile)
             _touchControl.gameObject.SetActive(false);
@@ -269,6 +283,10 @@ public class GameUI : MonoBehaviour
 
             if (!CheckAuthorization())
                 _uIElementsAnimation.Disappear(_loginButton.gameObject);
+
+            _uIElementsAnimation.Disappear(_gameOverPanelRestartButton.gameObject);
+            _uIElementsAnimation.Disappear(_gameOverPanelMenuButton.gameObject);
+            _uIElementsAnimation.Disappear(_gameOverRewardedVideoButton.gameObject);
         }
     }
 

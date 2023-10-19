@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -8,7 +5,6 @@ using DG.Tweening;
 [RequireComponent(typeof(Image))]
 public class MobileDeviceButtonStartAnimation : MonoBehaviour
 {
-    [SerializeField] private GameUI _gameUI;
     [SerializeField] private float _startAnimationDuration;
 
     private Image _buttonImage;

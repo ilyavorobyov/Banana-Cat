@@ -25,8 +25,8 @@ public abstract class Spawner : MonoBehaviour
     private float _xPosition;
     private float _ySpawnPosition;
     private float _lastXPosition;
-    private float _minChanceIncreaseNumber = 1.05f;
-    private float _minSpawnTimeReducer = 0.5f;
+    private float _minChanceIncreaseNumber = 1.02f;
+    private float _minSpawnTimeReducer = 0.2f;
     private int _maxDropChance = 101;
     private int _minDropChance = 10;
     private float _timeOfNewSpawn;
