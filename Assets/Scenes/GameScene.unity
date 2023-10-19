@@ -5461,6 +5461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4410af2927fe9e94a846d5ca1d016f57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bananaCat: {fileID: 1401411414}
   _startButton: {fileID: 741918160}
   _pauseButton: {fileID: 2030150069}
   _resumeButton: {fileID: 158267800}
@@ -8974,66 +8975,6 @@ MonoBehaviour:
   processTranslateLabel: 4/4 completed
   componentTextField: 1
   countLang: 4
---- !u!1 &1625456078
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1625456080}
-  - component: {fileID: 1625456079}
-  m_Layer: 0
-  m_Name: LeaderBoard
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1625456079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1625456078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 423e13a42d313f948a13bcedae13febe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameLB: 
-  maxQuantityPlayers: 20
-  quantityTop: 3
-  quantityAround: 6
-  updateLBMethod: 1
-  entriesText: {fileID: 0}
-  advanced: 0
-  rootSpawnPlayersData: {fileID: 0}
-  playerDataPrefab: {fileID: 0}
-  playerPhoto: 1
-  isHiddenPlayerPhoto: {fileID: 0}
-  timeTypeConvert: 0
-  decimalSize: 1
-  onUpdateData:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!4 &1625456080
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1625456078}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -5, z: -1.1647153}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1647367764
 GameObject:
   m_ObjectHideFlags: 0
@@ -9764,7 +9705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fallingObject: {fileID: 8170214588567042920, guid: 91e6d4a9838275649aed76aa0798158d, type: 3}
   _createdObjectsNumber: 10
-  _dropChance: 70
+  _dropChance: 75.1
   _minFallingSpeed: 2
   _maxFallingSpeed: 3
   _dropChanceMultiplier: 1.03
@@ -11938,4 +11879,3 @@ SceneRoots:
   - {fileID: 275649853}
   - {fileID: 1327016821}
   - {fileID: 647997426}
-  - {fileID: 1625456080}

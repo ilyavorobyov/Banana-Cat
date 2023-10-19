@@ -7,6 +7,7 @@ using YG;
 [RequireComponent(typeof(UIElementsAnimation))]
 public class GameUI : MonoBehaviour
 {
+    [SerializeField] private BananaCat _bananaCat;
     [SerializeField] private Button _startButton;
     [SerializeField] private Button _pauseButton;
     [SerializeField] private Button _resumeButton;
@@ -150,6 +151,11 @@ public class GameUI : MonoBehaviour
 
             if (_isMobile)
                 _touchControl.gameObject.SetActive(true);
+
+            if(_bananaCat.FatLevel > 0)
+            {
+                _uIElementsAnimation.Appear(_helpFitText.gameObject);
+            }
         }
         else
         {
