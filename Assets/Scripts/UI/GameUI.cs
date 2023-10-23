@@ -152,7 +152,7 @@ public class GameUI : MonoBehaviour
             if (_isMobile)
                 _touchControl.gameObject.SetActive(true);
 
-            if(_bananaCat.FatLevel > 0)
+            if (_bananaCat.FatLevel > 0)
             {
                 _uIElementsAnimation.Appear(_helpFitText.gameObject);
             }
