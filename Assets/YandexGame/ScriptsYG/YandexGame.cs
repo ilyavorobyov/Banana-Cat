@@ -909,7 +909,7 @@ namespace YG
         public static void StickyAdActivity(bool activity)
         {
             if (activity) Message("Sticky Ad Show");
-            else Message("Sticky Ad Hide");
+            else Message("Sticky Ad OnHide");
 #if !UNITY_EDITOR
             StickyAdActivityInternal(activity);
 #endif

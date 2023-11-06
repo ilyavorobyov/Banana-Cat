@@ -11,7 +11,7 @@ namespace YG
         public enum CursorVisible
         {
             [InspectorName("Show Cursor")] Show,
-            [InspectorName("Hide Cursor")] Hide
+            [InspectorName("OnHide Cursor")] Hide
         };
 
         [Serializable]

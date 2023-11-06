@@ -11,6 +11,7 @@ public class ScreenEdge : MonoBehaviour
     private float _edgeReducer = 1.3f;
 
     public static Action<float, float, float> SetSpawnPositions;
+    public static Action<float, float> SetSpawnPositionsForBatSpawner;
 
     private void OnEnable()
     {
@@ -32,5 +33,6 @@ public class ScreenEdge : MonoBehaviour
         _firstFrame.transform.position = new Vector3(leftEdge, _firstFrame.transform.position.y, _firstFrame.transform.position.z);
         _secondFrame.transform.position = new Vector3(rightEdge, _secondFrame.transform.position.y, _secondFrame.transform.position.z);
         SetSpawnPositions?.Invoke(leftEdge + _edgeReducer, rightEdge - _edgeReducer, upperEdge);
+        SetSpawnPositionsForBatSpawner?.Invoke(leftEdge, rightEdge);
     }
 }

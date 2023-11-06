@@ -13,8 +13,8 @@ public abstract class Spawner : MonoBehaviour
     [SerializeField] private float _maxFallingSpeed;
     [SerializeField] private float _dropChanceMultiplier;
     [SerializeField] private float _spawnTimeReducer;
-    [SerializeField] private float _minTimeOfSpawn;
-    [SerializeField] private float _maxTimeOfSpawn;
+    [SerializeField] private float _minSpawnTime;
+    [SerializeField] private float _maxSpawnTime;
 
     private List<FallingObject> _fallingObjects = new List<FallingObject>();
     private List<FallingObject> _hiddenObjects = new List<FallingObject>();
@@ -46,7 +46,7 @@ public abstract class Spawner : MonoBehaviour
 
     private void Start()
     {
-        _tempMaxTimeOfSpawn = _maxTimeOfSpawn;
+        _tempMaxTimeOfSpawn = _maxSpawnTime;
         _tempDrop—hance = _dropChance;
     }
 
@@ -97,8 +97,8 @@ public abstract class Spawner : MonoBehaviour
 
     protected void ReduceMaxSpawnTime()
     {
-        if (_maxTimeOfSpawn - _spawnTimeReducer > _minTimeOfSpawn)
-            _maxTimeOfSpawn -= _spawnTimeReducer;
+        if (_maxSpawnTime - _spawnTimeReducer > _minSpawnTime)
+            _maxSpawnTime -= _spawnTimeReducer;
     }
 
     private bool IsCanDropObject()
@@ -161,7 +161,7 @@ public abstract class Spawner : MonoBehaviour
     private void OnBeginCreateObjects()
     {
         _dropChance = _tempDrop—hance;
-        _maxTimeOfSpawn = _tempMaxTimeOfSpawn;
+        _maxSpawnTime = _tempMaxTimeOfSpawn;
         OnStopCreateObjects();
         _createObject = StartCoroutine(CreateObjects());
     }
@@ -176,7 +176,7 @@ public abstract class Spawner : MonoBehaviour
 
     private IEnumerator CreateObjects()
     {
-        _timeOfNewSpawn = Random.Range(_minTimeOfSpawn, _maxTimeOfSpawn);
+        _timeOfNewSpawn = Random.Range(_minSpawnTime, _maxSpawnTime);
 
         var waitForSeconds = new WaitForSeconds(_timeOfNewSpawn);
 
@@ -189,7 +189,7 @@ public abstract class Spawner : MonoBehaviour
                 _spawnPosition = new Vector2(Random.Range(_minXPosition, _maxXPosition), _ySpawnPosition);
                 _xPosition = _spawnPosition.x;
                 TryDropObject();
-                _timeOfNewSpawn = Random.Range(_minTimeOfSpawn, _maxTimeOfSpawn);
+                _timeOfNewSpawn = Random.Range(_minSpawnTime, _maxSpawnTime);
                 CalculateNewXPosition(_xPosition);
             }
         }

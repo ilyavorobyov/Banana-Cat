@@ -41,17 +41,7 @@ public class BananaCatCollisionHandler : MonoBehaviour
             }
             else if (fallingObject is DangerousItem)
             {
-                if (!_isHelmetTurnOn)
-                {
-                    _dieSound.PlayDelayed(0);
-                    OpenGameOverPanelEvent?.Invoke();
-                    OnTurnOffHelmet();
-                }
-                else
-                {
-                    _helmetHitSound.PlayDelayed(0);
-                    OnTurnOffHelmet();
-                }
+                CheckHit();
             }
             else if (fallingObject is NerfItem)
             {
@@ -66,6 +56,27 @@ public class BananaCatCollisionHandler : MonoBehaviour
             }
 
             fallingObject.OnHideObject();
+        }
+
+        if(collision.TryGetComponent(out BatEnemy batEnemy))
+        {
+            CheckHit();
+            batEnemy.Die();
+        }
+    }
+
+    private void CheckHit()
+    {
+        if (!_isHelmetTurnOn)
+        {
+            _dieSound.PlayDelayed(0);
+            OpenGameOverPanelEvent?.Invoke();
+            OnTurnOffHelmet();
+        }
+        else
+        {
+            _helmetHitSound.PlayDelayed(0);
+            OnTurnOffHelmet();
         }
     }
 

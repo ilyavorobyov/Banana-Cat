@@ -883,7 +883,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0.00012207031, y: 0}
+  m_SizeDelta: {x: 0, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &200574383
 MonoBehaviour:
@@ -912,14 +912,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.90588236}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7fe558b8396c97144bb0f1a054948be0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 21e9049c054ff3440b2ba04258bd6e13, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -998,9 +998,9 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 1
+    rgba: 4278190335
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
   m_colorMode: 2
   m_fontColorGradient:
     topLeft: {r: 0.92156863, g: 0.92156863, b: 0.92156863, a: 1}
@@ -2202,7 +2202,7 @@ GameObject:
   - component: {fileID: 493772160}
   - component: {fileID: 493772159}
   m_Layer: 5
-  m_Name: Clouds2
+  m_Name: clouds2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4025,7 +4025,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8215b94ccbe44794e813b293022bb626, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d9bbbaffbbb0a084c8fe2bc81f1b6a39, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4359,7 +4359,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7b5037af01ff11846bf998cab1b29279, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3b4d6351b14ec1e4fbe27c71040a3cb6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4614,7 +4614,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 113.84204, y: 0}
+  m_SizeDelta: {x: 0, y: 49.411743}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &891696761
 MonoBehaviour:
@@ -4655,14 +4655,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8dd56ab74bf3cef48bbda121bd029415, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 004311c3cfb254c49b0b40fa425d54da, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4941,7 +4941,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4fe210c9ae146fb44a64d53ce10d8637, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 306d9e9d6dedff744a3b83f551ebe85c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5656,7 +5656,7 @@ GameObject:
   - component: {fileID: 1248415016}
   - component: {fileID: 1248415015}
   m_Layer: 5
-  m_Name: Clouds4
+  m_Name: clouds4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5710,7 +5710,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: f9ce1f92afa9fdd44bcc0b3e533c5d28, type: 3}
+  m_Texture: {fileID: 2800000, guid: cbfdda1acb88741478df2bfdce6aba59, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -8788,6 +8788,154 @@ RectTransform:
   m_AnchoredPosition: {x: 27.919678, y: -134.83795}
   m_SizeDelta: {x: 1600, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1556836405
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1556836407}
+  - component: {fileID: 1556836406}
+  - component: {fileID: 1556836408}
+  m_Layer: 0
+  m_Name: BatSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1556836406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556836405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98e442c5c344214da053120b82dc8c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bananaCat: {fileID: 1401411414}
+  _minSpawnTime: 9
+  _maxSpawnTime: 18
+  _warningInfoDuration: 2
+  _warningSample: {fileID: 463112592558921294, guid: 63649c15d61e1db488d93f051d93aa5b, type: 3}
+  _batEnemySample: {fileID: 5706385782044116443, guid: 8be9556c4e0ae5e498265eda2d93c275, type: 3}
+  _warningInfoSound: {fileID: 1556836408}
+--- !u!4 &1556836407
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556836405}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1556836408
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556836405}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 5ed6581d62f9075458c9ebb97fc96164, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1582746020
 GameObject:
   m_ObjectHideFlags: 0
@@ -8989,7 +9137,7 @@ GameObject:
   - component: {fileID: 1647367769}
   - component: {fileID: 1647367768}
   m_Layer: 5
-  m_Name: Clouds1
+  m_Name: clouds1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9674,8 +9822,8 @@ MonoBehaviour:
   _maxFallingSpeed: 1.8
   _dropChanceMultiplier: 1.03
   _spawnTimeReducer: 0.2
-  _minTimeOfSpawn: 2
-  _maxTimeOfSpawn: 4
+  _minSpawnTime: 2
+  _maxSpawnTime: 4
 --- !u!4 &1825337739
 Transform:
   m_ObjectHideFlags: 0
@@ -9710,8 +9858,8 @@ MonoBehaviour:
   _maxFallingSpeed: 3
   _dropChanceMultiplier: 1.03
   _spawnTimeReducer: 0.5
-  _minTimeOfSpawn: 3
-  _maxTimeOfSpawn: 6
+  _minSpawnTime: 3
+  _maxSpawnTime: 6
 --- !u!114 &1825337742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9731,8 +9879,8 @@ MonoBehaviour:
   _maxFallingSpeed: 4.5
   _dropChanceMultiplier: 1.03
   _spawnTimeReducer: 0.5
-  _minTimeOfSpawn: 3
-  _maxTimeOfSpawn: 6
+  _minSpawnTime: 3
+  _maxSpawnTime: 6
 --- !u!114 &1825337743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9752,8 +9900,8 @@ MonoBehaviour:
   _maxFallingSpeed: 4
   _dropChanceMultiplier: 1.03
   _spawnTimeReducer: 0.5
-  _minTimeOfSpawn: 6
-  _maxTimeOfSpawn: 9
+  _minSpawnTime: 6
+  _maxSpawnTime: 9
 --- !u!1 &1845626550
 GameObject:
   m_ObjectHideFlags: 0
@@ -10047,7 +10195,7 @@ GameObject:
   - component: {fileID: 1990571698}
   - component: {fileID: 1990571697}
   m_Layer: 5
-  m_Name: Clouds3
+  m_Name: clouds3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11213,7 +11361,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0.00012207031, y: 0}
+  m_SizeDelta: {x: 0, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2062912743
 MonoBehaviour:
@@ -11242,14 +11390,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.90588236}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e3d9def4e7ba1e24eb15b842b6481a4d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a875e389f97a97d4c9479d77df129253, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11386,7 +11534,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 35082fe56225f7d4ab1ada57ad6642c6, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a335fcf1e49f0bb4bb0c955b100c5ce7, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -11482,7 +11630,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ca5eb0a4419024946b97fe5fb31aaf90, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 99a694bf26364da41b2cd127d5ba97bd, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.8
   m_Pitch: 1
@@ -11580,8 +11728,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c797e190955abb64b8ce2bb0a6b58803, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameMusic: {fileID: 2093969648}
-  _menuMusic: {fileID: 2093969649}
+  _gameMusic: {fileID: 2093969649}
+  _menuMusic: {fileID: 2093969648}
 --- !u!4 &2093969651
 Transform:
   m_ObjectHideFlags: 0
@@ -11715,7 +11863,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 36.723267}
+  m_SizeDelta: {x: 0, y: 158.70972}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2137679548
 MonoBehaviour:
@@ -11756,14 +11904,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.8235294}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8f768c9c56471e04098de27c450fe273, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 088585c69da590c499e01bd3e87e07ad, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11870,6 +12018,7 @@ SceneRoots:
   - {fileID: 1810099114}
   - {fileID: 115648660}
   - {fileID: 1825337739}
+  - {fileID: 1556836407}
   - {fileID: 2093969651}
   - {fileID: 1288037396}
   - {fileID: 1081995115}

@@ -132,7 +132,7 @@ MonoBehaviour:
     ka: 0
     et: 0
     fr: 0
-    kk: 0
+    kk: 1
     ky: 0
     lt: 0
     lv: 0
@@ -141,7 +141,7 @@ MonoBehaviour:
     tk: 0
     uk: 0
     uz: 0
-    es: 0
+    es: 1
     pt: 0
     ar: 0
     id: 0
