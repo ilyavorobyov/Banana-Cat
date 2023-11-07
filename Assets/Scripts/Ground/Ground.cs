@@ -25,5 +25,10 @@ public class Ground : MonoBehaviour
         {
             GroundCollisionEvent?.Invoke();
         }
+
+        if(collision.TryGetComponent(out CannonBall cannonBall))
+        {
+            cannonBall.OnHide();
+        }
     }
 }

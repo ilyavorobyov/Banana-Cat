@@ -63,6 +63,12 @@ public class BananaCatCollisionHandler : MonoBehaviour
             CheckHit();
             batEnemy.Die();
         }
+
+        if (collision.TryGetComponent(out CannonBall cannonBall))
+        {
+            CheckHit();
+            cannonBall.OnHide();
+        }
     }
 
     private void CheckHit()

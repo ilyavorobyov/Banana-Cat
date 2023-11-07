@@ -31,7 +31,7 @@ public abstract class Spawner : MonoBehaviour
     private int _minDropChance = 10;
     private float _timeOfNewSpawn;
     private float _tempMaxTimeOfSpawn;
-    private float _tempDrop—hance;
+    private float _tempDropChance;
 
     private Coroutine _createObject;
 
@@ -47,7 +47,7 @@ public abstract class Spawner : MonoBehaviour
     private void Start()
     {
         _tempMaxTimeOfSpawn = _maxSpawnTime;
-        _tempDrop—hance = _dropChance;
+        _tempDropChance = _dropChance;
     }
 
     private void OnEnable()
@@ -160,7 +160,7 @@ public abstract class Spawner : MonoBehaviour
 
     private void OnBeginCreateObjects()
     {
-        _dropChance = _tempDrop—hance;
+        _dropChance = _tempDropChance;
         _maxSpawnTime = _tempMaxTimeOfSpawn;
         OnStopCreateObjects();
         _createObject = StartCoroutine(CreateObjects());

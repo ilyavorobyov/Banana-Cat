@@ -120,10 +120,7 @@ public class BatSpawner : MonoBehaviour
                 yield return waitWarningInfo;
                 _warning.ShowWarningState(false);
                 _batEnemy.SetSpawnState(_batSpawnPosition, isLeftSide);
-
-
                 timeOfNewSpawn = Random.Range(_minSpawnTime, _maxSpawnTime);
-                waitForSeconds = new WaitForSeconds(timeOfNewSpawn);
             }
         }
     }

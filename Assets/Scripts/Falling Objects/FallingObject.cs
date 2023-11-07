@@ -1,5 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
+using UnityEditor;
 
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(BoxCollider2D))]

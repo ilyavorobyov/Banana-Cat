@@ -9,9 +9,11 @@ public class ScreenEdge : MonoBehaviour
 
     private int _numberDecimalPlaces = 2;
     private float _edgeReducer = 1.3f;
+    private float _midpointDivisor = 2f;
 
     public static Action<float, float, float> SetSpawnPositions;
     public static Action<float, float> SetSpawnPositionsForBatSpawner;
+    public static Action<float, float> SetSpawnPositionsForCannon;
 
     private void OnEnable()
     {
@@ -34,5 +36,6 @@ public class ScreenEdge : MonoBehaviour
         _secondFrame.transform.position = new Vector3(rightEdge, _secondFrame.transform.position.y, _secondFrame.transform.position.z);
         SetSpawnPositions?.Invoke(leftEdge + _edgeReducer, rightEdge - _edgeReducer, upperEdge);
         SetSpawnPositionsForBatSpawner?.Invoke(leftEdge, rightEdge);
+        SetSpawnPositionsForCannon?.Invoke(upperEdge, (leftEdge+rightEdge)/_midpointDivisor);
     }
 }
