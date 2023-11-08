@@ -279,6 +279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 115648660}
   - component: {fileID: 115648659}
+  - component: {fileID: 115648661}
   m_Layer: 0
   m_Name: ScoreManager
   m_TagString: Untagged
@@ -306,7 +307,8 @@ MonoBehaviour:
   _maxScoreImage: {fileID: 764677443}
   _newRecordColor: {r: 0.2, g: 1, b: 0.2, a: 1}
   _startingScoreTextColor: {r: 1, g: 1, b: 0, a: 1}
-  _scoreDivisor: 5
+  _scoreDivisor: 6
+  _doubleResultSound: {fileID: 115648661}
 --- !u!4 &115648660
 Transform:
   m_ObjectHideFlags: 0
@@ -322,6 +324,102 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &115648661
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115648658}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 16833ed68f2d0074f814309b6968dd8f, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &122358892
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,7 +582,7 @@ MonoBehaviour:
   ka: 
   et: 
   fr: 
-  kk: 
+  kk: "\u0422\u041E\u049A\u0422\u0410\u0422\u0423"
   ky: 
   lt: 
   lv: 
@@ -492,8 +590,8 @@ MonoBehaviour:
   tg: 
   tk: 
   uk: 
-  uz: 
-  es: 
+  uz: PUZA
+  es: PAUSA
   pt: 
   ar: 
   id: 
@@ -506,9 +604,9 @@ MonoBehaviour:
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 4/4 completed
+  processTranslateLabel: 3/7 completed
   componentTextField: 1
-  countLang: 4
+  countLang: 3
 --- !u!1 &126281571
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,7 +785,8 @@ MonoBehaviour:
   ka: 
   et: 
   fr: 
-  kk: 
+  kk: "\u0436\u0430\u0440\u043D\u0430\u043C\u0430\u043D\u044B \u0436\u04AF\u043A\u0442\u0435\u0443
+    \u049B\u0430\u0442\u0435\u0441\u0456"
   ky: 
   lt: 
   lv: 
@@ -695,8 +794,8 @@ MonoBehaviour:
   tg: 
   tk: 
   uk: 
-  uz: 
-  es: 
+  uz: reklama yuklash xatosi
+  es: error de carga de anuncio
   pt: 
   ar: 
   id: 
@@ -709,9 +808,9 @@ MonoBehaviour:
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 4/4 completed
+  processTranslateLabel: 3/7 completed
   componentTextField: 1
-  countLang: 4
+  countLang: 3
 --- !u!1 &158267799
 GameObject:
   m_ObjectHideFlags: 0
@@ -1561,8 +1660,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190335
-  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 2
   m_fontColorGradient:
@@ -1645,7 +1744,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 796.2113, y: -174.46622}
+  m_AnchoredPosition: {x: 796.2113, y: -243}
   m_SizeDelta: {x: 1512.1226, y: 177.4035}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &234131295
@@ -1677,7 +1776,8 @@ MonoBehaviour:
   ka: 
   et: 
   fr: 
-  kk: 
+  kk: "\u0430\u0440\u044B\u049B\u0442\u0430\u0443 \u04AF\u0448\u0456\u043D \u0436\u0435\u043C\u0456\u0441
+    \u0436\u0435\u04A3\u0456\u0437!"
   ky: 
   lt: 
   lv: 
@@ -1685,8 +1785,8 @@ MonoBehaviour:
   tg: 
   tk: 
   uk: 
-  uz: 
-  es: 
+  uz: vazn yo'qotish uchun meva iste'mol qiling!
+  es: "\xA1Come fruta para adelgazar!"
   pt: 
   ar: 
   id: 
@@ -1699,9 +1799,9 @@ MonoBehaviour:
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 4/4 completed
+  processTranslateLabel: 7/7 completed
   componentTextField: 1
-  countLang: 4
+  countLang: 7
 --- !u!1 &254756607
 GameObject:
   m_ObjectHideFlags: 0
@@ -1736,7 +1836,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 309.0229, y: 134.00003}
+  m_AnchoredPosition: {x: 309.0229, y: 190}
   m_SizeDelta: {x: 262.5463, y: 238.49}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &254756609
@@ -1978,7 +2078,7 @@ MonoBehaviour:
   ka: 
   et: 
   fr: 
-  kk: 
+  kk: "\u041A\u0456\u0440\u0443"
   ky: 
   lt: 
   lv: 
@@ -1986,8 +2086,8 @@ MonoBehaviour:
   tg: 
   tk: 
   uk: 
-  uz: 
-  es: 
+  uz: Tizimga kirish
+  es: Acceso
   pt: 
   ar: 
   id: 
@@ -2000,9 +2100,9 @@ MonoBehaviour:
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 4/4 completed
+  processTranslateLabel: 7/7 completed
   componentTextField: 1
-  countLang: 4
+  countLang: 7
 --- !u!114 &273910455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2322,7 +2422,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -170.99998, y: 134}
+  m_AnchoredPosition: {x: -170.99998, y: 189.99997}
   m_SizeDelta: {x: 693.2417, y: 238.49}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &303095964
@@ -2345,7 +2445,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: "\u041D\u043E\u0432\u044B\u0439 \u0440\u0435\u043A\u043E\u0440\u0434:"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 09a8257377b26844b924e92f575040e8, type: 2}
   m_sharedMaterial: {fileID: 5673496718320263992, guid: 09a8257377b26844b924e92f575040e8, type: 2}
@@ -2438,7 +2538,7 @@ MonoBehaviour:
   uniqueFontTMP: {fileID: 0}
   textLComponent: {fileID: 0}
   infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
-  text: 
+  text: "\u041D\u043E\u0432\u044B\u0439 \u0440\u0435\u043A\u043E\u0440\u0434:"
   ru: "\u041D\u043E\u0432\u044B\u0439 \u0440\u0435\u043A\u043E\u0440\u0434:"
   en: 'New record:'
   tr: 'Yeni Rekor:'
@@ -2449,7 +2549,7 @@ MonoBehaviour:
   ka: 
   et: 
   fr: 
-  kk: 
+  kk: "\u0416\u0430\u04A3\u0430 \u0440\u0435\u043A\u043E\u0440\u0434:"
   ky: 
   lt: 
   lv: 
@@ -2457,8 +2557,8 @@ MonoBehaviour:
   tg: 
   tk: 
   uk: 
-  uz: 
-  es: 
+  uz: 'Yangi rekord:'
+  es: 'Nuevo record:'
   pt: 
   ar: 
   id: 
@@ -2471,9 +2571,9 @@ MonoBehaviour:
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 4/4 completed
+  processTranslateLabel: 7/7 completed
   componentTextField: 1
-  countLang: 4
+  countLang: 7
 --- !u!1 &316485599
 GameObject:
   m_ObjectHideFlags: 0
@@ -2631,7 +2731,7 @@ GameObject:
   - component: {fileID: 460045546}
   - component: {fileID: 460045545}
   m_Layer: 5
-  m_Name: RewardedVideoButton
+  m_Name: ReviveVideoAdButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2654,8 +2754,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 500, y: -142}
-  m_SizeDelta: {x: 400, y: 180}
+  m_AnchoredPosition: {x: 500, y: -31}
+  m_SizeDelta: {x: 380, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &460045545
 MonoBehaviour:
@@ -3006,8 +3106,8 @@ MonoBehaviour:
   _cannonEnemy: {fileID: 208888344}
   _minSpawnTime: 10
   _maxSpawnTime: 18
-  _minCannonAttackDuration: 7
-  _maxCannonAttackDuration: 10
+  _minCannonAttackDuration: 6
+  _maxCannonAttackDuration: 9
 --- !u!4 &598485470
 Transform:
   m_ObjectHideFlags: 0
@@ -3369,7 +3469,7 @@ MonoBehaviour:
   infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
   text: 
   ru: "\u041D\u043E\u0432\u0430\u044F \u0438\u0433\u0440\u0430"
-  en: New game
+  en: A new game
   tr: Yeni bir oyun
   az: 
   be: "\u041D\u043E\u0432\u0430\u044F \u0433\u0443\u043B\u044C\u043D\u044F"
@@ -3378,7 +3478,7 @@ MonoBehaviour:
   ka: 
   et: 
   fr: 
-  kk: 
+  kk: "\u0416\u0430\u04A3\u0430 \u043E\u0439\u044B\u043D"
   ky: 
   lt: 
   lv: 
@@ -3386,8 +3486,8 @@ MonoBehaviour:
   tg: 
   tk: 
   uk: 
-  uz: 
-  es: 
+  uz: Yangi o'yin
+  es: Un nuevo<br>juego
   pt: 
   ar: 
   id: 
@@ -3400,9 +3500,9 @@ MonoBehaviour:
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 4/4 completed
+  processTranslateLabel: 7/7 completed
   componentTextField: 1
-  countLang: 4
+  countLang: 7
 --- !u!1 &687548777
 GameObject:
   m_ObjectHideFlags: 0
@@ -3565,7 +3665,7 @@ MonoBehaviour:
   ka: 
   et: 
   fr: 
-  kk: 
+  kk: "\u0428\u044B\u0493\u0443"
   ky: 
   lt: 
   lv: 
@@ -3573,8 +3673,8 @@ MonoBehaviour:
   tg: 
   tk: 
   uk: 
-  uz: 
-  es: 
+  uz: Tashqariga<br>chiqish
+  es: Salir
   pt: 
   ar: 
   id: 
@@ -3587,9 +3687,9 @@ MonoBehaviour:
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 4/4 completed
+  processTranslateLabel: 3/7 completed
   componentTextField: 1
-  countLang: 4
+  countLang: 3
 --- !u!1 &698320257
 GameObject:
   m_ObjectHideFlags: 0
@@ -3907,8 +4007,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 80}
-  m_SizeDelta: {x: 300, y: 150}
+  m_AnchoredPosition: {x: 0, y: 122}
+  m_SizeDelta: {x: 400, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &741167514
 MonoBehaviour:
@@ -4411,7 +4511,7 @@ MonoBehaviour:
   ka: 
   et: 
   fr: 
-  kk: 
+  kk: "\u0420\u04B1\u049B\u0441\u0430\u0442\u0441\u044B\u0437<br>\u043E\u0439\u043D\u0430\u04A3\u044B\u0437"
   ky: 
   lt: 
   lv: 
@@ -4419,8 +4519,8 @@ MonoBehaviour:
   tg: 
   tk: 
   uk: 
-  uz: 
-  es: 
+  uz: "Ruxsatsiz<br>o\u02BBynang"
+  es: "Juega sin<br>autorizaci\xF3n"
   pt: 
   ar: 
   id: 
@@ -4433,9 +4533,9 @@ MonoBehaviour:
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 4/4 completed
+  processTranslateLabel: 7/7 completed
   componentTextField: 1
-  countLang: 4
+  countLang: 7
 --- !u!114 &805340960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4716,7 +4816,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -171, y: 134.00003}
+  m_AnchoredPosition: {x: -171, y: 190}
   m_SizeDelta: {x: 693.2417, y: 238.49}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &845541987
@@ -4746,7 +4846,7 @@ MonoBehaviour:
   ka: 
   et: 
   fr: 
-  kk: 
+  kk: "\u041D\u04D9\u0442\u0438\u0436\u0435:"
   ky: 
   lt: 
   lv: 
@@ -4754,8 +4854,8 @@ MonoBehaviour:
   tg: 
   tk: 
   uk: 
-  uz: 
-  es: 
+  uz: 'Natija:'
+  es: 'Resultado:'
   pt: 
   ar: 
   id: 
@@ -4768,9 +4868,9 @@ MonoBehaviour:
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 4/4 completed
+  processTranslateLabel: 3/7 completed
   componentTextField: 1
-  countLang: 4
+  countLang: 3
 --- !u!114 &845541988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5067,7 +5167,7 @@ MonoBehaviour:
   ka: 
   et: 
   fr: 
-  kk: 
+  kk: "\u0416\u0430\u0431\u044B\u049B"
   ky: 
   lt: 
   lv: 
@@ -5075,8 +5175,8 @@ MonoBehaviour:
   tg: 
   tk: 
   uk: 
-  uz: 
-  es: 
+  uz: Yopish
+  es: Cerca
   pt: 
   ar: 
   id: 
@@ -5089,9 +5189,9 @@ MonoBehaviour:
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 4/4 completed
+  processTranslateLabel: 7/7 completed
   componentTextField: 1
-  countLang: 4
+  countLang: 7
 --- !u!114 &880589864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5910,7 +6010,14 @@ MonoBehaviour:
   ka: 
   et: 
   fr: 
-  kk: 
+  kk: "\u042D\u043A\u0440\u0430\u043D\u043D\u044B\u04A3 \u0430\u0439\u043C\u0430\u049B\u0442\u0430\u0440\u044B\u043D
+    \u0431\u0430\u0441\u0443 \u0430\u0440\u049B\u044B\u043B\u044B \u0431\u0430\u0441\u049B\u0430\u0440\u044B\u04A3\u044B\u0437!<br>\u0422\u04E9\u043C\u0435\u043D\u0433\u0456
+    \u043E\u04A3 \u0436\u0430\u049B \u0431\u04B1\u0440\u044B\u0448 - \u043E\u04A3\u0493\u0430
+    \u0436\u04AF\u0433\u0456\u0440\u0443<br>\u0422\u04E9\u043C\u0435\u043D\u0433\u0456
+    \u0441\u043E\u043B \u0436\u0430\u049B \u0431\u04B1\u0440\u044B\u0448 - \u0441\u043E\u043B\u0493\u0430
+    \u0436\u04AF\u0433\u0456\u0440\u0443<br>\u042D\u043A\u0440\u0430\u043D\u043D\u044B\u04A3
+    \u0436\u043E\u0493\u0430\u0440\u0493\u044B \u0431\u04E9\u043B\u0456\u0433\u0456
+    - \u0441\u0435\u043A\u0456\u0440\u0443!"
   ky: 
   lt: 
   lv: 
@@ -5918,8 +6025,12 @@ MonoBehaviour:
   tg: 
   tk: 
   uk: 
-  uz: 
-  es: 
+  uz: Ekran qismlarini bosish orqali boshqaring!<br>Pastki o'ng burchak - o'ngga
+    yugurish<br>Pastki chap burchak - chapga yugurish<br>Ekranning yuqori qismi -
+    sakrash!
+  es: "\xA1Controla presionando \xE1reas de la pantalla!<br>Esquina inferior derecha:
+    corre hacia la derecha<br>Esquina inferior izquierda: corre hacia la izquierda<br>Parte
+    superior de la pantalla: \xA1salta!"
   pt: 
   ar: 
   id: 
@@ -5932,9 +6043,9 @@ MonoBehaviour:
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 4/4 completed
+  processTranslateLabel: 7/7 completed
   componentTextField: 1
-  countLang: 4
+  countLang: 7
 --- !u!1 &1185064119
 GameObject:
   m_ObjectHideFlags: 0
@@ -6049,9 +6160,9 @@ RectTransform:
   - {fileID: 1845626551}
   - {fileID: 2053083962}
   - {fileID: 1172989527}
+  - {fileID: 80978747}
   - {fileID: 1743087172}
   - {fileID: 234131294}
-  - {fileID: 80978747}
   - {fileID: 2068850353}
   - {fileID: 1189638898}
   m_Father: {fileID: 0}
@@ -6081,7 +6192,8 @@ MonoBehaviour:
   _loginButton: {fileID: 80978749}
   _gameOverPanelMenuButton: {fileID: 1417647696}
   _gameOverPanelRestartButton: {fileID: 1276468681}
-  _gameOverRewardedVideoButton: {fileID: 460045546}
+  _gameOverPanelReviveVideoAdButton: {fileID: 460045546}
+  _gameOverPanelDoubleScoreVideoAdButton: {fileID: 1251019357}
   _soundSwitchMenuButton: {fileID: 698320260}
   _changeBackgroundElementsButton: {fileID: 936764003}
   _infoPanelButton: {fileID: 741167514}
@@ -6100,6 +6212,7 @@ MonoBehaviour:
   _buttonClickSound: {fileID: 1185064126}
   _touchControl: {fileID: 1845626552}
   _gameOverScreenDelay: 2
+  _uIElementsAnimation: {fileID: 1185064125}
 --- !u!114 &1185064125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6356,6 +6469,140 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1251019354
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1251019355}
+  - component: {fileID: 1251019359}
+  - component: {fileID: 1251019358}
+  - component: {fileID: 1251019357}
+  - component: {fileID: 1251019356}
+  m_Layer: 5
+  m_Name: DoubleScoreVideoAdButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1251019355
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251019354}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2020928141}
+  m_Father: {fileID: 2113085495}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -230}
+  m_SizeDelta: {x: 400, y: 210}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1251019356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251019354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b24815672fe2f94880044bd1a02aa7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1251019357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251019354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1251019358}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1251019358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251019354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.007932901, g: 1, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: d9c087edbbe43ad42b7e4559e6c88132, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1251019359
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251019354}
+  m_CullTransparentMesh: 1
 --- !u!1 &1256334844
 GameObject:
   m_ObjectHideFlags: 0
@@ -6570,8 +6817,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -160}
-  m_SizeDelta: {x: 400, y: 180}
+  m_AnchoredPosition: {x: 0, y: -31}
+  m_SizeDelta: {x: 380, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1276468681
 MonoBehaviour:
@@ -6950,7 +7197,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bbc6d80358dd0a48843f78cae4b5097, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rewardedVideoButton: {fileID: 460045546}
+  _reviveVideoAdButton: {fileID: 460045546}
+  _doubleScoreVideoAdButton: {fileID: 1251019357}
   _rewardAdvErrorText: {fileID: 126281572}
   _reviveSound: {fileID: 1327016822}
 --- !u!4 &1327016821
@@ -7518,7 +7766,7 @@ MonoBehaviour:
   ka: 
   et: 
   fr: 
-  kk: 
+  kk: "\u041E\u0439\u043D\u0430!"
   ky: 
   lt: 
   lv: 
@@ -7526,8 +7774,8 @@ MonoBehaviour:
   tg: 
   tk: 
   uk: 
-  uz: 
-  es: 
+  uz: O'ynang!
+  es: "\xA1Jugar!"
   pt: 
   ar: 
   id: 
@@ -7540,9 +7788,9 @@ MonoBehaviour:
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 4/4 completed
+  processTranslateLabel: 7/7 completed
   componentTextField: 1
-  countLang: 4
+  countLang: 7
 --- !u!1 &1367915064
 GameObject:
   m_ObjectHideFlags: 0
@@ -7629,8 +7877,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 10
@@ -7708,7 +7956,8 @@ MonoBehaviour:
   ka: 
   et: 
   fr: 
-  kk: 
+  kk: "\u041E\u0439\u044B\u043D\u0434\u044B \u0436\u0430\u043B\u0493\u0430\u0441\u0442\u044B\u0440\u0443<br>(\u0436\u0430\u0440\u043D\u0430\u043C\u0430
+    \u049B\u0430\u0440\u0430\u0443)"
   ky: 
   lt: 
   lv: 
@@ -7716,8 +7965,8 @@ MonoBehaviour:
   tg: 
   tk: 
   uk: 
-  uz: 
-  es: 
+  uz: O'yinni davom ettirish<br>(reklamani ko'rish)
+  es: Continuar juego<br>(ver anuncio)
   pt: 
   ar: 
   id: 
@@ -7730,9 +7979,9 @@ MonoBehaviour:
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 4/4 completed
+  processTranslateLabel: 3/7 completed
   componentTextField: 1
-  countLang: 4
+  countLang: 3
 --- !u!1 &1401411408
 GameObject:
   m_ObjectHideFlags: 0
@@ -9026,8 +9275,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -500, y: -160}
-  m_SizeDelta: {x: 400, y: 180}
+  m_AnchoredPosition: {x: -500, y: -31}
+  m_SizeDelta: {x: 380, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1417647696
 MonoBehaviour:
@@ -9297,7 +9546,7 @@ MonoBehaviour:
   ka: 
   et: 
   fr: 
-  kk: 
+  kk: "\u0416\u0430\u043B\u0493\u0430\u0441\u0442\u044B\u0440\u0443"
   ky: 
   lt: 
   lv: 
@@ -9305,8 +9554,8 @@ MonoBehaviour:
   tg: 
   tk: 
   uk: 
-  uz: 
-  es: 
+  uz: Davom eting
+  es: Continuar
   pt: 
   ar: 
   id: 
@@ -9319,9 +9568,9 @@ MonoBehaviour:
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 0/4 completed
+  processTranslateLabel: 3/7 completed
   componentTextField: 1
-  countLang: 0
+  countLang: 3
 --- !u!1 &1474776870
 GameObject:
   m_ObjectHideFlags: 0
@@ -9431,7 +9680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bananaCat: {fileID: 1401411414}
-  _minSpawnTime: 16
+  _minSpawnTime: 12
   _maxSpawnTime: 22
   _warningInfoDuration: 2
   _warningSample: {fileID: 463112592558921294, guid: 63649c15d61e1db488d93f051d93aa5b, type: 3}
@@ -9710,7 +9959,7 @@ MonoBehaviour:
   ka: 
   et: 
   fr: 
-  kk: 
+  kk: "\u0428\u044B\u0493\u0443"
   ky: 
   lt: 
   lv: 
@@ -9718,8 +9967,8 @@ MonoBehaviour:
   tg: 
   tk: 
   uk: 
-  uz: 
-  es: 
+  uz: Tashqariga<br>chiqish
+  es: Salir
   pt: 
   ar: 
   id: 
@@ -9732,9 +9981,9 @@ MonoBehaviour:
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 4/4 completed
+  processTranslateLabel: 3/7 completed
   componentTextField: 1
-  countLang: 4
+  countLang: 3
 --- !u!1 &1647367764
 GameObject:
   m_ObjectHideFlags: 0
@@ -9871,10 +10120,10 @@ RectTransform:
   - {fileID: 741167513}
   m_Father: {fileID: 1185064123}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -0.49996, y: 351}
-  m_SizeDelta: {x: 1185, y: 493}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -90.71643}
+  m_SizeDelta: {x: -0.00024414, y: -181.4327}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1743087173
 MonoBehaviour:
@@ -10512,8 +10761,8 @@ MonoBehaviour:
   _maxFallingSpeed: 4
   _dropChanceMultiplier: 1.03
   _spawnTimeReducer: 0.5
-  _minSpawnTime: 6
-  _maxSpawnTime: 9
+  _minSpawnTime: 7
+  _maxSpawnTime: 10
 --- !u!1 &1845626550
 GameObject:
   m_ObjectHideFlags: 0
@@ -10623,19 +10872,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "   \u0418\u0433\u0440\u0430\u0439 \u043A\u043E\u0442\u043E\u043C-\u0431\u0430\u043D\u0430\u043D\u043E\u043C,
-    \u0441\u043E\u0431\u0438\u0440\u0430\u0439 \u0444\u0440\u0443\u043A\u0442\u044B
-    \u0438 \u0438\u0437\u0431\u0435\u0433\u0430\u0439\u0442\u0435 \u043E\u043F\u0430\u0441\u043D\u044B\u0445
-    \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u043E\u0432.<br>   \u0418\u0433\u0440\u0430
-    \u0437\u0430\u043A\u043E\u043D\u0447\u0438\u0442\u0441\u044F, \u0435\u0441\u043B\u0438
-    \u043E\u043F\u0430\u0441\u043D\u044B\u0439 \u043F\u0440\u0435\u0434\u043C\u0435\u0442
-    \u0443\u043F\u0430\u0434\u0435\u0442 \u043D\u0430 \u043A\u043E\u0442\u0430 \u0438\u043B\u0438
-    \u0442\u0440\u0438 \u0444\u0440\u0443\u043A\u0442\u0430 \u0443\u043F\u0430\u0434\u0443\u0442
-    \u043D\u0430 \u0437\u0435\u043C\u043B\u044E.<br>   \u0418\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439
-    \u043A\u0430\u0441\u043A\u0443 \u0434\u043B\u044F \u0437\u0430\u0449\u0438\u0442\u044B
-    \u0438 \u0441\u0442\u0430\u0440\u0430\u0439\u0441\u044F \u0441\u043E\u0431\u0440\u0430\u0442\u044C
-    \u043A\u0430\u043A \u043C\u043E\u0436\u043D\u043E \u0431\u043E\u043B\u044C\u0448\u0435
-    \u0444\u0440\u0443\u043A\u0442\u043E\u0432."
+  m_text: "\u0418\u0433\u0440\u0430\u0439 \u043A\u043E\u0442\u043E\u043C-\u0431\u0430\u043D\u0430\u043D\u043E\u043C
+    \u0438 \u0441\u043E\u0431\u0438\u0440\u0430\u0439 \u0444\u0440\u0443\u043A\u0442\u044B,
+    \u0438\u0437\u0431\u0435\u0433\u0430\u044F \u043E\u043F\u0430\u0441\u043D\u044B\u0445
+    \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u043E\u0432.<br>\u041D\u0435 \u0431\u0435\u0440\u0438
+    \u0432\u0440\u0435\u0434\u043D\u0443\u044E \u043F\u0438\u0449\u0443 \u0438 \u043D\u0435
+    \u0440\u043E\u043D\u044F\u0439 \u0444\u0440\u0443\u043A\u0442\u044B!<br>\u0411\u0435\u0440\u0438
+    \u043A\u0430\u0441\u043A\u0443 \u0434\u043B\u044F \u0437\u0430\u0449\u0438\u0442\u044B<br>\u041D\u0430\u0436\u0430\u0442\u0438\u0435
+    \u043D\u0430 \u043D\u0435\u043A\u043E\u0442\u043E\u0440\u044B\u0445 \u0432\u0440\u0430\u0433\u043E\u0432
+    \u043F\u0440\u043E\u0433\u043E\u043D\u044F\u0435\u0442 \u0438\u0445!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 09a8257377b26844b924e92f575040e8, type: 2}
   m_sharedMaterial: {fileID: 5673496718320263992, guid: 09a8257377b26844b924e92f575040e8, type: 2}
@@ -10662,14 +10907,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38
-  m_fontSizeBase: 38
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -10729,46 +10974,50 @@ MonoBehaviour:
   textLComponent: {fileID: 0}
   infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
   text: 
-  ru: "\u0418\u0433\u0440\u0430\u0439 \u043A\u043E\u0442\u043E\u043C-\u0431\u0430\u043D\u0430\u043D\u043E\u043C,
-    \u0441\u043E\u0431\u0438\u0440\u0430\u0439 \u0444\u0440\u0443\u043A\u0442\u044B
-    \u0438 \u0438\u0437\u0431\u0435\u0433\u0430\u0439\u0442\u0435 \u043E\u043F\u0430\u0441\u043D\u044B\u0445
-    \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u043E\u0432.<br>   \u0418\u0433\u0440\u0430
-    \u0437\u0430\u043A\u043E\u043D\u0447\u0438\u0442\u0441\u044F, \u0435\u0441\u043B\u0438
-    \u043E\u043F\u0430\u0441\u043D\u044B\u0439 \u043F\u0440\u0435\u0434\u043C\u0435\u0442
-    \u0443\u043F\u0430\u0434\u0435\u0442 \u043D\u0430 \u043A\u043E\u0442\u0430 \u0438\u043B\u0438
-    \u0442\u0440\u0438 \u0444\u0440\u0443\u043A\u0442\u0430 \u0443\u043F\u0430\u0434\u0443\u0442
-    \u043D\u0430 \u0437\u0435\u043C\u043B\u044E.<br>   \u0418\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439
-    \u043A\u0430\u0441\u043A\u0443 \u0434\u043B\u044F \u0437\u0430\u0449\u0438\u0442\u044B
-    \u0438 \u0441\u0442\u0430\u0440\u0430\u0439\u0441\u044F \u0441\u043E\u0431\u0440\u0430\u0442\u044C
-    \u043A\u0430\u043A \u043C\u043E\u0436\u043D\u043E \u0431\u043E\u043B\u044C\u0448\u0435
-    \u0444\u0440\u0443\u043A\u0442\u043E\u0432."
-  en: Play as a banana cat, collect fruits and avoid dangerous objects.<br> The game
-    will end if a dangerous object falls on the cat or three fruits fall to the ground.<br>
-    Use a helmet for protection and try to collect as many fruits as possible.
-  tr: "Muz kedisi olarak oynay\u0131n, meyve toplay\u0131n ve tehlikeli nesnelerden
-    ka\xE7\u0131n\u0131n.<br> Kedinin \xFCzerine tehlikeli bir nesne d\xFC\u015Ferse
-    veya \xFC\xE7 meyve yere d\xFC\u015Ferse oyun sona erer.<br> Koruma i\xE7in bir
-    kask kullan\u0131n ve m\xFCmk\xFCn oldu\u011Funca \xE7ok meyve toplamaya \xE7al\u0131\u015F\u0131n
-    m\xFCmk\xFCn oldu\u011Funca meyve"
+  ru: "\u0418\u0433\u0440\u0430\u0439 \u043A\u043E\u0442\u043E\u043C-\u0431\u0430\u043D\u0430\u043D\u043E\u043C
+    \u0438 \u0441\u043E\u0431\u0438\u0440\u0430\u0439 \u0444\u0440\u0443\u043A\u0442\u044B,
+    \u0438\u0437\u0431\u0435\u0433\u0430\u044F \u043E\u043F\u0430\u0441\u043D\u044B\u0445
+    \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u043E\u0432.<br>\u041D\u0435 \u0431\u0435\u0440\u0438
+    \u0432\u0440\u0435\u0434\u043D\u0443\u044E \u043F\u0438\u0449\u0443 \u0438 \u043D\u0435
+    \u0440\u043E\u043D\u044F\u0439 \u0444\u0440\u0443\u043A\u0442\u044B!<br>\u0411\u0435\u0440\u0438
+    \u043A\u0430\u0441\u043A\u0443 \u0434\u043B\u044F \u0437\u0430\u0449\u0438\u0442\u044B<br>\u041D\u0430\u0436\u0430\u0442\u0438\u0435
+    \u043D\u0430 \u043D\u0435\u043A\u043E\u0442\u043E\u0440\u044B\u0445 \u0432\u0440\u0430\u0433\u043E\u0432
+    \u043F\u0440\u043E\u0433\u043E\u043D\u044F\u0435\u0442 \u0438\u0445!"
+  en: Play as a banana cat and collect fruits while avoiding dangerous objects.<br>Don't
+    pick up junk food or drop fruits!<br>Take a helmet for protection<br>Clicking
+    on some enemies will drive them away!
+  tr: "Muz kedisi gibi oynay\u0131n ve tehlikeli nesnelerden ka\xE7\u0131narak meyve
+    toplay\u0131n.<br>Abur cubur almay\u0131n veya meyve d\xFC\u015F\xFCrmeyin!<br>Korunmak
+    i\xE7in bir kask al\u0131n<br>Baz\u0131 d\xFC\u015Fmanlara t\u0131klamak onlar\u0131
+    uzakla\u015Ft\u0131r\u0131r!"
   az: 
-  be: "\u0413\u0443\u043B\u044F\u0439 \u043A\u0430\u0442\u043E\u043C-\u0431\u0430\u043D\u0430\u043D\u0430\u043C,
-    \u0437\u0431\u0456\u0440\u0430\u0439 \u0441\u0430\u0434\u0430\u0432\u0456\u043D\u0443
-    \u0456 \u043F\u0430\u0437\u0431\u044F\u0433\u0430\u0439\u0446\u0435 \u043D\u0435\u0431\u044F\u0441\u043F\u0435\u0447\u043D\u044B\u0445
-    \u043F\u0440\u0430\u0434\u043C\u0435\u0442\u0430\u045E. \u0413\u0443\u043B\u044C\u043D\u044F
-    \u0441\u043A\u043E\u043D\u0447\u044B\u0446\u0446\u0430, \u043A\u0430\u043B\u0456
-    \u043D\u0435\u0431\u044F\u0441\u043F\u0435\u0447\u043D\u044B \u043F\u0440\u0430\u0434\u043C\u0435\u0442
-    \u0443\u043F\u0430\u0434\u0437\u0435 \u043D\u0430 \u043A\u0430\u0442\u0430 \u0446\u0456
-    \u0442\u0440\u044B \u0441\u0430\u0434\u0430\u0432\u0456\u043D\u044B \u045E\u043F\u0430\u0434\u0443\u0446\u044C
-    \u043D\u0430 \u0437\u044F\u043C\u043B\u044E. \u0412\u044B\u043A\u0430\u0440\u044B\u0441\u0442\u043E\u045E\u0432\u0430\u0439
-    \u043A\u0430\u0441\u043A\u0443 \u0434\u043B\u044F \u0430\u0431\u0430\u0440\u043E\u043D\u044B
-    \u0456 \u0441\u0442\u0430\u0440\u0430\u0439\u0441\u044F \u0441\u0430\u0431\u0440\u0430\u0446\u044C
-    \u044F\u043A \u043C\u0430\u0433\u0430 \u0431\u043E\u043B\u044C\u0448 \u0441\u0430\u0434\u0430\u0432\u0456\u043D\u044B."
+  be: "\u0413\u0443\u043B\u044F\u0439 \u043A\u0430\u0442\u043E\u043C-\u0431\u0430\u043D\u0430\u043D\u0430\u043C
+    \u0456 \u0437\u0431\u0456\u0440\u0430\u0439 \u0441\u0430\u0434\u0430\u0432\u0456\u043D\u0443,
+    \u043F\u0430\u0437\u0431\u044F\u0433\u0430\u044E\u0447\u044B \u043D\u0435\u0431\u044F\u0441\u043F\u0435\u0447\u043D\u044B\u0445
+    \u043F\u0440\u0430\u0434\u043C\u0435\u0442\u0430\u045E. \u041D\u0435 \u0431\u044F\u0440\u044B
+    \u0448\u043A\u043E\u0434\u043D\u0443\u044E \u0435\u0436\u0443 \u0456 \u043D\u0435
+    \u0433\u0443\u0431\u043B\u044F\u0439 \u0441\u0430\u0434\u0430\u0432\u0456\u043D\u0443!
+    \u0411\u044F\u0440\u044B \u043A\u0430\u0441\u043A\u0443 \u0434\u043B\u044F \u0430\u0431\u0430\u0440\u043E\u043D\u044B
+    \u041D\u0430\u0446\u0456\u0441\u043A \u043D\u0430 \u043D\u0435\u043A\u0430\u0442\u043E\u0440\u044B\u0445
+    \u0432\u043E\u0440\u0430\u0433\u0430\u045E \u043F\u0440\u0430\u0433\u0430\u043D\u044F\u0435
+    \u0456\u0445!"
   he: 
   hy: 
   ka: 
   et: 
   fr: 
-  kk: 
+  kk: "\u049A\u0430\u0443\u0456\u043F\u0442\u0456 \u0437\u0430\u0442\u0442\u0430\u0440\u0434\u0430\u043D
+    \u0430\u0443\u043B\u0430\u049B \u0431\u043E\u043B\u0430 \u043E\u0442\u044B\u0440\u044B\u043F,
+    \u0431\u0430\u043D\u0430\u043D \u043C\u044B\u0441\u044B\u049B\u0442\u0430\u0440\u044B
+    \u0440\u0435\u0442\u0456\u043D\u0434\u0435 \u043E\u0439\u043D\u0430\u04A3\u044B\u0437
+    \u0436\u04D9\u043D\u0435 \u0436\u0435\u043C\u0456\u0441\u0442\u0435\u0440\u0434\u0456
+    \u0436\u0438\u043D\u0430\u04A3\u044B\u0437.<br>\u049A\u0430\u0443\u0456\u043F\u0441\u0456\u0437
+    \u0442\u0430\u043C\u0430\u049B\u0442\u0430\u0440\u0434\u044B \u0430\u043B\u043C\u0430\u04A3\u044B\u0437
+    \u043D\u0435\u043C\u0435\u0441\u0435 \u0436\u0435\u043C\u0456\u0441\u0442\u0435\u0440\u0434\u0456
+    \u0442\u04AF\u0441\u0456\u0440\u043C\u0435\u04A3\u0456\u0437!<br>\u049A\u043E\u0440\u0493\u0430\u043D\u044B\u0441
+    \u04AF\u0448\u0456\u043D \u0434\u0443\u043B\u044B\u0493\u0430 \u0430\u043B\u044B\u04A3\u044B\u0437<br>\u041A\u0435\u0439\u0431\u0456\u0440
+    \u0436\u0430\u0443\u043B\u0430\u0440\u0434\u044B \u0431\u0430\u0441\u0443 \u043E\u043B\u0430\u0440\u0434\u044B
+    \u049B\u0443\u044B\u043F \u0436\u0456\u0431\u0435\u0440\u0435\u0434\u0456!"
   ky: 
   lt: 
   lv: 
@@ -10776,8 +11025,12 @@ MonoBehaviour:
   tg: 
   tk: 
   uk: 
-  uz: 
-  es: 
+  uz: Banan mushuki sifatida o'ynang va xavfli narsalardan qochib, mevalarni yig'ing.<br>Arzimas
+    ovqatlarni olmang yoki mevalarni tashlamang!<br>Himoya uchun dubulg'a oling<br>Ba'zi
+    dushmanlarni bosish ularni haydab chiqaradi!
+  es: "Juega como un gato banana y recolecta frutas mientras evitas objetos peligrosos.<br>\xA1No
+    recojas comida chatarra ni dejes caer frutas!<br>Toma un casco para protegerte<br>\xA1Hacer
+    clic en algunos enemigos los ahuyentar\xE1!"
   pt: 
   ar: 
   id: 
@@ -10790,9 +11043,9 @@ MonoBehaviour:
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 4/4 completed
+  processTranslateLabel: 7/7 completed
   componentTextField: 1
-  countLang: 4
+  countLang: 7
 --- !u!1 &1990571696
 GameObject:
   m_ObjectHideFlags: 0
@@ -10955,7 +11208,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u0412\u043E\u0439\u0434\u0438\u0442\u0435 \u0441 \u043B\u043E\u0433\u0438\u043D\u043E\u043C,
     \u0447\u0442\u043E\u0431\u044B<br>\u0442\u0432\u043E\u0439 \u043B\u0443\u0447\u0448\u0438\u0439
-    \u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442 <br> \u0441\u043E\u0445\u0440\u0430\u043D\u0438\u043B\u0441\u044F
+    \u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442<br>\u0441\u043E\u0445\u0440\u0430\u043D\u0438\u043B\u0441\u044F
     \u0432 \u043B\u0438\u0434\u0435\u0440\u0431\u043E\u0440\u0434\u0435"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 09a8257377b26844b924e92f575040e8, type: 2}
@@ -11019,7 +11272,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0.16149907, y: 0, z: -1.8603058, w: 0}
+  m_margin: {x: 0.16149907, y: 0, z: -1.8603058, w: -34.679474}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -11052,21 +11305,23 @@ MonoBehaviour:
   text: 
   ru: "\u0412\u043E\u0439\u0434\u0438\u0442\u0435 \u0441 \u043B\u043E\u0433\u0438\u043D\u043E\u043C,
     \u0447\u0442\u043E\u0431\u044B<br>\u0442\u0432\u043E\u0439 \u043B\u0443\u0447\u0448\u0438\u0439
-    \u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442 <br> \u0441\u043E\u0445\u0440\u0430\u043D\u0438\u043B\u0441\u044F
+    \u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442<br>\u0441\u043E\u0445\u0440\u0430\u043D\u0438\u043B\u0441\u044F
     \u0432 \u043B\u0438\u0434\u0435\u0440\u0431\u043E\u0440\u0434\u0435"
-  en: Log in with your login to <br>your best result be saved<br>in the leaderboard
-  tr: "En iyi sonucunuzun <br> skor tablosuna kaydedilmesi i\xE7in<br>giri\u015F
-    bilgilerinizle giri\u015F yap\u0131n"
+  en: Log in with your login so that<br>your best result<br>is saved in the leaderboard
+  tr: "En iyi sonucunuzun<br>skor tablosuna kaydedilmesi i\xE7in giri\u015F bilgilerinizle
+    giri\u015F yap\u0131n"
   az: 
-  be: "\u0423\u0432\u0430\u0439\u0434\u0437\u0456\u0446\u0435 \u0437 \u043B\u0430\u0433\u0456\u043D\u0430\u043C,<br>
-    \u043A\u0430\u0431 \u0442\u0432\u043E\u0439 \u043B\u0435\u043F\u0448\u044B \u0432\u044B\u043D\u0456\u043A<br>\u0437\u0430\u0445\u0430\u0432\u0430\u045E\u0441\u044F
-    \u045E \u043B\u0456\u0434\u044D\u0440\u0431\u043E\u0440\u0434\u0437\u0435"
+  be: "\u0423\u0432\u0430\u0439\u0434\u0437\u0456\u0446\u0435 \u0437 \u043B\u0430\u0433\u0456\u043D\u0430\u043C,
+    \u043A\u0430\u0431 \u0442\u0432\u043E\u0439 \u043B\u0435\u043F\u0448\u044B \u0432\u044B\u043D\u0456\u043A
+    \u0437\u0430\u0445\u0430\u0432\u0430\u045E\u0441\u044F \u045E \u043B\u0456\u0434\u044D\u0440\u0431\u043E\u0440\u0434\u0437\u0435"
   he: 
   hy: 
   ka: 
   et: 
   fr: 
-  kk: 
+  kk: "\u0415\u04A3 \u0436\u0430\u049B\u0441\u044B \u043D\u04D9\u0442\u0438\u0436\u0435<br>\u043A\u04E9\u0448\u0431\u0430\u0441\u0448\u044B\u043B\u0430\u0440
+    \u0442\u0430\u049B\u0442\u0430\u0441\u044B\u043D\u0434\u0430 \u0441\u0430\u049B\u0442\u0430\u043B\u0443\u044B
+    \u04AF\u0448\u0456\u043D \u043B\u043E\u0433\u0438\u043D\u043C\u0435\u043D \u043A\u0456\u0440\u0456\u04A3\u0456\u0437"
   ky: 
   lt: 
   lv: 
@@ -11074,8 +11329,10 @@ MonoBehaviour:
   tg: 
   tk: 
   uk: 
-  uz: 
-  es: 
+  uz: O'z loginingiz bilan tizimga kiring, shunda<br>sizning eng yaxshi natijangiz<br>pesharlar
+    jadvalida saqlanadi
+  es: "Inicie sesi\xF3n con su nombre de usuario para que<br>su mejor resultado<br>se
+    guarde en la tabla de clasificaci\xF3n"
   pt: 
   ar: 
   id: 
@@ -11088,9 +11345,9 @@ MonoBehaviour:
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 4/4 completed
+  processTranslateLabel: 7/7 completed
   componentTextField: 1
-  countLang: 4
+  countLang: 7
 --- !u!1 &2000788243
 GameObject:
   m_ObjectHideFlags: 0
@@ -11148,7 +11405,7 @@ MonoBehaviour:
   text: 
   ru: "\u0410\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0438\u044F"
   en: Authorization
-  tr: yetki
+  tr: Yetki
   az: 
   be: "\u0410\u045E\u0442\u0430\u0440\u044B\u0437\u0430\u0446\u044B\u044F"
   he: 
@@ -11156,7 +11413,7 @@ MonoBehaviour:
   ka: 
   et: 
   fr: 
-  kk: 
+  kk: "\u0410\u0432\u0442\u043E\u0440\u0438\u0437\u0430\u0446\u0438\u044F"
   ky: 
   lt: 
   lv: 
@@ -11164,8 +11421,8 @@ MonoBehaviour:
   tg: 
   tk: 
   uk: 
-  uz: 
-  es: 
+  uz: Ruxsat
+  es: "Autorizaci\xF3n"
   pt: 
   ar: 
   id: 
@@ -11178,9 +11435,9 @@ MonoBehaviour:
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 4/4 completed
+  processTranslateLabel: 7/7 completed
   componentTextField: 1
-  countLang: 4
+  countLang: 7
 --- !u!114 &2000788246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11278,6 +11535,198 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2000788243}
   m_CullTransparentMesh: 1
+--- !u!1 &2020928140
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2020928141}
+  - component: {fileID: 2020928144}
+  - component: {fileID: 2020928143}
+  - component: {fileID: 2020928145}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2020928141
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020928140}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1251019355}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.07666667, y: 0.1911428}
+  m_AnchorMax: {x: 0.9175001, y: 0.88000005}
+  m_AnchoredPosition: {x: 3.1284943, y: 4.414398}
+  m_SizeDelta: {x: 37.7146, y: 25.087399}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2020928143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020928140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: "\u0423\u0434\u0432\u043E\u0438\u0442\u044C \u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442<br>(\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C
+    \u0440\u0435\u043A\u043B\u0430\u043C\u0443)"
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 09a8257377b26844b924e92f575040e8, type: 2}
+  m_sharedMaterial: {fileID: 5673496718320263992, guid: 09a8257377b26844b924e92f575040e8, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 28
+  m_fontSizeBase: 28
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 10
+  m_fontSizeMax: 40
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 0
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 6.5390625, y: 5.271042, z: 11.710876, w: 0.19717412}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &2020928144
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020928140}
+  m_CullTransparentMesh: 1
+--- !u!114 &2020928145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020928140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34f36451b093ee4c83ad4aa5459d2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMPComponent: {fileID: 2020928143}
+  uniqueFontTMP: {fileID: 0}
+  textLComponent: {fileID: 0}
+  infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  text: 
+  ru: "\u0423\u0434\u0432\u043E\u0438\u0442\u044C \u0440\u0435\u0437\u0443\u043B\u044C\u0442\u0430\u0442<br>(\u0441\u043C\u043E\u0442\u0440\u0435\u0442\u044C
+    \u0440\u0435\u043A\u043B\u0430\u043C\u0443)"
+  en: Double your results<br>(watch advertisement)
+  tr: "Sonu\xE7lar\u0131n\u0131z\u0131 ikiye<br>katlay\u0131n<br>(reklam\u0131 izleyin)"
+  az: 
+  be: "\u041F\u0430\u0434\u0432\u043E\u0456\u0446\u044C \u0432\u044B\u043D\u0456\u043A<br>(\u0433\u043B\u044F\u0434\u0437\u0435\u0446\u044C
+    \u0440\u044D\u043A\u043B\u0430\u043C\u0443)"
+  he: 
+  hy: 
+  ka: 
+  et: 
+  fr: 
+  kk: "\u041D\u04D9\u0442\u0438\u0436\u0435\u043B\u0435\u0440\u0456\u04A3\u0456\u0437\u0434\u0456
+    \u0435\u043A\u0456<br>\u0435\u0441\u0435 \u0430\u0440\u0442\u0442\u044B\u0440\u044B\u04A3\u044B\u0437<br>(\u0436\u0430\u0440\u043D\u0430\u043C\u0430\u043D\u044B
+    \u049B\u0430\u0440\u0430\u0443)"
+  ky: 
+  lt: 
+  lv: 
+  ro: 
+  tg: 
+  tk: 
+  uk: 
+  uz: Natijalaringizni ikki<br>baravar oshiring<br>(reklamani<br>tomosha qiling)
+  es: Duplica tus resultados<br>(ver anuncio)
+  pt: 
+  ar: 
+  id: 
+  ja: 
+  it: 
+  de: 
+  hi: 
+  changeOnlyFont: 0
+  fontNumber: 0
+  uniqueFont: {fileID: 0}
+  additionalText: {fileID: 0}
+  textHeight: 20
+  processTranslateLabel: 7/7 completed
+  componentTextField: 1
+  countLang: 7
 --- !u!1 &2025508401
 GameObject:
   m_ObjectHideFlags: 0
@@ -11630,8 +12079,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 45
-  m_fontSizeBase: 45
+  m_fontSize: 43
+  m_fontSizeBase: 43
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -11697,17 +12146,17 @@ MonoBehaviour:
   textLComponent: {fileID: 0}
   infoYG: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
   text: 
-  ru: "\u041B\u0438\u0434\u0435\u0440\u0431\u043E\u0440\u0434"
+  ru: "\u0422\u0430\u0431\u043B\u0438\u0446\u0430 \u043B\u0438\u0434\u0435\u0440\u043E\u0432"
   en: Leaderboard
-  tr: Liderler
+  tr: "Liderler S\u0131ralamas\u0131"
   az: 
-  be: "\u041B\u0456\u0434\u044D\u0440\u0431\u043E\u0440\u0434"
+  be: "\u0422\u0430\u0431\u043B\u0456\u0446\u0430 \u043B\u0456\u0434\u044D\u0440\u0430\u045E"
   he: 
   hy: 
   ka: 
   et: 
   fr: 
-  kk: 
+  kk: "\u041A\u04E9\u0448\u0431\u0430\u0441\u0448\u044B\u043B\u0430\u0440 \u0442\u0430\u049B\u0442\u0430\u0441\u044B"
   ky: 
   lt: 
   lv: 
@@ -11715,8 +12164,8 @@ MonoBehaviour:
   tg: 
   tk: 
   uk: 
-  uz: 
-  es: 
+  uz: Peshqadamlar jadvali
+  es: "Tabla de clasificaci\xF3n"
   pt: 
   ar: 
   id: 
@@ -11729,9 +12178,9 @@ MonoBehaviour:
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 4/4 completed
+  processTranslateLabel: 7/7 completed
   componentTextField: 1
-  countLang: 4
+  countLang: 7
 --- !u!1 &2053083961
 GameObject:
   m_ObjectHideFlags: 0
@@ -11911,7 +12360,12 @@ MonoBehaviour:
   ka: 
   et: 
   fr: 
-  kk: 
+  kk: "A \u043D\u0435\u043C\u0435\u0441\u0435 \u0421\u041E\u041B \u041A\u04E8\u0420\u0421\u0415\u0422\u041A\u0406
+    - \u0441\u043E\u043B\u0493\u0430 \u0436\u044B\u043B\u0436\u044B\u0442\u0443<br>D
+    \u043D\u0435\u043C\u0435\u0441\u0435 \u041E\u04A2 \u0416\u0410\u049A \u041A\u04E8\u0420\u0421\u0415\u0422\u041A\u0406
+    - \u043E\u04A3\u0493\u0430 \u0436\u044B\u043B\u0436\u044B\u0442\u0443 <br>\u0411\u041E\u0421
+    \u041E\u0420\u042B\u041D \u043D\u0435\u043C\u0435\u0441\u0435 \u0416\u041E\u0492\u0410\u0420\u042B
+    \u041A\u04E8\u0420\u0421\u0415\u0422\u041A\u0406 - \u0441\u0435\u043A\u0456\u0440\u0443"
   ky: 
   lt: 
   lv: 
@@ -11919,8 +12373,10 @@ MonoBehaviour:
   tg: 
   tk: 
   uk: 
-  uz: 
-  es: 
+  uz: A yoki Chap strelka - chapga siljitish<br>D yoki o'ngga strelka - o'ngga siljitish
+    <br>BO'LMA BO'LISH yoki YUQARI strelka - sakrash
+  es: 'A o FLECHA IZQUIERDA: moverse hacia la izquierda<br>D o FLECHA DERECHA: moverse
+    hacia la derecha <br>BARRA ESPACIADORA o FLECHA ARRIBA: saltar'
   pt: 
   ar: 
   id: 
@@ -11933,9 +12389,9 @@ MonoBehaviour:
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 4/4 completed
+  processTranslateLabel: 7/7 completed
   componentTextField: 1
-  countLang: 4
+  countLang: 7
 --- !u!1 &2062912741
 GameObject:
   m_ObjectHideFlags: 0
@@ -12431,12 +12887,13 @@ RectTransform:
   - {fileID: 1276468680}
   - {fileID: 1417647695}
   - {fileID: 460045544}
+  - {fileID: 1251019355}
   m_Father: {fileID: 1185064123}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -130}
-  m_SizeDelta: {x: 1576.4, y: 602.1644}
+  m_AnchoredPosition: {x: 0, y: -86.57181}
+  m_SizeDelta: {x: 1576.4, y: 689.0209}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2137679546
 GameObject:

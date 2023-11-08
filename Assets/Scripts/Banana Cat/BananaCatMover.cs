@@ -43,13 +43,14 @@ public class BananaCatMover : MonoBehaviour
         _playerInput.Player.Move.performed += ctx => OnChangeMoveDirection();
         _playerInput.Player.Jump.performed += ctx => OnJump();
         _playerInput.Player.Move.canceled += ctx => OnStopMovement();
+        _animator = GetComponent<Animator>();
+
     }
 
     private void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _rigidbody = GetComponent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
         _tempSpeed = _speed;
         OnBecomeHappy();
     }
@@ -113,6 +114,7 @@ public class BananaCatMover : MonoBehaviour
 
     private void OnEnablingMobileControl(bool isMobile)
     {
+        if(YandexGame.EnvironmentData.isMobile)
         _isMobile = isMobile;
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using YG;
 
-[RequireComponent(typeof(UIElementsAnimation))]
+//[RequireComponent(typeof(UIElementsAnimation))]
 public class GameUI : MonoBehaviour
 {
     [SerializeField] private BananaCat _bananaCat;
@@ -15,7 +15,8 @@ public class GameUI : MonoBehaviour
     [SerializeField] private Button _loginButton;
     [SerializeField] private Button _gameOverPanelMenuButton;
     [SerializeField] private Button _gameOverPanelRestartButton;
-    [SerializeField] private Button _gameOverRewardedVideoButton;
+    [SerializeField] private Button _gameOverPanelReviveVideoAdButton;
+    [SerializeField] private Button _gameOverPanelDoubleScoreVideoAdButton;
     [SerializeField] private Button _soundSwitchMenuButton;
     [SerializeField] private Button _changeBackgroundElementsButton;
     [SerializeField] private Button _infoPanelButton;
@@ -34,10 +35,11 @@ public class GameUI : MonoBehaviour
     [SerializeField] private AudioSource _buttonClickSound;
     [SerializeField] private TouchControl _touchControl;
     [SerializeField] private float _gameOverScreenDelay;
-
-    private UIElementsAnimation _uIElementsAnimation;
+    [SerializeField] private UIElementsAnimation _uIElementsAnimation;
+   // private UIElementsAnimation _uIElementsAnimation;
     private bool _isMobile = false;
-    private bool _isAdVideoWatched = false;
+    private bool _isReviveVideoAdWatched = false;
+    private bool _isDoubleScoreVideoAdWatched = false;
 
     public static Action<bool> ChangeGameStateEvent;
     public static Action<bool> ChangeMusicEvent;
@@ -52,11 +54,19 @@ public class GameUI : MonoBehaviour
 
     private void Awake()
     {
-        _uIElementsAnimation = GetComponent<UIElementsAnimation>();
+     //   _uIElementsAnimation = GetComponent<UIElementsAnimation>();
+    }
+
+    private void Start()
+    {
+    //    ChangeGameStateEvent?.Invoke(false);
+     //   ShowRequiredButtons(true);
     }
 
     private void OnEnable()
     {
+        YandexGame.GetDataEvent += OnAfterPluginLoad;
+
         _startButton.onClick.AddListener(delegate { OnStartButtonClick(false); });
         _gameOverPanelRestartButton.onClick.AddListener(delegate { OnStartButtonClick(false); });
         _menuButton.onClick.AddListener(OnMenuButtonClick);
@@ -68,13 +78,16 @@ public class GameUI : MonoBehaviour
         _closeLeaderboardButton.onClick.AddListener(OnCloseLeaderboard);
         BananaCatCollisionHandler.OpenGameOverPanelEvent += OnLose;
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent += OnLose;
-        UserDataReader.MobileDeviceDefineEvent += OnEnablingMobileControl;
+      //  UserDataReader.MobileDeviceDefineEvent += OnEnablingMobileControl;
         AdController.ReviveVideoWatchedCompleteEvent += OnReviveAdVideoWatched;
-        YandexGame.GetDataEvent += OnAfterPluginLoad;
+        AdController.DoubleScoreVideoWatchedCompleteEvent += OnDoubleScoreVideoWatched;
+       // YandexGame.GetDataEvent += OnAfterPluginLoad;
     }
 
     private void OnDisable()
     {
+        YandexGame.GetDataEvent -= OnAfterPluginLoad;
+
         _startButton.onClick.RemoveListener(delegate { OnStartButtonClick(false); });
         _gameOverPanelRestartButton.onClick.RemoveListener(delegate { OnStartButtonClick(false); });
         _menuButton.onClick.RemoveListener(OnMenuButtonClick);
@@ -86,19 +99,23 @@ public class GameUI : MonoBehaviour
         _closeLeaderboardButton.onClick.RemoveListener(OnCloseLeaderboard);
         BananaCatCollisionHandler.OpenGameOverPanelEvent -= OnLose;
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= OnLose;
-        UserDataReader.MobileDeviceDefineEvent -= OnEnablingMobileControl;
+      //  UserDataReader.MobileDeviceDefineEvent -= OnEnablingMobileControl;
         AdController.ReviveVideoWatchedCompleteEvent -= OnReviveAdVideoWatched;
-        YandexGame.GetDataEvent -= OnAfterPluginLoad;
+        AdController.DoubleScoreVideoWatchedCompleteEvent -= OnDoubleScoreVideoWatched;
+      //  YandexGame.GetDataEvent -= OnAfterPluginLoad;
     }
 
     private void OnAfterPluginLoad()
     {
+        _uIElementsAnimation = GetComponent<UIElementsAnimation>();
+
         if (YandexGame.savesData.IsAlreadyOpened)
         {
-            _infoPanel.SetActive(false);
+            _infoPanel.SetActive(false); 
             ChangeGameStateEvent?.Invoke(false);
             ShowRequiredButtons(true);
             _infoPanel.SetActive(false);
+            ToggleControlInformation();
         }
         else
         {
@@ -130,15 +147,16 @@ public class GameUI : MonoBehaviour
     private void OnInfoPanelButtonClick()
     {
         _uIElementsAnimation.Disappear(_infoPanel.gameObject);
+        ChangeGameStateEvent?.Invoke(false);
         ShowRequiredButtons(true);
-    }
-
-    private void OnEnablingMobileControl(bool isMobile)
-    {
-        _isMobile = isMobile;
         ToggleControlInformation();
     }
 
+    /*    private void OnEnablingMobileControl(bool isMobile)
+        {
+            _isMobile = isMobile;
+        }
+    */
     public void OnChangeStateButtonsClick(bool isPlayed)
     {
         if (isPlayed)
@@ -153,9 +171,7 @@ public class GameUI : MonoBehaviour
                 _touchControl.gameObject.SetActive(true);
 
             if (_bananaCat.FatLevel > 0)
-            {
                 _uIElementsAnimation.Appear(_helpFitText.gameObject);
-            }
         }
         else
         {
@@ -179,11 +195,12 @@ public class GameUI : MonoBehaviour
         ChangeGameStateEvent?.Invoke(true);
         ChangeMusicEvent?.Invoke(false);
         ShowRequiredButtons(false);
+        _isDoubleScoreVideoAdWatched = false;
 
         if (!isRevive)
         {
             StartGameEvent?.Invoke();
-            _isAdVideoWatched = false;
+            _isReviveVideoAdWatched = false;
             GameOverEvent?.Invoke();
         }
         else
@@ -226,25 +243,37 @@ public class GameUI : MonoBehaviour
 
     private void ShowGameOverPanelButtons()
     {
-        ShowFullScreenAd?.Invoke();
+        YandexGame.FullscreenShow();
         Time.timeScale = 0;
         _uIElementsAnimation.Appear(_gameOverPanelRestartButton.gameObject);
         _uIElementsAnimation.Appear(_gameOverPanelMenuButton.gameObject);
-        _uIElementsAnimation.Appear(_gameOverRewardedVideoButton.gameObject);
+        _uIElementsAnimation.Appear(_gameOverPanelReviveVideoAdButton.gameObject);
+        _uIElementsAnimation.Appear(_gameOverPanelDoubleScoreVideoAdButton.gameObject);
 
         if (_isMobile)
             _touchControl.gameObject.SetActive(false);
 
-        if (_isAdVideoWatched)
-            _gameOverRewardedVideoButton.interactable = false;
+        if (_isReviveVideoAdWatched)
+            _gameOverPanelReviveVideoAdButton.interactable = false;
         else
-            _gameOverRewardedVideoButton.interactable = true;
+            _gameOverPanelReviveVideoAdButton.interactable = true;
+
+        if (_isDoubleScoreVideoAdWatched)
+            _gameOverPanelDoubleScoreVideoAdButton.interactable = false;
+        else
+            _gameOverPanelDoubleScoreVideoAdButton.interactable = true;
     }
 
     private void OnReviveAdVideoWatched()
     {
-        _isAdVideoWatched = true;
+        _isReviveVideoAdWatched = true;
         OnStartButtonClick(true);
+    }
+
+    private void OnDoubleScoreVideoWatched()
+    {
+        _isDoubleScoreVideoAdWatched = true;
+        _gameOverPanelDoubleScoreVideoAdButton.interactable = false;
     }
 
     private void ShowRequiredButtons(bool onMenu)
@@ -292,12 +321,15 @@ public class GameUI : MonoBehaviour
 
             _uIElementsAnimation.Disappear(_gameOverPanelRestartButton.gameObject);
             _uIElementsAnimation.Disappear(_gameOverPanelMenuButton.gameObject);
-            _uIElementsAnimation.Disappear(_gameOverRewardedVideoButton.gameObject);
+            _uIElementsAnimation.Disappear(_gameOverPanelReviveVideoAdButton.gameObject);
+            _uIElementsAnimation.Disappear(_gameOverPanelDoubleScoreVideoAdButton.gameObject);
         }
     }
 
     private void ToggleControlInformation()
     {
+        _isMobile = YandexGame.EnvironmentData.isMobile;
+
         if (_isMobile)
             _uIElementsAnimation.Appear(_mobileControlInstructionsText.gameObject);
         else

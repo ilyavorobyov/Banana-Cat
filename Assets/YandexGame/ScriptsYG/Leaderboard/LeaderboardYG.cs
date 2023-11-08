@@ -63,7 +63,7 @@ namespace YG
         private string photoSize;
         private LBPlayerDataYG[] players = new LBPlayerDataYG[0];
 
-        void Awake()
+        void Start()
         {
             if (playerPhoto == PlayerPhoto.NonePhoto)
                 photoSize = "nonePhoto";
@@ -94,8 +94,6 @@ namespace YG
 
         void OnUpdateLB(LBData lb)
         {
-            Debug.Log("update leaderboard");
-
             if (lb.entries == "initialized")
             {
                 UpdateLB();

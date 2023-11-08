@@ -15,12 +15,15 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private Color _newRecordColor;
     [SerializeField] private Color _startingScoreTextColor;
     [SerializeField] private int _scoreDivisor;
+    [SerializeField] private AudioSource _doubleResultSound;
 
     private const string LeaderboardName = "Leaderboard2";
 
     private int _maxScore;
     private int _score;
     private int _minScoreDivisor = 5;
+    private int _scoreMultiplier = 2;
+    private float _showResultAfterDoubleResultDelay = 0.4f;
 
     public static Action AddDifficultyEvent;
 
@@ -31,6 +34,7 @@ public class ScoreManager : MonoBehaviour
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent += OnGameOverScoreCompare;
         GameUI.GameOverEvent += ResetScoreValues;
         YandexGame.GetDataEvent += OnLoadScore;
+        AdController.DoubleScoreVideoWatchedCompleteEvent += OnDoubleResult;
     }
 
     private void OnDisable()
@@ -40,6 +44,7 @@ public class ScoreManager : MonoBehaviour
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= OnGameOverScoreCompare;
         GameUI.GameOverEvent -= ResetScoreValues;
         YandexGame.GetDataEvent -= OnLoadScore;
+        AdController.DoubleScoreVideoWatchedCompleteEvent += OnDoubleResult;
     }
 
     private void OnValidate()
@@ -103,5 +108,13 @@ public class ScoreManager : MonoBehaviour
         _score = 0;
         _scoreText.text = _score.ToString();
         _scoreText.color = _startingScoreTextColor;
+    }
+
+    private void OnDoubleResult()
+    {
+        _doubleResultSound.PlayDelayed(0);
+        _score *= _scoreMultiplier;
+        _scoreText.text = _score.ToString();
+        Invoke(nameof(OnGameOverScoreCompare), _showResultAfterDoubleResultDelay);
     }
 }
