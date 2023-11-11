@@ -22,6 +22,7 @@ public class GameUI : MonoBehaviour
     [SerializeField] private Button _infoPanelButton;
     [SerializeField] private Button _leaderboardButton;
     [SerializeField] private Button _closeLeaderboardButton;
+    [SerializeField] private Button _showAdAtGameSpeedBoostButton;
     [SerializeField] private GameObject _pausePanel;
     [SerializeField] private GameObject _gameOverPanel;
     [SerializeField] private GameObject _infoPanel;
@@ -56,7 +57,6 @@ public class GameUI : MonoBehaviour
     private void OnEnable()
     {
         YandexGame.GetDataEvent += OnAfterPluginLoad;
-
         _startButton.onClick.AddListener(delegate { OnStartButtonClick(false); });
         _gameOverPanelRestartButton.onClick.AddListener(delegate { OnStartButtonClick(false); });
         _menuButton.onClick.AddListener(OnMenuButtonClick);
@@ -146,6 +146,7 @@ public class GameUI : MonoBehaviour
             ChangeGameStateEvent?.Invoke(true);
             _uIElementsAnimation.Appear(_pauseButton.gameObject);
             _uIElementsAnimation.Disappear(_pausePanel.gameObject);
+            _uIElementsAnimation.Appear(_showAdAtGameSpeedBoostButton.gameObject);
             IsPaused = false;
 
             if (_isMobile)
@@ -162,6 +163,7 @@ public class GameUI : MonoBehaviour
             _uIElementsAnimation.Appear(_pausePanel.gameObject);
             _uIElementsAnimation.Disappear(_pauseButton.gameObject);
             _uIElementsAnimation.Disappear(_helpFitText.gameObject);
+            _uIElementsAnimation.Disappear(_showAdAtGameSpeedBoostButton.gameObject);
             IsPaused = true;
 
             if (_isMobile)
@@ -274,6 +276,7 @@ public class GameUI : MonoBehaviour
             _uIElementsAnimation.Disappear(_scoreText.gameObject);
             _uIElementsAnimation.Disappear(_healthBar.gameObject);
             _uIElementsAnimation.Disappear(_helpFitText.gameObject);
+            _uIElementsAnimation.Disappear(_showAdAtGameSpeedBoostButton.gameObject);
 
             if (_isMobile)
             {
@@ -301,6 +304,7 @@ public class GameUI : MonoBehaviour
             _uIElementsAnimation.Disappear(_leaderboardButton.gameObject);
             _uIElementsAnimation.Appear(_scoreText.gameObject);
             _uIElementsAnimation.Appear(_healthBar.gameObject);
+            _uIElementsAnimation.Appear(_showAdAtGameSpeedBoostButton.gameObject);
 
             if (_isMobile)
             {
@@ -321,14 +325,4 @@ public class GameUI : MonoBehaviour
             _uIElementsAnimation.Disappear(_gameOverPanelDoubleScoreVideoAdButton.gameObject);
         }
     }
-
-/*    private void ToggleControlInformation()
-    {
-        _isMobile = YandexGame.EnvironmentData.isMobile;
-
-        if (_isMobile)
-            _uIElementsAnimation.Appear(_mobileControlInstructionsText.gameObject);
-        else
-            _uIElementsAnimation.Appear(_desktopControlInstructionsText.gameObject);
-    }*/
 }

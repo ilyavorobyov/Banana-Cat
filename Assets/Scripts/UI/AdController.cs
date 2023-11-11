@@ -9,6 +9,7 @@ public class AdController : MonoBehaviour
     [SerializeField] private Button _reviveVideoAdButton;
     [SerializeField] private Button _doubleScoreVideoAdButton;
     [SerializeField] private Button _addSpeedAndResumeButton;
+    [SerializeField] private Button _showAdAtGameSpeedBoostButton;
     [SerializeField] private TMP_Text _rewardAdvErrorText;
     [SerializeField] private AudioSource _reviveSound;
 
@@ -23,6 +24,7 @@ public class AdController : MonoBehaviour
         _reviveVideoAdButton.onClick.AddListener(delegate { ShowAd(1); });
         _doubleScoreVideoAdButton.onClick.AddListener(delegate { ShowAd(2); });
         _addSpeedAndResumeButton.onClick.AddListener(delegate { ShowAd(3); });
+        _showAdAtGameSpeedBoostButton.onClick.AddListener(delegate { ShowAd(3); });
     }
 
     private void OnDisable()
@@ -32,6 +34,7 @@ public class AdController : MonoBehaviour
         _reviveVideoAdButton.onClick.RemoveListener(delegate { ShowAd(1); });
         _doubleScoreVideoAdButton.onClick.RemoveListener(delegate { ShowAd(2); });
         _addSpeedAndResumeButton.onClick.RemoveListener(delegate { ShowAd(3); });
+        _showAdAtGameSpeedBoostButton.onClick.RemoveListener(delegate { ShowAd(3); });
     }
 
     private void ShowAd(int id)
