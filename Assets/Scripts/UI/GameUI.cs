@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using YG;
 
-//[RequireComponent(typeof(UIElementsAnimation))]
+[RequireComponent(typeof(UIElementsAnimation))]
 public class GameUI : MonoBehaviour
 {
     [SerializeField] private BananaCat _bananaCat;
@@ -35,8 +35,8 @@ public class GameUI : MonoBehaviour
     [SerializeField] private AudioSource _buttonClickSound;
     [SerializeField] private TouchControl _touchControl;
     [SerializeField] private float _gameOverScreenDelay;
-    [SerializeField] private UIElementsAnimation _uIElementsAnimation;
-   // private UIElementsAnimation _uIElementsAnimation;
+
+    private UIElementsAnimation _uIElementsAnimation;
     private bool _isMobile = false;
     private bool _isReviveVideoAdWatched = false;
     private bool _isDoubleScoreVideoAdWatched = false;
@@ -49,19 +49,9 @@ public class GameUI : MonoBehaviour
     public static Action ShowFullScreenAd;
     public static Action ReviveEvent;
     public static Action GameOverEvent;
+    public static Action PauseGameEvent;
 
     public bool IsPaused { get; private set; }
-
-    private void Awake()
-    {
-     //   _uIElementsAnimation = GetComponent<UIElementsAnimation>();
-    }
-
-    private void Start()
-    {
-    //    ChangeGameStateEvent?.Invoke(false);
-     //   ShowRequiredButtons(true);
-    }
 
     private void OnEnable()
     {
@@ -78,16 +68,14 @@ public class GameUI : MonoBehaviour
         _closeLeaderboardButton.onClick.AddListener(OnCloseLeaderboard);
         BananaCatCollisionHandler.OpenGameOverPanelEvent += OnLose;
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent += OnLose;
-      //  UserDataReader.MobileDeviceDefineEvent += OnEnablingMobileControl;
         AdController.ReviveVideoWatchedCompleteEvent += OnReviveAdVideoWatched;
         AdController.DoubleScoreVideoWatchedCompleteEvent += OnDoubleScoreVideoWatched;
-       // YandexGame.GetDataEvent += OnAfterPluginLoad;
+        AdController.AddSpeedAndResumeButtonEvent += delegate { OnChangeStateButtonsClick(true); };
     }
 
     private void OnDisable()
     {
         YandexGame.GetDataEvent -= OnAfterPluginLoad;
-
         _startButton.onClick.RemoveListener(delegate { OnStartButtonClick(false); });
         _gameOverPanelRestartButton.onClick.RemoveListener(delegate { OnStartButtonClick(false); });
         _menuButton.onClick.RemoveListener(OnMenuButtonClick);
@@ -99,23 +87,22 @@ public class GameUI : MonoBehaviour
         _closeLeaderboardButton.onClick.RemoveListener(OnCloseLeaderboard);
         BananaCatCollisionHandler.OpenGameOverPanelEvent -= OnLose;
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= OnLose;
-      //  UserDataReader.MobileDeviceDefineEvent -= OnEnablingMobileControl;
         AdController.ReviveVideoWatchedCompleteEvent -= OnReviveAdVideoWatched;
         AdController.DoubleScoreVideoWatchedCompleteEvent -= OnDoubleScoreVideoWatched;
-      //  YandexGame.GetDataEvent -= OnAfterPluginLoad;
+        AdController.AddSpeedAndResumeButtonEvent -= delegate { OnChangeStateButtonsClick(true); };
     }
 
     private void OnAfterPluginLoad()
     {
         _uIElementsAnimation = GetComponent<UIElementsAnimation>();
+        _isMobile = YandexGame.EnvironmentData.isMobile;
 
         if (YandexGame.savesData.IsAlreadyOpened)
         {
-            _infoPanel.SetActive(false); 
+            _infoPanel.SetActive(false);
             ChangeGameStateEvent?.Invoke(false);
             ShowRequiredButtons(true);
             _infoPanel.SetActive(false);
-            ToggleControlInformation();
         }
         else
         {
@@ -149,14 +136,8 @@ public class GameUI : MonoBehaviour
         _uIElementsAnimation.Disappear(_infoPanel.gameObject);
         ChangeGameStateEvent?.Invoke(false);
         ShowRequiredButtons(true);
-        ToggleControlInformation();
     }
 
-    /*    private void OnEnablingMobileControl(bool isMobile)
-        {
-            _isMobile = isMobile;
-        }
-    */
     public void OnChangeStateButtonsClick(bool isPlayed)
     {
         if (isPlayed)
@@ -177,6 +158,7 @@ public class GameUI : MonoBehaviour
         {
             Time.timeScale = 0;
             ChangeGameStateEvent?.Invoke(false);
+            PauseGameEvent?.Invoke();
             _uIElementsAnimation.Appear(_pausePanel.gameObject);
             _uIElementsAnimation.Disappear(_pauseButton.gameObject);
             _uIElementsAnimation.Disappear(_helpFitText.gameObject);
@@ -294,7 +276,14 @@ public class GameUI : MonoBehaviour
             _uIElementsAnimation.Disappear(_helpFitText.gameObject);
 
             if (_isMobile)
+            {
                 _touchControl.gameObject.SetActive(false);
+                _uIElementsAnimation.Appear(_mobileControlInstructionsText.gameObject);
+            }
+            else
+            {
+                _uIElementsAnimation.Appear(_desktopControlInstructionsText.gameObject);
+            }
 
             if (!CheckAuthorization())
                 _uIElementsAnimation.Appear(_loginButton.gameObject);
@@ -314,7 +303,14 @@ public class GameUI : MonoBehaviour
             _uIElementsAnimation.Appear(_healthBar.gameObject);
 
             if (_isMobile)
+            {
                 _touchControl.gameObject.SetActive(true);
+                _uIElementsAnimation.Disappear(_mobileControlInstructionsText.gameObject);
+            }
+            else
+            {
+                _uIElementsAnimation.Disappear(_desktopControlInstructionsText.gameObject);
+            }
 
             if (!CheckAuthorization())
                 _uIElementsAnimation.Disappear(_loginButton.gameObject);
@@ -326,7 +322,7 @@ public class GameUI : MonoBehaviour
         }
     }
 
-    private void ToggleControlInformation()
+/*    private void ToggleControlInformation()
     {
         _isMobile = YandexGame.EnvironmentData.isMobile;
 
@@ -334,5 +330,5 @@ public class GameUI : MonoBehaviour
             _uIElementsAnimation.Appear(_mobileControlInstructionsText.gameObject);
         else
             _uIElementsAnimation.Appear(_desktopControlInstructionsText.gameObject);
-    }
+    }*/
 }

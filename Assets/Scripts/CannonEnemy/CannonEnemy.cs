@@ -8,6 +8,7 @@ using static UnityEngine.GraphicsBuffer;
 [RequireComponent(typeof(Animator))]
 public class CannonEnemy : MonoBehaviour
 {
+    [SerializeField] private Transform _shotPoint;
     [SerializeField] private BananaCat _bananaCat;
     [SerializeField] private CannonBall _cannonBallSample;
     [SerializeField] private float _moveAnimationDuration;
@@ -53,6 +54,7 @@ public class CannonEnemy : MonoBehaviour
         BananaCatCollisionHandler.OpenGameOverPanelEvent += RollOut;
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent += RollOut;
         GameUI.HideFallingObjects += RollOut;
+        GameUI.GoToMenuEvent += RollOut;
     }
 
     private void OnDisable()
@@ -61,6 +63,7 @@ public class CannonEnemy : MonoBehaviour
         BananaCatCollisionHandler.OpenGameOverPanelEvent -= RollOut;
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= RollOut;
         GameUI.HideFallingObjects -= RollOut;
+        GameUI.GoToMenuEvent -= RollOut;
     }
 
     private void OnMouseDown()
@@ -84,7 +87,7 @@ public class CannonEnemy : MonoBehaviour
     {
         _currentHealthPoints = _healthPoints;
         _appearSound.PlayDelayed(0);
-        transform.DOMoveY(_upperEdge - _decreaseUpperEdge, _moveAnimationDuration);
+        transform.DOMoveY(_upperEdge - _decreaseUpperEdge, _moveAnimationDuration).SetUpdate(true);
         IsAttacks = true;
         OnBeginCreateObjects();
     }
@@ -94,7 +97,7 @@ public class CannonEnemy : MonoBehaviour
         if (IsAttacks)
         {
             _disappearSound.PlayDelayed(0);
-            transform.DOMoveY(_upperEdge + _decreaseUpperEdge, _moveAnimationDuration);
+            transform.DOMoveY(_upperEdge + _decreaseUpperEdge, _moveAnimationDuration).SetUpdate(true);
             IsAttacks = false;
             OnStopCreateObjects();
         }
@@ -134,9 +137,8 @@ public class CannonEnemy : MonoBehaviour
                 if (!cannonBall.gameObject.activeSelf)
                 {
                     _animator.SetTrigger(ShotAnimationName);
-                    Vector3 startPosition = new Vector3(transform.position.x, transform.position.y, 2);
                     cannonBall.TurnOnObject();
-                    cannonBall.transform.position = startPosition;
+                    cannonBall.transform.position = _shotPoint.transform.position;
                     cannonBall.transform.rotation = gameObject.transform.rotation;
                     _shotSound.PlayDelayed(0);
                     timeOfNewShot = Random.Range(_minShootTime, _maxShootTime);

@@ -17,17 +17,20 @@ public class BananaCatCollisionHandler : MonoBehaviour
     public static Action FruitTakenEvent;
     public static Action BadFoodTakenEvent;
     public static Action OpenGameOverPanelEvent;
+    public static Action TookSpeedBoosterEvent;
 
     private void OnEnable()
     {
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent += OnTurnOffHelmet;
         GameUI.GoToMenuEvent += OnTurnOffHelmet;
+        AdController.AddSpeedAndResumeButtonEvent += AddSpeed;
     }
 
     private void OnDisable()
     {
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= OnTurnOffHelmet;
         GameUI.GoToMenuEvent -= OnTurnOffHelmet;
+        AdController.AddSpeedAndResumeButtonEvent -= AddSpeed;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -54,6 +57,10 @@ public class BananaCatCollisionHandler : MonoBehaviour
                 _bananaCatHelmet.ChangeVisability(true);
                 _takingHelmetSound.PlayDelayed(0);
             }
+            else if (fallingObject is SpeedBoostItem)
+            {
+                AddSpeed();  
+            }
 
             fallingObject.OnHideObject();
         }
@@ -69,6 +76,11 @@ public class BananaCatCollisionHandler : MonoBehaviour
             CheckHit();
             cannonBall.OnHide();
         }
+    }
+
+    private void AddSpeed()
+    {
+        TookSpeedBoosterEvent?.Invoke();
     }
 
     private void CheckHit()

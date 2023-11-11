@@ -12,7 +12,7 @@ public abstract class FallingObject : MonoBehaviour
     private BoxCollider2D _boxCollider;
     private float _hideAnimationDuration = 0.5f;
     private float _minRotationSpeed = 1;
-    private float _maxRotationSpeed = 3;
+    private float _maxRotationSpeed = 2.5f;
     private float _rotationSpeed;
     private float _speed;
 

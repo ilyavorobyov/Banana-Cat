@@ -17,6 +17,7 @@ public class BananaCatMover : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _speedChanger;
     [SerializeField] private float _jumpForce;
+    [SerializeField] private float _speedBoostValue;
 
     private const string RunAnimationName = "Run";
     private const string IdleAnimationName = "Idle";
@@ -36,6 +37,7 @@ public class BananaCatMover : MonoBehaviour
     private float _stopMoveDirection = 0;
     private float _tempSpeed;
     private bool _isMobile = false;
+    private bool _isSpeedAdded = false;
 
     private void Awake()
     {
@@ -44,7 +46,6 @@ public class BananaCatMover : MonoBehaviour
         _playerInput.Player.Jump.performed += ctx => OnJump();
         _playerInput.Player.Move.canceled += ctx => OnStopMovement();
         _animator = GetComponent<Animator>();
-
     }
 
     private void Start()
@@ -67,15 +68,18 @@ public class BananaCatMover : MonoBehaviour
         BananaCatCollisionHandler.OpenGameOverPanelEvent += OnCry;
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent += OnCry;
         BananaCatCollisionHandler.FruitTakenEvent += OnFruitTake;
+        BananaCatCollisionHandler.TookSpeedBoosterEvent += OnAddSpeedBoost;
+        SpeedBoosterManager.StopAddSpeedEvent += OnRemoveSpeedBoost;
         Ground.GroundCollisionEvent += OnGroundCollision;
         BananaCat.SpeedChangedEvent += OnChangeSpeed;
         GameUI.ChangeGameStateEvent += OnChangeGameState;
         GameUI.StartGameEvent += OnSetStartSpeed;
+        GameUI.ReviveEvent += OnSetStartSpeed;
         GameUI.GoToMenuEvent += OnBecomeHappy;
         TouchControlButton.StopMoveEvent += OnStopMovement;
         TouchControlButton.DirectionChangeEvent += Touch;
         _jumpButton.onClick.AddListener(OnJump);
-        UserDataReader.MobileDeviceDefineEvent += OnEnablingMobileControl;
+        YandexGame.GetDataEvent += OnCheckMobileDevice;
     }
 
     private void OnDisable()
@@ -84,15 +88,18 @@ public class BananaCatMover : MonoBehaviour
         BananaCatCollisionHandler.OpenGameOverPanelEvent -= OnCry;
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= OnCry;
         BananaCatCollisionHandler.FruitTakenEvent -= OnFruitTake;
+        BananaCatCollisionHandler.TookSpeedBoosterEvent -= OnAddSpeedBoost;
+        SpeedBoosterManager.StopAddSpeedEvent -= OnRemoveSpeedBoost;
         Ground.GroundCollisionEvent -= OnGroundCollision;
         BananaCat.SpeedChangedEvent -= OnChangeSpeed;
         GameUI.ChangeGameStateEvent -= OnChangeGameState;
         GameUI.StartGameEvent -= OnSetStartSpeed;
+        GameUI.ReviveEvent -= OnSetStartSpeed;
         GameUI.GoToMenuEvent -= OnBecomeHappy;
         TouchControlButton.StopMoveEvent -= OnStopMovement;
         TouchControlButton.DirectionChangeEvent -= Touch;
         _jumpButton.onClick.RemoveListener(OnJump);
-        UserDataReader.MobileDeviceDefineEvent -= OnEnablingMobileControl;
+        YandexGame.GetDataEvent -= OnCheckMobileDevice;
     }
 
     public void OnBecomeHappy()
@@ -112,10 +119,10 @@ public class BananaCatMover : MonoBehaviour
             _animator.SetTrigger(HappyAnimationName);
     }
 
-    private void OnEnablingMobileControl(bool isMobile)
+    private void OnCheckMobileDevice()
     {
-        if(YandexGame.EnvironmentData.isMobile)
-        _isMobile = isMobile;
+        if (YandexGame.EnvironmentData.isMobile)
+        _isMobile = true;
     }
 
     private void OnSetStartSpeed()
@@ -193,5 +200,20 @@ public class BananaCatMover : MonoBehaviour
             _animator.SetTrigger(IdleAnimationName);
             _moveDirection = _stopMoveDirection;
         }
+    }
+
+    private void OnAddSpeedBoost()
+    {
+        if(!_isSpeedAdded)
+        {
+            _speed += _speedBoostValue;
+            _isSpeedAdded = true;
+        }
+    }
+
+    private void OnRemoveSpeedBoost()
+    {
+        _speed -= _speedBoostValue;
+        _isSpeedAdded = false;
     }
 }

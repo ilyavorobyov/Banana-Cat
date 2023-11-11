@@ -15,7 +15,7 @@ MonoBehaviour:
   scopes: 1
   playerPhotoSize: 0
   playerInfoSimulation:
-    authorized: 1
+    authorized: 0
     isMobile: 0
     language: ru
     name: Player this

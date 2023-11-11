@@ -18,7 +18,7 @@ public class BatSpawner : MonoBehaviour
     private float _rightEdge;
     private float _maxYBananCatPosition;
     private float _bananCatYPosition;
-    private float _addingToYPosition = 0.5f;
+    private float _addingToYPosition = 0.2f;
     private float _addingSpawnPosition = 0.5f;
     private float _zPosition = 0;
     private Vector3 _warningSpawnPosition;

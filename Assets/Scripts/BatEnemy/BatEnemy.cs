@@ -7,6 +7,7 @@ public class BatEnemy : MonoBehaviour
 {
     [SerializeField] private float _minSpeed;
     [SerializeField] private float _maxSpeed;
+    [SerializeField] private AudioSource _dieSound;
 
     private const string DieAnimationName = "Die";
 
@@ -32,20 +33,23 @@ public class BatEnemy : MonoBehaviour
 
     private void OnEnable()
     {
-        BananaCatCollisionHandler.OpenGameOverPanelEvent += Die;
-        MissedFruitsCounter.MaxFruitsNumberDroppedEvent += Die;
-        GameUI.HideFallingObjects += Die;
+        BananaCatCollisionHandler.OpenGameOverPanelEvent += OnHide;
+        MissedFruitsCounter.MaxFruitsNumberDroppedEvent += OnHide;
+        GameUI.HideFallingObjects += OnHide;
+        GameUI.GoToMenuEvent += OnHide;
     }
 
     private void OnDisable()
     {
-        BananaCatCollisionHandler.OpenGameOverPanelEvent -= Die;
-        MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= Die;
-        GameUI.HideFallingObjects -= Die;
+        BananaCatCollisionHandler.OpenGameOverPanelEvent -= OnHide;
+        MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= OnHide;
+        GameUI.HideFallingObjects -= OnHide;
+        GameUI.GoToMenuEvent -= OnHide;
     }
 
     private void OnMouseDown()
     {
+        _dieSound.PlayDelayed(0);
         Die();
     }
 

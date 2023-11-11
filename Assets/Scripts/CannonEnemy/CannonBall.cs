@@ -23,6 +23,7 @@ public class CannonBall : MonoBehaviour
         BananaCatCollisionHandler.OpenGameOverPanelEvent += OnHide;
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent += OnHide;
         GameUI.HideFallingObjects += OnHide;
+        GameUI.GoToMenuEvent += Hide;
     }
 
     private void OnDisable()
@@ -30,6 +31,7 @@ public class CannonBall : MonoBehaviour
         BananaCatCollisionHandler.OpenGameOverPanelEvent -= OnHide;
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= OnHide;
         GameUI.HideFallingObjects -= OnHide;
+        GameUI.GoToMenuEvent -= Hide;
     }
 
     private void Update()

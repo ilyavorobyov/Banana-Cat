@@ -8,11 +8,13 @@ public class AdController : MonoBehaviour
 {
     [SerializeField] private Button _reviveVideoAdButton;
     [SerializeField] private Button _doubleScoreVideoAdButton;
+    [SerializeField] private Button _addSpeedAndResumeButton;
     [SerializeField] private TMP_Text _rewardAdvErrorText;
     [SerializeField] private AudioSource _reviveSound;
 
     public static Action ReviveVideoWatchedCompleteEvent;
     public static Action DoubleScoreVideoWatchedCompleteEvent;
+    public static Action AddSpeedAndResumeButtonEvent;
 
     private void OnEnable()
     {
@@ -20,6 +22,7 @@ public class AdController : MonoBehaviour
         YandexGame.RewardVideoEvent += OnRewardedVideoShow;
         _reviveVideoAdButton.onClick.AddListener(delegate { ShowAd(1); });
         _doubleScoreVideoAdButton.onClick.AddListener(delegate { ShowAd(2); });
+        _addSpeedAndResumeButton.onClick.AddListener(delegate { ShowAd(3); });
     }
 
     private void OnDisable()
@@ -28,6 +31,7 @@ public class AdController : MonoBehaviour
         YandexGame.RewardVideoEvent -= OnRewardedVideoShow;
         _reviveVideoAdButton.onClick.RemoveListener(delegate { ShowAd(1); });
         _doubleScoreVideoAdButton.onClick.RemoveListener(delegate { ShowAd(2); });
+        _addSpeedAndResumeButton.onClick.RemoveListener(delegate { ShowAd(3); });
     }
 
     private void ShowAd(int id)
@@ -45,7 +49,10 @@ public class AdController : MonoBehaviour
         else if (id == 2)
         {
             DoubleScoreVideoWatchedCompleteEvent?.Invoke();
-            Debug.Log("double result");
+        }
+        else if (id == 3)
+        {
+            AddSpeedAndResumeButtonEvent?.Invoke();
         }
     }
 
