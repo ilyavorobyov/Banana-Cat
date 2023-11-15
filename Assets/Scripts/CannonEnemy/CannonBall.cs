@@ -5,6 +5,8 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(CircleCollider2D))]
 public class CannonBall : MonoBehaviour
 {
+    [SerializeField] private AudioSource _tapSound;
+
     private const string HideAnimationName = "Hide";
 
     private Animator _animator;
@@ -32,6 +34,11 @@ public class CannonBall : MonoBehaviour
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= OnHide;
         GameUI.HideFallingObjects -= OnHide;
         GameUI.GoToMenuEvent -= Hide;
+    }
+    private void OnMouseDown()
+    {
+        _tapSound.PlayDelayed(0);
+        OnHide();
     }
 
     private void Update()

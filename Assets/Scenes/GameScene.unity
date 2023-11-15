@@ -597,16 +597,16 @@ MonoBehaviour:
   id: 
   ja: 
   it: 
-  de: 
+  de: PAUSE
   hi: 
   changeOnlyFont: 0
   fontNumber: 0
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 3/7 completed
+  processTranslateLabel: 1/8 completed
   componentTextField: 1
-  countLang: 3
+  countLang: 1
 --- !u!1 &126281571
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,7 +801,7 @@ MonoBehaviour:
   id: 
   ja: "\u5E83\u544A\u8AAD\u307F\u8FBC\u307F\u30A8\u30E9\u30FC"
   it: 
-  de: 
+  de: Fehler beim Laden der Anzeige
   hi: 
   changeOnlyFont: 0
   fontNumber: 0
@@ -1794,16 +1794,16 @@ MonoBehaviour:
   id: 
   ja: 
   it: 
-  de: 
+  de: Essen Sie Obst, um Gewicht zu verlieren!
   hi: 
   changeOnlyFont: 0
   fontNumber: 0
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 7/7 completed
+  processTranslateLabel: 1/8 completed
   componentTextField: 1
-  countLang: 7
+  countLang: 1
 --- !u!1 &254756607
 GameObject:
   m_ObjectHideFlags: 0
@@ -2095,16 +2095,16 @@ MonoBehaviour:
   id: 
   ja: 
   it: 
-  de: 
+  de: Anmeldung
   hi: 
   changeOnlyFont: 0
   fontNumber: 0
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 7/7 completed
+  processTranslateLabel: 1/8 completed
   componentTextField: 1
-  countLang: 7
+  countLang: 1
 --- !u!114 &273910455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2522,16 +2522,16 @@ MonoBehaviour:
   id: 
   ja: 
   it: 
-  de: 
+  de: 'Neuer Eintrag:'
   hi: 
   changeOnlyFont: 0
   fontNumber: 0
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 7/7 completed
+  processTranslateLabel: 1/8 completed
   componentTextField: 1
-  countLang: 7
+  countLang: 1
 --- !u!1 &316485599
 GameObject:
   m_ObjectHideFlags: 0
@@ -3585,16 +3585,16 @@ MonoBehaviour:
   id: 
   ja: 
   it: 
-  de: 
+  de: Ein neues Spiel
   hi: 
   changeOnlyFont: 0
   fontNumber: 0
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 7/7 completed
+  processTranslateLabel: 1/8 completed
   componentTextField: 1
-  countLang: 7
+  countLang: 1
 --- !u!1 &687548777
 GameObject:
   m_ObjectHideFlags: 0
@@ -3653,7 +3653,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "D\u0131sar\u0131<br>\xE7\u0131kmak"
+  m_text: "\u0412\u044B\u0439\u0442\u0438"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 09a8257377b26844b924e92f575040e8, type: 2}
   m_sharedMaterial: {fileID: 5673496718320263992, guid: 09a8257377b26844b924e92f575040e8, type: 2}
@@ -3749,7 +3749,7 @@ MonoBehaviour:
   text: 
   ru: "\u0412\u044B\u0439\u0442\u0438"
   en: Go out
-  tr: "D\u0131\u015Far\u0131 \xE7\u0131kmak"
+  tr: "D\u0131sar\u0131<br>\xE7\u0131kmak"
   az: 
   be: "\u0412\u044B\u0439\u0441\u0446\u0456"
   he: 
@@ -3772,16 +3772,16 @@ MonoBehaviour:
   id: 
   ja: 
   it: 
-  de: 
+  de: Hinausgehen
   hi: 
   changeOnlyFont: 0
   fontNumber: 0
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 3/7 completed
+  processTranslateLabel: 1/8 completed
   componentTextField: 1
-  countLang: 3
+  countLang: 1
 --- !u!1 &698320257
 GameObject:
   m_ObjectHideFlags: 0
@@ -4185,7 +4185,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -4271,16 +4271,16 @@ MonoBehaviour:
   id: 
   ja: 
   it: 
-  de: 
+  de: BESCHLEUNIGUNG!
   hi: 
   changeOnlyFont: 0
   fontNumber: 0
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 7/7 completed
+  processTranslateLabel: 1/8 completed
   componentTextField: 1
-  countLang: 7
+  countLang: 1
 --- !u!1 &741167512
 GameObject:
   m_ObjectHideFlags: 0
@@ -4836,16 +4836,16 @@ MonoBehaviour:
   id: 
   ja: 
   it: 
-  de: 
+  de: Spielen Sie ohne<br>Genehmigung
   hi: 
   changeOnlyFont: 0
   fontNumber: 0
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 7/7 completed
+  processTranslateLabel: 1/8 completed
   componentTextField: 1
-  countLang: 7
+  countLang: 1
 --- !u!114 &805340960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4979,9 +4979,9 @@ RectTransform:
   m_Father: {fileID: 1845626551}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.50200003, y: 0.41222224}
-  m_AnchoredPosition: {x: 0.005126953, y: 2.2814941}
-  m_SizeDelta: {x: -0.0099487, y: -5.4369}
+  m_AnchorMax: {x: 0.5, y: 0.303}
+  m_AnchoredPosition: {x: 0.28771973, y: 2.5}
+  m_SizeDelta: {x: 0.55518, y: -5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &828933242
 MonoBehaviour:
@@ -5171,16 +5171,16 @@ MonoBehaviour:
   id: 
   ja: 
   it: 
-  de: 
+  de: 'Ergebnis:'
   hi: 
   changeOnlyFont: 0
   fontNumber: 0
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 3/7 completed
+  processTranslateLabel: 1/8 completed
   componentTextField: 1
-  countLang: 3
+  countLang: 1
 --- !u!114 &845541988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5312,10 +5312,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1845626551}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.41222224}
+  m_AnchorMin: {x: 0, y: 0.303}
   m_AnchorMax: {x: 1, y: 0.74240744}
-  m_AnchoredPosition: {x: 0, y: -1.3891907}
-  m_SizeDelta: {x: 0, y: -2.7112007}
+  m_AnchoredPosition: {x: 0, y: -1.372406}
+  m_SizeDelta: {x: 0, y: -2.7448}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &872943499
 MonoBehaviour:
@@ -5492,16 +5492,16 @@ MonoBehaviour:
   id: 
   ja: 
   it: 
-  de: 
+  de: "Schlie\xDFen"
   hi: 
   changeOnlyFont: 0
   fontNumber: 0
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 7/7 completed
+  processTranslateLabel: 1/8 completed
   componentTextField: 1
-  countLang: 7
+  countLang: 1
 --- !u!114 &880589864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6008,16 +6008,16 @@ MonoBehaviour:
   id: 
   ja: 
   it: 
-  de: 
+  de: Holen Sie sich Boost<br> und fahren Sie fort<br> (Werbung ansehen)
   hi: 
   changeOnlyFont: 0
   fontNumber: 0
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 7/7 completed
+  processTranslateLabel: 1/8 completed
   componentTextField: 1
-  countLang: 7
+  countLang: 1
 --- !u!114 &939328547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6145,7 +6145,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1031218500}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 6.737028e-16, y: 6.037338e-11, z: -8.7311484e-11, w: -1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6153,9 +6153,9 @@ RectTransform:
   m_Father: {fileID: 1845626551}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 1, y: 0.41222224}
-  m_AnchoredPosition: {x: -0.010009766, y: 2.38208}
-  m_SizeDelta: {x: -0.02, y: -5.239998}
+  m_AnchorMax: {x: 1, y: 0.303}
+  m_AnchoredPosition: {x: 0.28259277, y: 2.5009766}
+  m_SizeDelta: {x: -0.5651635, y: -5.0021}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1031218502
 MonoBehaviour:
@@ -6200,19 +6200,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1031218503}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1031218503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6444,8 +6432,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 728.81, y: -302.28}
-  m_SizeDelta: {x: 1291.6, y: 293.57}
+  m_AnchoredPosition: {x: 763.4475, y: -302.28}
+  m_SizeDelta: {x: 1360.8751, y: 293.57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1172989528
 MonoBehaviour:
@@ -6618,7 +6606,9 @@ MonoBehaviour:
     - \u53F3\u306B\u8D70\u308A\u307E\u3059<br>\u5DE6\u4E0B\u9685 - \u5DE6\u306B\u8D70\u308A\u307E\u3059<br>\u753B\u9762\u306E\u4E0A\u90E8\u5206
     - \u30B8\u30E3\u30F3\u30D7!"
   it: 
-  de: 
+  de: "Tippen Sie zur Steuerung auf den Bildschirm!<br>Rechte untere Ecke \u2013
+    nach rechts laufen<br>Linke untere Ecke \u2013 nach links laufen<br>Oberer Teil
+    des Bildschirms \u2013 springen!"
   hi: 
   changeOnlyFont: 0
   fontNumber: 0
@@ -8746,16 +8736,16 @@ MonoBehaviour:
   id: 
   ja: 
   it: 
-  de: 
+  de: Spielen!
   hi: 
   changeOnlyFont: 0
   fontNumber: 0
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 7/7 completed
+  processTranslateLabel: 1/8 completed
   componentTextField: 1
-  countLang: 7
+  countLang: 1
 --- !u!1 &1367915064
 GameObject:
   m_ObjectHideFlags: 0
@@ -8937,16 +8927,16 @@ MonoBehaviour:
   id: 
   ja: 
   it: 
-  de: 
+  de: Spiel fortsetzen<br>(Werbung ansehen)
   hi: 
   changeOnlyFont: 0
   fontNumber: 0
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 3/7 completed
+  processTranslateLabel: 1/8 completed
   componentTextField: 1
-  countLang: 3
+  countLang: 1
 --- !u!1 &1401411408
 GameObject:
   m_ObjectHideFlags: 0
@@ -10540,16 +10530,16 @@ MonoBehaviour:
   id: 
   ja: 
   it: 
-  de: 
+  de: Weitermachen
   hi: 
   changeOnlyFont: 0
   fontNumber: 0
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 3/7 completed
+  processTranslateLabel: 1/8 completed
   componentTextField: 1
-  countLang: 3
+  countLang: 1
 --- !u!1 &1474776870
 GameObject:
   m_ObjectHideFlags: 0
@@ -11030,16 +11020,16 @@ MonoBehaviour:
   id: 
   ja: 
   it: 
-  de: 
+  de: Hinausgehen
   hi: 
   changeOnlyFont: 0
   fontNumber: 0
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 3/7 completed
+  processTranslateLabel: 1/8 completed
   componentTextField: 1
-  countLang: 3
+  countLang: 1
 --- !u!1 &1647367764
 GameObject:
   m_ObjectHideFlags: 0
@@ -11736,8 +11726,8 @@ MonoBehaviour:
   _fallingObject: {fileID: 370860883426643305, guid: e0f2395fad51ed94ab565313c1de08b8, type: 3}
   _createdObjectsNumber: 10
   _dropChance: 100
-  _minFallingSpeed: 1.2
-  _maxFallingSpeed: 1.8
+  _minFallingSpeed: 1.4
+  _maxFallingSpeed: 2
   _dropChanceMultiplier: 1.03
   _spawnTimeReducer: 0.2
   _minSpawnTime: 2
@@ -11839,8 +11829,8 @@ MonoBehaviour:
   _maxFallingSpeed: 3
   _dropChanceMultiplier: 1.02
   _spawnTimeReducer: 0.2
-  _minSpawnTime: 16
-  _maxSpawnTime: 18
+  _minSpawnTime: 17
+  _maxSpawnTime: 19
 --- !u!1 &1845626550
 GameObject:
   m_ObjectHideFlags: 0
@@ -11927,8 +11917,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -183}
-  m_SizeDelta: {x: 1029.8076, y: 314.8329}
+  m_AnchoredPosition: {x: 0, y: -303.7799}
+  m_SizeDelta: {x: 1039.1885, y: 556.3928}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1872318869
 MonoBehaviour:
@@ -12114,16 +12104,19 @@ MonoBehaviour:
   id: 
   ja: 
   it: 
-  de: 
+  de: "Spielen Sie als Bananenkatze und sammeln Sie Fr\xFCchte, w\xE4hrend Sie gef\xE4hrlichen
+    Gegenst\xE4nden ausweichen.<br>Heben Sie kein Junkfood auf und lassen Sie keine
+    Fr\xFCchte fallen!<br>Nehmen Sie zum Schutz einen Helm mit<br>Wenn Sie auf einige
+    Feinde klicken, werden sie vertrieben!"
   hi: 
   changeOnlyFont: 0
   fontNumber: 0
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 7/7 completed
+  processTranslateLabel: 1/8 completed
   componentTextField: 1
-  countLang: 7
+  countLang: 1
 --- !u!1 &1990571696
 GameObject:
   m_ObjectHideFlags: 0
@@ -12416,16 +12409,17 @@ MonoBehaviour:
   id: 
   ja: 
   it: 
-  de: 
+  de: Melden Sie sich mit Ihrem Login an,<br>damit Ihr bestes Ergebnis in der<br>Bestenliste
+    gespeichert wird
   hi: 
   changeOnlyFont: 0
   fontNumber: 0
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 7/7 completed
+  processTranslateLabel: 1/8 completed
   componentTextField: 1
-  countLang: 7
+  countLang: 1
 --- !u!1 &2000788243
 GameObject:
   m_ObjectHideFlags: 0
@@ -12506,16 +12500,16 @@ MonoBehaviour:
   id: 
   ja: 
   it: 
-  de: 
+  de: Genehmigung
   hi: 
   changeOnlyFont: 0
   fontNumber: 0
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 7/7 completed
+  processTranslateLabel: 1/8 completed
   componentTextField: 1
-  countLang: 7
+  countLang: 1
 --- !u!114 &2000788246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12795,16 +12789,16 @@ MonoBehaviour:
   id: 
   ja: 
   it: 
-  de: 
+  de: Verdoppeln Sie<br>Ihre Ergebnisse<br>(Werbung ansehen)
   hi: 
   changeOnlyFont: 0
   fontNumber: 0
   uniqueFont: {fileID: 0}
   additionalText: {fileID: 0}
   textHeight: 20
-  processTranslateLabel: 7/7 completed
+  processTranslateLabel: 1/8 completed
   componentTextField: 1
-  countLang: 7
+  countLang: 1
 --- !u!1 &2025508401
 GameObject:
   m_ObjectHideFlags: 0
@@ -13249,7 +13243,7 @@ MonoBehaviour:
   id: 
   ja: "\u30EA\u30FC\u30C0\u30FC\u30DC\u30FC\u30C9"
   it: 
-  de: 
+  de: Bestenliste
   hi: 
   changeOnlyFont: 0
   fontNumber: 0
@@ -13462,7 +13456,8 @@ MonoBehaviour:
     - \u53F3\u306B\u79FB\u52D5 <br>\u30B9\u30DA\u30FC\u30B9\u30D0\u30FC\u307E\u305F\u306F\u4E0A\u77E2\u5370
     - \u30B8\u30E3\u30F3\u30D7"
   it: 
-  de: 
+  de: "A oder PFEIL NACH LINKS \u2013 nach links bewegen<br>D oder PFEIL NACH RECHTS
+    \u2013 nach rechts bewegen <br>LEERTASTE oder PFEIL NACH OBEN \u2013 springen"
   hi: 
   changeOnlyFont: 0
   fontNumber: 0

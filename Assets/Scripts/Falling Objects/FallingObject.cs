@@ -6,6 +6,7 @@ using UnityEditor;
 [RequireComponent(typeof(BoxCollider2D))]
 public abstract class FallingObject : MonoBehaviour
 {
+    [SerializeField] protected AudioSource TapSound;
     [SerializeField] private Sprite[] _sprites;
 
     private SpriteRenderer _spriteRenderer;
@@ -65,4 +66,6 @@ public abstract class FallingObject : MonoBehaviour
         gameObject.SetActive(false);
         _spriteRenderer.sprite = _sprites[Random.Range(0, _sprites.Length)];
     }
+
+    public abstract void OnMouseDown();
 }
