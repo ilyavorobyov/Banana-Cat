@@ -1104,18 +1104,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.047592163, y: -0.015864372}
+  m_Offset: {x: 0.107159376, y: -0.015864223}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.195, y: 1.1}
+    oldSize: {x: 2.5823529, y: 1.2941177}
     newSize: {x: 2.19, y: 4.39}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.2054787, y: 1.4017992}
+  m_Size: {x: 2.324613, y: 1.4667814}
   m_EdgeRadius: 0
 --- !u!114 &208888344
 MonoBehaviour:
@@ -3967,7 +3967,7 @@ Transform:
   m_GameObject: {fileID: 714735521}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.64, y: 0, z: 2}
+  m_LocalPosition: {x: 0.802, y: 0, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11829,8 +11829,8 @@ MonoBehaviour:
   _maxFallingSpeed: 3
   _dropChanceMultiplier: 1.02
   _spawnTimeReducer: 0.2
-  _minSpawnTime: 17
-  _maxSpawnTime: 19
+  _minSpawnTime: 19
+  _maxSpawnTime: 21
 --- !u!1 &1845626550
 GameObject:
   m_ObjectHideFlags: 0

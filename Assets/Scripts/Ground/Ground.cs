@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Ground : MonoBehaviour
 {
+    private Vector3 _addingPosition = new Vector3(0f, 0.15f, 0f);
+
     public static Action GroundCollisionEvent;
     public static Action<Vector3> FruitCollisionEvent;
 
@@ -13,7 +15,7 @@ public class Ground : MonoBehaviour
             if (fallingObject is FruitItem)
             {
                 fallingObject.OnHideObject();
-                FruitCollisionEvent?.Invoke(fallingObject.transform.position);
+                FruitCollisionEvent?.Invoke(fallingObject.transform.position + _addingPosition);
             }
             else
             {
