@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public class ResizeButtonOnHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    private Vector3 _hoverSize = new Vector3(1.08f, 1.08f, 1.08f);
+    private Vector3 _hoverSize = new Vector3(1.1f, 1.1f, 1.1f);
 
     public void OnPointerEnter(PointerEventData eventData)
     {

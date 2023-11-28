@@ -44,6 +44,8 @@ public abstract class FallingObject : MonoBehaviour
         GameUI.HideFallingObjects -= OnHideObject;
     }
 
+    public virtual void OnMouseDown() { }
+
     public void Init(float speed, Vector2 position)
     {
         transform.localScale = Vector3.one;
@@ -67,5 +69,4 @@ public abstract class FallingObject : MonoBehaviour
         _spriteRenderer.sprite = _sprites[Random.Range(0, _sprites.Length)];
     }
 
-    public abstract void OnMouseDown();
 }

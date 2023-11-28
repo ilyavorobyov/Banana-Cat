@@ -1,9 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class CannonEnemyController : MonoBehaviour
+public class CannonEnemySpawner : MonoBehaviour
 {
     [SerializeField] private CannonEnemy _cannonEnemy;
     [SerializeField] private float _minSpawnTime;
@@ -42,9 +40,7 @@ public class CannonEnemyController : MonoBehaviour
     private void OnStopCannonAttack()
     {
         if (_cannonAttack != null)
-        {
             StopCoroutine(_cannonAttack);
-        }
     }
 
     private IEnumerator CreateObjects()

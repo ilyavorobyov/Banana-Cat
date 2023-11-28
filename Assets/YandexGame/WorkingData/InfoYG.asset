@@ -15,9 +15,9 @@ MonoBehaviour:
   scopes: 1
   playerPhotoSize: 0
   playerInfoSimulation:
-    authorized: 1
+    authorized: 0
     isMobile: 0
-    language: de
+    language: ru
     name: Player this
     uniqueID: 000
     photo: https://justplaygames.ru/public/icon_player.png

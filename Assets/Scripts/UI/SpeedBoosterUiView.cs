@@ -1,11 +1,9 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SpeedBoosterManager : MonoBehaviour
+public class SpeedBoosterUiView : MonoBehaviour
 {
     [SerializeField] private UIElementsAnimation _uIElementsAnimation;
     [SerializeField] private Image _speedBoosterIcon;
@@ -46,9 +44,7 @@ public class SpeedBoosterManager : MonoBehaviour
     private void StopFillBoosterIcon()
     {
         if (_fillingBoosterIcon != null)
-        {
             StopCoroutine(_fillingBoosterIcon);
-        }
     }
 
     private void OnTookSpeedBooster()

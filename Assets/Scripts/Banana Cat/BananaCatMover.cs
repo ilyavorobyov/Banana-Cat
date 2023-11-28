@@ -70,7 +70,7 @@ public class BananaCatMover : MonoBehaviour
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent += OnCry;
         BananaCatCollisionHandler.FruitTakenEvent += OnFruitTake;
         BananaCatCollisionHandler.TookSpeedBoosterEvent += OnAddSpeedBoost;
-        SpeedBoosterManager.StopAddSpeedEvent += OnRemoveSpeedBoost;
+        SpeedBoosterUiView.StopAddSpeedEvent += OnRemoveSpeedBoost;
         Ground.GroundCollisionEvent += OnGroundCollision;
         BananaCat.SpeedChangedEvent += OnChangeSpeed;
         GameUI.ChangeGameStateEvent += OnChangeGameState;
@@ -90,7 +90,7 @@ public class BananaCatMover : MonoBehaviour
         MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= OnCry;
         BananaCatCollisionHandler.FruitTakenEvent -= OnFruitTake;
         BananaCatCollisionHandler.TookSpeedBoosterEvent -= OnAddSpeedBoost;
-        SpeedBoosterManager.StopAddSpeedEvent -= OnRemoveSpeedBoost;
+        SpeedBoosterUiView.StopAddSpeedEvent -= OnRemoveSpeedBoost;
         Ground.GroundCollisionEvent -= OnGroundCollision;
         BananaCat.SpeedChangedEvent -= OnChangeSpeed;
         GameUI.ChangeGameStateEvent -= OnChangeGameState;
