@@ -7,6 +7,7 @@ public class SpeedBoosterUiView : MonoBehaviour
 {
     [SerializeField] private UIElementsAnimation _uIElementsAnimation;
     [SerializeField] private Image _speedBoosterIcon;
+    [SerializeField] private Button _speedBoosterAdButton;
     [SerializeField] private float _speedBoostDuration;
     [SerializeField] private GameObject _speedAddInfoText;
     [SerializeField] private float _textDisplayDuration;
@@ -50,6 +51,7 @@ public class SpeedBoosterUiView : MonoBehaviour
     private void OnTookSpeedBooster()
     {
         _uIElementsAnimation.Appear(_speedBoosterIcon.gameObject);
+        _uIElementsAnimation.Disappear(_speedBoosterAdButton.gameObject);
         _addSpeedSound.PlayDelayed(0);
         ShowSpeedAddText();
         BeginFillBoosterIcon();
@@ -70,6 +72,7 @@ public class SpeedBoosterUiView : MonoBehaviour
     private void StopAddSpeed()
     {
         _removeAddSpeedSound.PlayDelayed(0);
+        _uIElementsAnimation.Appear(_speedBoosterAdButton.gameObject);
         StopAddSpeedEvent?.Invoke();
     }
 

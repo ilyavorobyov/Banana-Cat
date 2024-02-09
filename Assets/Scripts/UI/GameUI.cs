@@ -36,6 +36,7 @@ public class GameUI : MonoBehaviour
     [SerializeField] private AudioSource _buttonClickSound;
     [SerializeField] private TouchControl _touchControl;
     [SerializeField] private float _gameOverScreenDelay;
+    [SerializeField] private ScoreManager _scoreManager;
 
     private UIElementsAnimation _uIElementsAnimation;
     private bool _isMobile = false;
@@ -221,6 +222,7 @@ public class GameUI : MonoBehaviour
         _uIElementsAnimation.Disappear(_scoreText.gameObject);
         _uIElementsAnimation.Disappear(_helpFitText.gameObject);
         _uIElementsAnimation.Disappear(_pauseButton.gameObject);
+        _uIElementsAnimation.Disappear(_showAdAtGameSpeedBoostButton.gameObject);
         HideFallingObjects?.Invoke();
         IsPaused = false;
     }
@@ -242,9 +244,9 @@ public class GameUI : MonoBehaviour
         else
             _gameOverPanelReviveVideoAdButton.interactable = true;
 
-        if (_isDoubleScoreVideoAdWatched)
+        if (_isDoubleScoreVideoAdWatched || !_scoreManager.IsAboveZero)
             _gameOverPanelDoubleScoreVideoAdButton.interactable = false;
-        else
+        else 
             _gameOverPanelDoubleScoreVideoAdButton.interactable = true;
     }
 

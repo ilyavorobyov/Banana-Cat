@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MusicManager : MonoBehaviour
+public class MusicSwitch : MonoBehaviour
 {
     [SerializeField] private AudioSource _gameMusic;
     [SerializeField] private AudioSource _menuMusic;

@@ -24,8 +24,11 @@ public class ScoreManager : MonoBehaviour
     private int _minScoreDivisor = 5;
     private int _scoreMultiplier = 2;
     private float _showResultAfterDoubleResultDelay = 0.4f;
+    private bool _isAboveZero = false;
 
     public static Action AddDifficultyEvent;
+
+    public bool IsAboveZero => _isAboveZero;
 
     private void OnEnable()
     {
@@ -101,6 +104,8 @@ public class ScoreManager : MonoBehaviour
             _newRecordPanelText.gameObject.SetActive(false);
             _resultPanelText.gameObject.SetActive(true);
         }
+
+        _isAboveZero = _score > 0;
     }
 
     private void ResetScoreValues()
