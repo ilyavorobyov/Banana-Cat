@@ -1,36 +1,39 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Image))]
-public class SoundSwitch : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private Sprite _soundOnImage;
-    [SerializeField] private Sprite _soundOffImage;
-
-    private Image _soundButtonImage;
-    private bool _isPlaying = true;
-    private float _maxVolume = 1.0f;
-    private float _minVolume = 0;
-
-    private void Awake()
+    [RequireComponent(typeof(Image))]
+    public class SoundSwitch : MonoBehaviour
     {
-        _soundButtonImage = GetComponent<Image>();
-        AudioListener.volume = _maxVolume;
-    }
+        [SerializeField] private Sprite _soundOnImage;
+        [SerializeField] private Sprite _soundOffImage;
 
-    public void ChangeSoundState()
-    {
-        _isPlaying = !_isPlaying;
+        private Image _soundButtonImage;
+        private bool _isPlaying = true;
+        private float _maxVolume = 1.0f;
+        private float _minVolume = 0;
 
-        if (_isPlaying)
+        private void Awake()
         {
+            _soundButtonImage = GetComponent<Image>();
             AudioListener.volume = _maxVolume;
-            _soundButtonImage.sprite = _soundOnImage;
         }
-        else
+
+        public void ChangeSoundState()
         {
-            AudioListener.volume = _minVolume;
-            _soundButtonImage.sprite = _soundOffImage;
+            _isPlaying = !_isPlaying;
+
+            if (_isPlaying)
+            {
+                AudioListener.volume = _maxVolume;
+                _soundButtonImage.sprite = _soundOnImage;
+            }
+            else
+            {
+                AudioListener.volume = _minVolume;
+                _soundButtonImage.sprite = _soundOffImage;
+            }
         }
     }
 }

@@ -2,39 +2,42 @@ using DG.Tweening;
 using UnityEngine;
 using Color = UnityEngine.Color;
 
-[RequireComponent(typeof(UnityEngine.UI.Image))]
-public class HealthBarPoint : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private Sprite _inactiveSprite;
-    [SerializeField] private Color _inactiveColor;
-    [SerializeField] private float _inactiveColorDuration;
-    [SerializeField] private float _hideAnimationDuration;
-
-    private Color _initialColor;
-
-    private UnityEngine.UI.Image _image;
-
-    private void Awake()
+    [RequireComponent(typeof(UnityEngine.UI.Image))]
+    public class HealthBarPoint : MonoBehaviour
     {
-        _image = GetComponent<UnityEngine.UI.Image>();
-        _initialColor = _image.color;
-    }
+        [SerializeField] private Sprite _inactiveSprite;
+        [SerializeField] private Color _inactiveColor;
+        [SerializeField] private float _inactiveColorDuration;
+        [SerializeField] private float _hideAnimationDuration;
 
-    public void BecomeInactive()
-    {
-        _image.color = _inactiveColor;
-        _image.sprite = _inactiveSprite;
-        Invoke(nameof(SetInitialColor), _inactiveColorDuration);
-    }
+        private Color _initialColor;
 
-    public void HideObject()
-    {
-        transform.DOScale(Vector3.zero, _hideAnimationDuration).SetLoops(1, LoopType.Yoyo).
-        SetUpdate(true).OnComplete(() => Destroy(gameObject));
-    }
+        private UnityEngine.UI.Image _image;
 
-    private void SetInitialColor()
-    {
-        _image.color = _initialColor;
+        private void Awake()
+        {
+            _image = GetComponent<UnityEngine.UI.Image>();
+            _initialColor = _image.color;
+        }
+
+        public void BecomeInactive()
+        {
+            _image.color = _inactiveColor;
+            _image.sprite = _inactiveSprite;
+            Invoke(nameof(SetInitialColor), _inactiveColorDuration);
+        }
+
+        public void HideObject()
+        {
+            transform.DOScale(Vector3.zero, _hideAnimationDuration).SetLoops(1, LoopType.Yoyo).
+            SetUpdate(true).OnComplete(() => Destroy(gameObject));
+        }
+
+        private void SetInitialColor()
+        {
+            _image.color = _initialColor;
+        }
     }
 }

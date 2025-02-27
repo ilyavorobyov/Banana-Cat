@@ -1,9 +1,10 @@
-using UnityEngine;
-
-public class SpeedBoosterSpawner : Spawner
+namespace Spawners
 {
-    public override void OnAddDifficulty()
+    public class SpeedBoosterSpawner : Spawner
     {
-        AddDropChance();
+        public override void OnAddDifficulty()
+        {
+            AddDropChance();
+        }
     }
 }

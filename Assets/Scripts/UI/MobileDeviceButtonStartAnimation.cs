@@ -2,33 +2,36 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-[RequireComponent(typeof(Image))]
-public class MobileDeviceButtonStartAnimation : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private float _startAnimationDuration;
-
-    private Image _buttonImage;
-    private Color _defaultColor;
-
-    private void Awake()
+    [RequireComponent(typeof(Image))]
+    public class MobileDeviceButtonStartAnimation : MonoBehaviour
     {
-        _buttonImage = GetComponent<Image>();
-        _defaultColor = _buttonImage.color;
-    }
+        [SerializeField] private float _startAnimationDuration;
 
-    private void OnEnable()
-    {
-        GameUI.StartGameEvent += RunStartAnimation;
-    }
+        private Image _buttonImage;
+        private Color _defaultColor;
 
-    private void OnDisable()
-    {
-        GameUI.StartGameEvent -= RunStartAnimation;
-    }
+        private void Awake()
+        {
+            _buttonImage = GetComponent<Image>();
+            _defaultColor = _buttonImage.color;
+        }
 
-    private void RunStartAnimation()
-    {
-        _buttonImage.color = _defaultColor;
-        _buttonImage.DOFade(0, _startAnimationDuration).SetLoops(2, LoopType.Restart);
+        private void OnEnable()
+        {
+            GameUI.StartGameEvent += RunStartAnimation;
+        }
+
+        private void OnDisable()
+        {
+            GameUI.StartGameEvent -= RunStartAnimation;
+        }
+
+        private void RunStartAnimation()
+        {
+            _buttonImage.color = _defaultColor;
+            _buttonImage.DOFade(0, _startAnimationDuration).SetLoops(2, LoopType.Restart);
+        }
     }
 }

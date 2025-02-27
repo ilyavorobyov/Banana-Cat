@@ -1,9 +1,10 @@
-using UnityEngine;
-
-public class DangerousItemsSpawner : Spawner
+namespace Spawners
 {
-    public override void OnAddDifficulty()
+    public class DangerousItemsSpawner : Spawner
     {
-        AddDropChance();
+        public override void OnAddDifficulty()
+        {
+            AddDropChance();
+        }
     }
 }

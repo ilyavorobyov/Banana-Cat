@@ -1,9 +1,10 @@
-using UnityEngine;
-
-public class NerfItemsSpawner : Spawner
+namespace Spawners
 {
-    public override void OnAddDifficulty()
+    public class NerfItemsSpawner : Spawner
     {
-        AddDropChance();
+        public override void OnAddDifficulty()
+        {
+            AddDropChance();
+        }
     }
 }

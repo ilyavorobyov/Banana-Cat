@@ -1,13 +1,16 @@
 using DG.Tweening;
 using UnityEngine;
 
-public class AdErrorText : MonoBehaviour
+namespace UI
 {
-    private float _hideAnimationDuration = 5f;
-
-    private void OnEnable()
+    public class AdErrorText : MonoBehaviour
     {
-        transform.DOScale(Vector3.zero, _hideAnimationDuration).SetLoops(1, LoopType.Yoyo).
-        SetUpdate(true).OnComplete(() => gameObject.SetActive(false));
+        private float _hideAnimationDuration = 5f;
+
+        private void OnEnable()
+        {
+            transform.DOScale(Vector3.zero, _hideAnimationDuration).SetLoops(1, LoopType.Yoyo).
+            SetUpdate(true).OnComplete(() => gameObject.SetActive(false));
+        }
     }
 }

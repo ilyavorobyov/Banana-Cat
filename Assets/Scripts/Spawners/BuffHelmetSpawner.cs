@@ -1,9 +1,10 @@
-using UnityEngine;
-
-public class BuffHelmetSpawner : Spawner
+namespace Spawners
 {
-    public override void OnAddDifficulty()
+    public class BuffHelmetSpawner : Spawner
     {
-        AddDropChance();
+        public override void OnAddDifficulty()
+        {
+            AddDropChance();
+        }
     }
 }

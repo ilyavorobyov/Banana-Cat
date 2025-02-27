@@ -1,65 +1,70 @@
 using System.Collections.Generic;
+using BananaCatCharacter;
+using MissedFruits;
 using UnityEngine;
 
-public class HealthBar : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private int _healthPoints;
-    [SerializeField] private HealthBarPoint _healthBarPoint;
-
-    private List<HealthBarPoint> _healthBarPoints = new List<HealthBarPoint>();
-    private int _missingPointsNumber = 0;
-
-    public int HealthPoints { get; private set; }
-
-    private void Awake()
+    public class HealthBar : MonoBehaviour
     {
-        HealthPoints = _healthPoints;
-    }
+        [SerializeField] private int _healthPoints;
+        [SerializeField] private HealthBarPoint _healthBarPoint;
 
-    private void OnEnable()
-    {
-        BananaCatCollisionHandler.OpenGameOverPanelEvent += OnGameOver;
-        MissedFruitsCounter.MaxFruitsNumberDroppedEvent += OnGameOver;
-        GameUI.ReviveEvent += OnStartGame;
-        GameUI.StartGameEvent += OnStartGame;
-        GameUI.GoToMenuEvent += OnGameOver;
-    }
+        private List<HealthBarPoint> _healthBarPoints = new List<HealthBarPoint>();
+        private int _missingPointsNumber = 0;
 
-    private void OnDisable()
-    {
-        BananaCatCollisionHandler.OpenGameOverPanelEvent -= OnGameOver;
-        MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= OnGameOver;
-        GameUI.StartGameEvent -= OnStartGame;
-        GameUI.GoToMenuEvent -= OnGameOver;
-        GameUI.StartGameEvent -= OnStartGame;
-    }
+        public int HealthPoints { get; private set; }
 
-    public void TakeLifePoint()
-    {
-        _healthBarPoints[_missingPointsNumber].BecomeInactive();
-        _missingPointsNumber++;
-    }
-
-    private void OnStartGame()
-    {
-        OnGameOver();
-        _missingPointsNumber = 0;
-
-        for (int i = 0; i < HealthPoints; i++)
+        private void Awake()
         {
-            var healthBarPoint = Instantiate(_healthBarPoint, transform.position, Quaternion.identity);
-            healthBarPoint.transform.SetParent(transform, false);
-            _healthBarPoints.Add(healthBarPoint);
-        }
-    }
-
-    private void OnGameOver()
-    {
-        foreach (var healthBarPoint in _healthBarPoints)
-        {
-            Destroy(healthBarPoint.gameObject);
+            HealthPoints = _healthPoints;
         }
 
-        _healthBarPoints.Clear();
+        private void OnEnable()
+        {
+            BananaCatCollisionHandler.OpenGameOverPanelEvent += OnGameOver;
+            MissedFruitsCounter.MaxFruitsNumberDroppedEvent += OnGameOver;
+            GameUI.ReviveEvent += OnStartGame;
+            GameUI.StartGameEvent += OnStartGame;
+            GameUI.GoToMenuEvent += OnGameOver;
+        }
+
+        private void OnDisable()
+        {
+            BananaCatCollisionHandler.OpenGameOverPanelEvent -= OnGameOver;
+            MissedFruitsCounter.MaxFruitsNumberDroppedEvent -= OnGameOver;
+            GameUI.StartGameEvent -= OnStartGame;
+            GameUI.GoToMenuEvent -= OnGameOver;
+            GameUI.StartGameEvent -= OnStartGame;
+        }
+
+        public void TakeLifePoint()
+        {
+            _healthBarPoints[_missingPointsNumber].BecomeInactive();
+            _missingPointsNumber++;
+        }
+
+        private void OnStartGame()
+        {
+            OnGameOver();
+            _missingPointsNumber = 0;
+
+            for (int i = 0; i < HealthPoints; i++)
+            {
+                var healthBarPoint = Instantiate(_healthBarPoint, transform.position, Quaternion.identity);
+                healthBarPoint.transform.SetParent(transform, false);
+                _healthBarPoints.Add(healthBarPoint);
+            }
+        }
+
+        private void OnGameOver()
+        {
+            foreach (var healthBarPoint in _healthBarPoints)
+            {
+                Destroy(healthBarPoint.gameObject);
+            }
+
+            _healthBarPoints.Clear();
+        }
     }
 }

@@ -1,10 +1,10 @@
-using System.Collections;
-using UnityEngine;
-
-public class FruitSpawner : Spawner
+namespace Spawners
 {
-    public override void OnAddDifficulty()
+    public class FruitSpawner : Spawner
     {
-        ReduceMaxSpawnTime();
+        public override void OnAddDifficulty()
+        {
+            ReduceMaxSpawnTime();
+        }
     }
 }

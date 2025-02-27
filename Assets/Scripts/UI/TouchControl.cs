@@ -1,5 +1,8 @@
 using UnityEngine;
 
-public class TouchControl : MonoBehaviour
+namespace UI
 {
+    public class TouchControl : MonoBehaviour
+    {
+    }
 }
